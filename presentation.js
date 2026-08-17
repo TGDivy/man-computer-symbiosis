@@ -109,7 +109,7 @@
 
     setScene(sceneIndex) {
       if (!this.context || !this.bedGain) return;
-      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001];
+      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001, 0.013, 0.009, 0.018, 0.006];
       const target = levels[sceneIndex] ?? 0.007;
       const now = this.context.currentTime;
       this.bedGain.gain.cancelScheduledValues(now);
@@ -188,6 +188,12 @@
         const now = this.context.currentTime;
         this.bedGain.gain.setTargetAtTime(0.0001, now, 0.025);
       }
+      if (sceneIndex === 14) {
+        this.playTone({ frequency: 220, duration: 0.34, gain: 0.028, type: "sine" });
+        this.playTone({ frequency: 330, duration: 0.42, gain: 0.022, delay: 0.08, type: "sine" });
+        this.playTone({ frequency: 440, duration: 0.5, gain: 0.018, delay: 0.16, type: "sine" });
+      }
+      if (sceneIndex === 17) this.playNoiseBurst({ duration: 0.04, gain: 0.04 });
     }
 
     cueBuild(sceneIndex, buildIndex) {
@@ -217,6 +223,19 @@
       if (sceneIndex === 13 && buildIndex === 1) {
         this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
       }
+      if (sceneIndex === 14) {
+        this.playTone({ frequency: 170 + buildIndex * 64, duration: 0.06, gain: 0.035, type: "triangle" });
+        if (buildIndex === 2) this.playNoiseBurst({ duration: 0.07, gain: 0.045 });
+      }
+      if (sceneIndex === 15) {
+        this.playNoiseBurst({ duration: 0.045, gain: 0.055 });
+        this.playTone({ frequency: buildIndex % 2 === 0 ? 132 : 176, duration: 0.05, gain: 0.03, type: "square" });
+      }
+      if (sceneIndex === 16) {
+        this.playNoiseBurst({ duration: buildIndex === 4 ? 0.11 : 0.08, gain: buildIndex === 4 ? 0.065 : 0.045 });
+        this.playTone({ frequency: 92 + buildIndex * 21, duration: 0.09, gain: 0.032, delay: 0.02, type: "square" });
+      }
+      if (sceneIndex === 17) this.playNoiseBurst({ duration: 0.035, gain: 0.04 });
     }
 
     async toggle() {
@@ -641,12 +660,46 @@
     });
   }
 
+  function initializeThinkingResponses() {
+    const form = document.querySelector("#thinking-action-form");
+    const input = document.querySelector("#thinking-action");
+    const responses = document.querySelector("#thinking-responses");
+    const status = document.querySelector("#thinking-action-status");
+    if (!form || !input || !responses || !status) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const response = input.value.trim();
+      if (!response) {
+        status.textContent = "Write a response before filing the card.";
+        input.focus();
+        return;
+      }
+
+      const responseNumber = responses.children.length + 1;
+      const card = document.createElement("li");
+      const code = document.createElement("span");
+      const text = document.createElement("strong");
+      card.className = "thinking-response-card";
+      code.textContent = `FILED ${String(responseNumber).padStart(2, "0")}`;
+      text.textContent = response;
+      card.append(code, text);
+      responses.prepend(card);
+      while (responses.children.length > 3) responses.lastElementChild?.remove();
+
+      input.value = "";
+      status.textContent = `Filed response: ${response}`;
+      sound.cueBuild(17, responseNumber);
+    });
+  }
+
   function initialize() {
     const initialIndex = parseHash();
     body.classList.toggle("sound-muted", sound.muted);
     goToSlide(initialIndex, { silent: true, updateHash: Boolean(window.location.hash) });
     if (initialIndex > 0) startProjector({ silent: true });
     initializeThinkingDial();
+    initializeThinkingResponses();
 
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("click", handleDocumentClick);

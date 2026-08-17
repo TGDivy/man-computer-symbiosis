@@ -2,7 +2,7 @@
 
 These notes follow the redesigned 27-scene sequence from Scene 00 through Scene 26. The same scene-specific notes are embedded in `index.html` and available during playback with `N`.
 
-Scenes 00–13 are the finished opening and graph reels. Scenes 14–26 are assembly notes for visible workprint cards and will become full delivery records as each reel is built.
+Scenes 00–17 are the finished opening, graph, and SYMBIOTE™ reels. Scenes 18–26 are assembly notes for visible workprint cards and will become full delivery records as each reel is built.
 
 ## Global delivery
 
@@ -160,15 +160,17 @@ Scenes 00–13 are the finished opening and graph reels. Scenes 14–26 are asse
 
 **Purpose:** Personify the relationship through a completely straight-faced fictional 1960s product film.
 
-**Delivery plan:** Introduce `ELECTRONIC RESEARCH COMPANION / MODEL: UNAVAILABLE` without winking. The joke must remain institutional.
+**Delivery plan:** Reveal the wordmark, then the absurdly serious console portrait, then its capabilities without winking. The joke must remain institutional.
 
-**Source status:** Fictional reconstruction inspired by §4.
+**Sound:** Restrained product chime, relay clicks, and projector bed. No futuristic digital effects.
+
+**Source status:** SYMBIOTE™, its manufacturer, model, and claims are fictional reconstructions inspired by §4. The SAGE console photograph shows authentic historical equipment in a modern museum photograph and is used illustratively.
 
 ## Scene 15 — Human / Symbiote
 
 **Purpose:** Explain unlike but complementary capabilities without a bullet slide.
 
-**Delivery plan:** Humans supply goals, hypotheses, questions, and judgement. The machine carries out routinizable operations between decisions. Cards move in both directions.
+**Delivery plan:** Humans supply goals, hypotheses, questions, and judgement. Send a question card across. Reveal the machine’s routinizable operations, then return alternatives for human evaluation.
 
 **Source:** §§3–4.
 
@@ -176,7 +178,9 @@ Scenes 00–13 are the finished opening and graph reels. Scenes 14–26 are asse
 
 **Purpose:** Show exploration rather than mere automation.
 
-**Delivery plan:** SYMBIOTE™ prints three genuinely different plots. The third is unexpectedly interesting, but the visual should not tell the audience what to notice.
+**Delivery plan:** SYMBIOTE™ prints three genuinely different plots. Let the first two feel merely competent. The third reveals a relation nobody explicitly requested.
+
+**Source status:** All three plots are illustrative reconstructions, not historical data.
 
 **Source:** Licklider’s suggestion in §4 that the machine try alternatives when the human does not know which display is wanted.
 
@@ -186,7 +190,7 @@ Scenes 00–13 are the finished opening and graph reels. Scenes 14–26 are asse
 
 **Prompt:** “Please identify one thing you do in order to think.” Give 20 seconds. Offer examples only if the room is stuck.
 
-**Fallback:** The optional local response field is not required; spoken answers work fully.
+**Interaction:** Spoken answers are preferred. The optional field files up to three local response cards and sends nothing over the network.
 
 ## Scene 18 — REEL CHANGE
 

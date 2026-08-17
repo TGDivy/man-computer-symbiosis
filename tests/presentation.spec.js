@@ -9,7 +9,7 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
   test("loads the complete 27-scene workprint and its local assets", async ({ page }) => {
     await expect(page.locator(".scene")).toHaveCount(27);
     await expect(page.locator(".speaker-notes")).toHaveCount(27);
-    await expect(page.locator(".scene--workprint")).toHaveCount(13);
+    await expect(page.locator(".scene--workprint")).toHaveCount(9);
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-00");
 
     const incompleteImages = await page.locator("img").evaluateAll((images) =>
@@ -112,6 +112,40 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
     await expect(page.locator("#scene-13 .manifesto-two")).not.toHaveClass(/is-visible/);
     await page.keyboard.press("ArrowRight");
     await expect(page.locator("#scene-13 .manifesto-two")).toHaveClass(/is-visible/);
+  });
+
+  test("introduces SYMBIOTE and exchanges physical capability cards", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(14, { silent: true }));
+    await expect(page.locator("#scene-14")).not.toHaveClass(/scene--workprint/);
+    await expect(page.locator("#scene-14 .symbiote-wordmark")).not.toHaveClass(/is-visible/);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(3, { silent: true }));
+    await expect(page.locator("#scene-14 .symbiote-wordmark")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-14 .symbiote-portrait")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-14 .symbiote-feature-rail span")).toHaveCount(4);
+
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(15, { build: 4, silent: true }));
+    await expect(page.locator("#scene-15 .capability-cards.is-visible")).toHaveCount(2);
+    await expect(page.locator("#scene-15 .transfer-card--outgoing")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-15 .transfer-card--return")).toHaveClass(/is-visible/);
+  });
+
+  test("prints alternative plots when the human cannot specify one", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(16, { silent: true }));
+    await expect(page.locator("#scene-16 .plot-card.is-visible")).toHaveCount(0);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(4, { silent: true }));
+    await expect(page.locator("#scene-16 .plot-card.is-visible")).toHaveCount(3);
+    await expect(page.locator("#scene-16 .plot-anomaly")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-16 .discovery-stamp")).toHaveClass(/is-visible/);
+  });
+
+  test("files audience thinking responses only in the local page", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(17, { silent: true }));
+    await page.locator("#thinking-action").fill("Reformat the data before I can compare it");
+    await page.locator("#file-thinking-action").click();
+    await expect(page.locator("#thinking-responses .thinking-response-card")).toHaveCount(1);
+    await expect(page.locator("#thinking-responses .thinking-response-card strong")).toHaveText("Reformat the data before I can compare it");
+    await expect(page.locator("#thinking-action-status")).toContainText("Filed response");
+    await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-17");
   });
 
   test("keeps notes, references, sound, and direct scene navigation available", async ({ page }) => {

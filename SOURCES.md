@@ -17,7 +17,7 @@ J. C. R. Licklider, “Man-Computer Symbiosis,” *IRE Transactions on Human Fac
 | 06 | “The question is not, ‘What is the answer?’ The question is, ‘What is the question?’” | Original text as quoted by Licklider and attributed by him to Poincaré; currently in speaker notes | §2, second paragraph |
 | 09 | “About 85 per cent of my ‘thinking’ time…” | Source for the implemented 85% reveal; the number is not presented as a modern audience statistic | §3.1, third paragraph |
 | 12 | “When the graphs were finished, the relations were obvious at once…” | Source for the spoken clean-graph explanation; it is not presented as an on-screen quotation | §3.1, third paragraph |
-| 15 | “Instructions directed to computers specify courses; instructions directed to human beings specify goals.” | Planned verbatim wording with the transcription’s stray hyphen in “instructions-directed” silently normalised | §5.4, second paragraph |
+| 15 | “Instructions directed to computers specify courses; instructions directed to human beings specify goals.” | Source language for the spoken distinction; the implemented capability cards paraphrase rather than quote it | §5.4, second paragraph |
 
 ## Explicit Interpretations
 
@@ -31,7 +31,8 @@ These lines are presentation arguments, not quotations from Licklider. They are 
 ## Illustrative Reconstructions
 
 - **Scenes 10–12:** The six datasets and finished speech-intelligibility plot are invented to stage the operation Licklider describes. They are not presented as his historical data.
-- **Scene 14:** SYMBIOTE™ is a fictional 1960s research product whose capabilities paraphrase §4.
+- **Scene 14:** SYMBIOTE™ is an implemented fictional 1960s research product whose capabilities paraphrase §4. Its manufacturer, model, approval stamp, and product claims are invented.
+- **Scene 16:** The three alternative plots and highlighted unrequested relation are invented to stage the exploratory plotting behavior described in §4.
 - **Scene 19:** The shared desk surface is an interactive reconstruction inspired by §5.5.1, not a historical interface.
 - **Scene 20:** The thinking-center network is an original educational-film diagram based on §5.6, not historical network footage.
 
@@ -136,7 +137,8 @@ All downloaded presentation copies are in `assets/archive/`. Source metadata sna
 - **Creator:** Tomwsulcer.
 - **Date:** 24 December 2015.
 - **Licence:** CC0.
-- **Intended use:** Archival reserve for alternate cuts of the interface scenes. This is a modern photograph of an authentic historical console, not a period photograph.
+- **Intended use:** Scene 14 fictional SYMBIOTE™ product portrait. This is a modern photograph of an authentic historical console, not a period photograph or Licklider’s machine.
+- **Treatment:** Tightly cropped and given a restrained grayscale/sepia treatment in CSS; the fictional model label is outside the photograph.
 
 ### `assets/archive/fig-botanical.jpg`
 
