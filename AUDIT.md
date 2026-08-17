@@ -1,91 +1,73 @@
-# Completion Audit
+# Redesign Audit — Opening-Reel Checkpoint
 
-Audit performed against `presentation.md` after implementation and rendered-browser inspection.
+This is a workprint audit, not a final compliance claim. It records what is live after the first redesign checkpoint and makes unfinished scenes explicit.
 
-## Argument and Scholarship
+## Checkpoint Scope
 
-| Requirement | Evidence | Result |
+| Item | Evidence | Status |
 |---|---|---|
-| Use the complete primary paper, not a summary | Full MIT text reviewed section by section; quote register in `SOURCES.md` | Pass |
-| Centre the interval between interesting thoughts | Scenes 11, 20, and 22; final thesis visibly marked as interpretation | Pass |
-| Make the 1957 self-study the philosophical heart | Scenes 07–11 form a five-scene sequence from audience estimate through graph insight and manifesto | Pass |
-| Verify quotations and separate interpretive status | On-slide `ORIGINAL TEXT`, `PARAPHRASE`, `OUR INTERPRETATION`, and `ILLUSTRATIVE RECONSTRUCTION` labels; quote audit in `SOURCES.md` | Pass |
-| Avoid a prediction tally or generic AI framing | Modern systems enter only in Scene 20; the deck focuses on formulation, representation, division of labour, and unresolved friction | Pass |
+| New storyboard replaces old ask | `presentation.md` defines 27 scenes and seven frame-level opening cue sheets | Complete |
+| Audience initially does not know the subject | Scene 00 is an unidentified leader; Scenes 01–03 contain fig, wasp, and symbiosis only | Complete |
+| Paper title withheld until Scene 04 | Automated title-withholding test plus visual review | Complete |
+| Projector starts from pure black | No visible preflight UI; first gesture arms leader and audio | Complete |
+| Countdown sound works under autoplay rules | Procedural Web Audio starts from the presenter gesture | Complete |
+| Authentic photographic fig and wasp material | Four licensed photographs logged in `SOURCES.md` | Complete |
+| Scene 05 dramatizes batch computing | Six builds cover formulate, explain, compute, output, paper, repeat | Complete |
+| Scene 06 creates first philosophical turn | Full-frame `WHAT IS THE QUESTION?` with machine sound removed | Complete |
+| All planned scenes have stable rehearsal addresses | `scene-00` through `scene-26` and URL hashes | Complete |
+| Unbuilt material is honestly represented | Scenes 07–26 use a consistent visible `WORKPRINT` treatment | Complete |
 
-## Narrative Coverage
+## Scene Assembly Status
 
-| Brief sequence | Implemented scene(s) | Result |
+| Scenes | Reel | State |
 |---|---|---|
-| Prologue / message from 1960 | 01 | Pass |
-| Period computing mental model and its break | 02–03 | Pass |
-| Poincaré and formulative thought | 04 | Pass |
-| Fig / pollinating insect symbiosis | 05 and return in 22 | Pass |
-| Tool, replacement, partner | 06 | Pass |
-| Informal time-and-motion study and 85% | 07–08 | Pass |
-| Painful graph preparation and sudden insight | 09–10 | Pass |
-| Interpretive manifesto | 11 | Pass |
-| Fictional non-humanoid Symbiote | 12 | Pass |
-| Iterative object-of-thought model | 13 | Pass |
-| Human / electronic / joint operations | 14 | Pass |
-| Time sharing, memory, retrieval, language, I/O | 15 | Pass |
-| Shared desk surface and correction loop | 16 | Pass |
-| Speech interaction | 17 | Pass |
-| Thinking centres and network | 18 | Pass |
-| Brief playful interlude | 19 | Pass |
-| Quiet present-day connection | 20 | Pass |
-| Final audience reflection | 21 | Pass |
-| Return to fig, final statement, black, post-credits | 22 | Pass |
-| Roughly 16–22 scenes | Exactly 22 visible scenes | Pass |
+| 00–06 | Leader and opening biological/computing reveal | Finished checkpoint |
+| 07–13 | Thinking experiment, 85%, and graph sequence | Workprint cards; next build |
+| 14–17 | SYMBIOTE™ and audience experiment #2 | Workprint cards |
+| 18–20 | Reel change, future desk, thinking center | Workprint cards |
+| 21–26 | Anti-prophecy turn, partnership thesis, ending | Workprint cards |
 
-## Participation
+## Scholarship
 
-| Checkpoint | Evidence | Result |
+| Requirement | Evidence | Status |
 |---|---|---|
-| Early period-computing question | Scene 02 | Pass |
-| Estimate actual thinking time | Scene 07, range control or spoken answers | Pass |
-| Identify work mistaken for thinking | Scene 21, spoken answers plus local presenter-operated word field | Pass |
-| Works without polling software | Every prompt supports spoken responses; controls are optional | Pass |
+| Full paper read before design | Primary-paper record and section-specific notes | Complete |
+| Quote, paraphrase, interpretation, fiction separated | `SOURCES.md`, `speaker-notes.md`, and embedded scene notes | Complete for finished scenes |
+| Opening claim follows the paper | Scenes 01–03 closely track the paper’s opening biological analogy | Complete |
+| Interpretive manifesto not passed as quotation | Scene 13 workprint and notes label it `OUR INTERPRETATION` | Complete |
+| Reconstructed imagery identified | Leader, laboratory label, SYMBIOTE™, graph data, and future diagrams are labelled reconstruction/fiction | Complete |
 
 ## Direction and Design
 
-| Requirement | Evidence | Result |
+| Requirement | Evidence | Status |
 |---|---|---|
-| Directed film, not retro template | 22 bespoke compositions; initial/final contact sheets reviewed from Playwright captures | Pass |
-| 16:9 deck containing a recurring 4:3 film frame | Full-screen 16:9 canvas and reusable `.film-frame` system | Pass |
-| Restrained aged palette and available fonts | Local CSS palette; system grotesk, monospace, and serif stacks; no external font dependency | Pass |
-| Restrained film texture | Grain, vignette, halation, dust/scratches, paper grid, and imperfect registration remain behind legible type | Pass |
-| Small, consistent transition vocabulary | Cut, splice, reel change, resolve, node build, overexposure, and one projector jam | Pass |
-| Reels / chapter structure | Prologue and five named reels in the persistent scene readout | Pass |
-| Deadpan rather than meme humour | Product specifications, “Several hours later,” “…oh,” unavailable model, and post-credit card | Pass |
+| Found educational film, not retro UI | Full-frame scenes, optical title, physical specimen cards, paper montage, gate weave | Complete for Scenes 00–06 |
+| Explanation remains primarily verbal | Fig, title, and question frames contain no explanatory paragraphs | Complete |
+| Small physical motion vocabulary | Hard cut, splice, optical title, leader, card placement, paper feed | Complete |
+| Sound is narrative and optional | Projector leader, title chord, machine cues, `M` mute, silent fallback | Opening pass complete |
+| No modern AI imagery | No modern interface, chatbot, logo, or AI claim appears | Complete |
+| Target viewports remain legible | Manual review at 1600×900 and 1366×768 | Complete |
 
-## Assets and Notes
+## Runtime and Deployment
 
-| Requirement | Evidence | Result |
+| Check | Evidence | Status |
 |---|---|---|
-| Authentic historical imagery | NASA, U.S. Census, NYPL, NORAD, NLM, and openly licensed equipment imagery in `assets/archive/` | Pass |
-| Do not present generated history as authentic | Conceptual visuals are CSS/SVG and labelled reconstruction; no generated historical photographs | Pass |
-| Record source page, direct URL, creator, licence, intended slide | Complete per-file register in `SOURCES.md` | Pass |
-| Useful notes for every substantial scene | 22 embedded note blocks and matching `speaker-notes.md`; purpose, argument/status, delivery, optional humour, pauses, transitions, sources, and short-version guidance | Pass |
-| Hidden/reference appendix | `R` reference panel plus `SOURCES.md` | Pass |
+| 27 scenes and 27 embedded note records | Playwright count checks | Pass |
+| All local images load | Playwright natural-width check | Pass |
+| Progressive builds and reverse navigation | Specimen, definition, and batch-process tests | Pass |
+| Notes, references, sound, hashes | Playwright interaction checks | Pass |
+| Runtime errors and viewport bounds | All-scene loop in both Chromium projects | Pass |
+| Local automated result | `npm test`: 14 tests across two viewports | Pass after final rerun |
+| GitHub Pages pipeline | Verify → deploy → deployed-site Playwright | Configured |
+| Public URL | <https://www.divyb.xyz/man-computer-symbiosis/> | Active |
 
-## Runtime and QA
+## Remaining Definition of Done
 
-| Check | Evidence | Result |
-|---|---|---|
-| Keyboard, touch, controls, hashes, fullscreen | Implemented in `presentation.js`; exercised by Playwright | Pass |
-| Audience slider, word field, sketch, microphone theatre | Implemented locally without external services or microphone permission | Pass |
-| Notes and references | Keyboard and UI coverage in Playwright | Pass |
-| Assets load and no runtime errors | Playwright checks all images and captures console/page errors | Pass |
-| Desktop and laptop viewports | 1600×900 and 1366×768 Chromium projects | Pass |
-| Continuous visual inspection | Initial and settled-final renders for all scenes plus dedicated final-thesis frame reviewed | Pass |
-| Automated result | `npm test`: 12 passed | Pass |
-
-## Final Quality Questions
-
-- **Directed film rather than template?** Yes: compositions, pacing, transitions, archival treatment, and interaction change by scene while sharing one visual grammar.
-- **Could words be removed?** Main frames use statements, labels, diagrams, and cinematic pauses; explanatory density lives in notes.
-- **Mostly about the paper rather than predictions?** Yes: Scenes 01–19 remain entirely inside the paper’s argument and prerequisites.
-- **Does the graph sequence create the argument?** Yes: incompatible data, six operations, a timed interruption, clean plot, pause, “…oh,” and verified excerpt.
-- **Is participation structurally meaningful?** Yes: the audience supplies the initial model, commits to a percentage, then applies the distinction to its own work.
-- **Are interpretations ever passed off as quotation?** No; every thesis line is explicitly labelled.
-- **Does every major visual have a reason?** Yes; archival visuals establish context, while diagrams and reconstructions make an argument or create a pause.
+- Replace all 20 workprint cards with storyboarded scenes.
+- Give the 85% and graph sequence its full 4–5 minute dramatic duration.
+- Build all three audience interactions without network dependencies.
+- Complete the recurring straight-faced SYMBIOTE™ product language.
+- Add future desk and thinking-center physical diagrams.
+- Complete the anti-prophecy turn, partnership thesis, fig return, and credits.
+- Finish the scene-specific soundtrack and final audio balance.
+- Expand this workprint audit into the final 27-scene requirement audit.

@@ -1,58 +1,59 @@
-# Man–Computer Symbiosis — A Lost Film
+# Man–Computer Symbiosis — Found-Film Workprint
 
-An interactive 22-scene presentation built from J. C. R. Licklider’s 1960 paper “Man-Computer Symbiosis.” It is art-directed as a restored instructional/science film rather than a conventional slide deck.
+A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 paper “Man-Computer Symbiosis.” The redesign begins as an unidentified educational film about a fig and withholds the paper title until Scene 04.
 
-## Presenting
+## Live Workprint
 
-Serve the directory over HTTP, then open `index.html`:
+- GitHub Pages: <https://www.divyb.xyz/man-computer-symbiosis/>
+- Repository: <https://github.com/TGDivy/man-computer-symbiosis>
+- GitHub Pages alias: <https://tgdivy.github.io/man-computer-symbiosis/>
+
+The project is being published in reel-sized checkpoints. Scenes 00–06 currently contain the rebuilt opening reel; Scenes 07–26 are intentionally marked as workprint assembly cards until their corresponding checkpoint lands.
+
+## Presenting Locally
 
 ```bash
 python3 -m http.server 4173
 ```
 
-Open <http://localhost:4173>.
+Open <http://localhost:4173>. The first keypress or click arms the projector and browser audio; the visible frame remains pure black before that gesture.
 
 ### Controls
 
-- `→` / `Space`: next build or scene
+- `Space`, `Enter`, or `→`: start projector, then advance build or scene
 - `←`: previous build or scene
 - `Home` / `End`: first or final scene
+- `M`: mute or restore local projector sound
 - `N`: embedded speaker notes
 - `R`: reference and asset panel
-- `S`: optional projector sounds
 - `F`: fullscreen
 - `?`: keyboard help
 - Horizontal swipe: touch navigation
 
-The deck also supports the visible control strip, URL hashes such as `#scene-10`, reduced-motion preferences, and print-to-PDF styles.
+The control strip stays hidden during playback unless the pointer moves or a control receives focus. URL hashes such as `#scene-04`, reduced-motion preferences, silent presentation, and print output are supported.
 
-## Interactive Checkpoints
+## Creative Source of Truth
 
-1. What did people in 1960 think computers were for?
-2. What percentage of your working day do you actually spend thinking?
-3. What do you do in order to think that you frequently mistake for thinking?
+`presentation.md` contains the complete 27-scene storyboard, non-negotiable narrative rules, sound grammar, opening cue sheet, scholarship rules, and definition of done.
 
-The final checkpoint includes a presenter-operated local word field. Entries remain in that browser’s local storage and are never transmitted.
+The redesign deliberately keeps modern AI imagery off screen. It is about the paper’s stranger partnership argument, not a prophecy reel.
 
 ## Research Integrity
 
 - The complete primary paper was read before design.
-- Every quotation is checked against the MIT-hosted full text.
-- Quotes, paraphrases, interpretation, and illustrative reconstruction are visibly distinguished.
-- Historical photographs and illustrations are authentic and recorded in `SOURCES.md`.
-- The graph data, SYMBIOTE™ product, desk interface, and microphone test are clearly labelled reconstructions.
-
-See `speaker-notes.md` for delivery guidance and `SOURCES.md` for the quote audit, archival links, creators, licences, and intended slide use.
+- Quotes, close paraphrases, presentation interpretations, fictional product copy, and reconstructions are distinguished.
+- Authentic or openly licensed images are logged in `SOURCES.md` with creator, rights, source URL, local filename, and scene usage.
+- New biological opening assets are photographs rather than generated “archival” substitutes.
+- SYMBIOTE™, the graph data, and future-machine diagrams are transparently identified as reconstructions.
 
 ## Technical Design
 
-- Dependency-free HTML, CSS, and JavaScript at runtime
-- 16:9 screen with a recurring projected 4:3 archival frame
-- Progressive builds, film-splice/reel/overexposure transition vocabulary
-- Canvas-based shared-surface sketch demonstration
-- Fake microphone interaction with no permission request
-- Keyboard, touch, fullscreen, notes, references, and accessible announcements
-- GitHub Pages deployment via `.github/workflows/pages.yml`
+- Dependency-free static HTML, CSS, and JavaScript at runtime
+- Procedural Web Audio projector, leader pops, title chord, and machine cues
+- Presenter-controlled progressive builds and deterministic rehearsal API
+- Keyboard, touch, fullscreen, speaker notes, references, direct hashes, and reduced motion
+- Relative asset paths suitable for project-site GitHub Pages
+- Playwright coverage at 1600×900 and 1366×768
 
 ## Verification
 
@@ -62,4 +63,10 @@ npx playwright install chromium
 npm test
 ```
 
-Playwright verifies scene navigation, build progression, notes/references, audience input, the sketch interaction, responsive bounds, missing assets, console errors, and screenshot output.
+Every push to `main` runs the two-viewport Playwright suite, deploys the static site to GitHub Pages, and then runs the desktop Playwright suite against the deployed URL.
+
+Generate rehearsal captures and contact sheets with:
+
+```bash
+npm run capture
+```

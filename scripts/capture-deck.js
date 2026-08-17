@@ -32,8 +32,8 @@ async function waitForServer() {
 }
 
 async function makeContactSheet(page, variant) {
-  const cards = Array.from({ length: 22 }, (_, index) => {
-    const sceneNumber = String(index + 1).padStart(2, "0");
+  const cards = Array.from({ length: 27 }, (_, index) => {
+    const sceneNumber = String(index).padStart(2, "0");
     const filename = `scene-${sceneNumber}-${variant}.png`;
     return `<figure><img src="${baseUrl}/artifacts/scenes/${filename}" alt="Scene ${sceneNumber}"><figcaption>SCENE ${sceneNumber} · ${variant.toUpperCase()}</figcaption></figure>`;
   }).join("");
@@ -73,20 +73,20 @@ async function capture() {
     await page.goto(baseUrl);
     await page.waitForFunction(() => Boolean(window.__symbiosisDeck));
 
-    for (let index = 0; index < 22; index += 1) {
-      const sceneNumber = String(index + 1).padStart(2, "0");
+    for (let index = 0; index < 27; index += 1) {
+      const sceneNumber = String(index).padStart(2, "0");
       await page.evaluate((slideIndex) => window.__symbiosisDeck.goToSlide(slideIndex, { build: 0, silent: true }), index);
       await page.waitForTimeout(850);
       await page.screenshot({ path: path.join(sceneDirectory, `scene-${sceneNumber}-initial.png`) });
 
       await page.evaluate((slideIndex) => window.__symbiosisDeck.goToSlide(slideIndex, { build: 99, silent: true }), index);
-      await page.waitForTimeout(index === 21 ? 3_400 : 620);
+      await page.waitForTimeout(index === 26 ? 1_200 : 620);
       await page.screenshot({ path: path.join(sceneDirectory, `scene-${sceneNumber}-final.png`) });
     }
 
-    await page.evaluate(() => window.__symbiosisDeck.goToSlide(21, { build: 2, silent: true }));
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(6, { build: 0, silent: true }));
     await page.waitForTimeout(620);
-    await page.screenshot({ path: path.join(artifactDirectory, "scene-22-thesis.png") });
+    await page.screenshot({ path: path.join(artifactDirectory, "scene-06-question.png") });
 
     await makeContactSheet(page, "initial");
     await makeContactSheet(page, "final");

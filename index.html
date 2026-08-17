@@ -3,1067 +3,430 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#050504" />
     <meta
       name="description"
-      content="Man–Computer Symbiosis: a lost 1960 instructional film about the future of thinking."
+      content="A found-film presentation of J. C. R. Licklider’s Man–Computer Symbiosis."
     />
-    <meta name="theme-color" content="#0a0a08" />
-    <title>Man–Computer Symbiosis — A Lost Film</title>
+    <title>Archive Reel 8B</title>
     <link rel="stylesheet" href="styles.css" />
+    <script src="presentation.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#scene-01">Skip to presentation</a>
+    <a class="skip-link" href="#scene-00">Skip to presentation</a>
 
-    <div class="app" id="app">
-      <div class="projector-beam" aria-hidden="true"></div>
+    <main id="film" class="film" aria-label="Presentation film">
+      <div class="film-grain" aria-hidden="true"></div>
+      <div class="film-scratch" aria-hidden="true"></div>
+      <div class="film-vignette" aria-hidden="true"></div>
 
-      <main class="deck" id="deck" aria-label="Man–Computer Symbiosis presentation">
-        <section
-          class="slide slide--leader is-active"
-          id="scene-01"
-          data-title="A Message from 1960"
-          data-reel="PROLOGUE"
-          data-transition="fade"
-          aria-hidden="false"
-        >
-          <div class="leader-countdown" aria-hidden="true">
+      <section
+        id="scene-00"
+        class="scene scene--leader is-active"
+        data-title="The projector starts"
+        data-reel="LEADER"
+        data-transition="leader"
+        aria-label="Scene 0: The projector starts"
+      >
+        <div class="scene-stage leader-stage">
+          <div class="leader-cue leader-cue--flash" aria-hidden="true"></div>
+          <div class="leader-cue leader-cue--property" aria-hidden="true">
+            <p>PROPERTY OF</p>
+            <span class="redacted-lab">NORTH-EASTERN RESEARCH LABORATORY</span>
+            <small>FILM RECORD · SERIES 8B</small>
+          </div>
+          <div class="leader-cue leader-cue--number leader-cue--eight" aria-hidden="true">
             <span>8</span>
-            <i></i>
           </div>
-          <div class="leader-copy">
-            <p class="leader-date">MARCH 1960</p>
-            <div class="leader-title build" data-build="1">
-              <p class="kicker">IRE TRANSACTIONS · HFE-1</p>
-              <h1>MAN–COMPUTER<br />SYMBIOSIS</h1>
-            </div>
-            <div class="leader-credit build" data-build="2">
-              <p>J. C. R. LICKLIDER</p>
-              <span>AN INSTRUCTIONAL FILM ABOUT A MACHINE<br />WHICH DOES NOT YET EXIST</span>
-            </div>
+          <div class="leader-cue leader-cue--number leader-cue--seven" aria-hidden="true">
+            <span>7</span>
           </div>
-          <div class="reel-change-mark" aria-hidden="true"></div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 01 — A Message from 1960</h2>
-            <p><strong>Purpose:</strong> Begin as a screening, not a lecture. Let the black frame and date establish mystery before the title arrives.</p>
-            <p><strong>Scholarship:</strong> The title, author, journal, volume, and March 1960 date are original bibliographic facts from the paper.</p>
-            <p><strong>Delivery:</strong> Wait through the first beat. Advance once for the title, again for the author. Optional line: “We found this reel in a filing cabinet marked ‘eventually.’”</p>
-            <p><strong>Transition:</strong> Slow projector fade into an abrupt archival cut.</p>
-            <p><strong>Source:</strong> J. C. R. Licklider, “Man-Computer Symbiosis,” <em>IRE Transactions on Human Factors in Electronics</em>, HFE-1, 4–11, March 1960.</p>
-            <p><strong>Short version:</strong> Do not skip; this establishes the film grammar.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--archive"
-          id="scene-02"
-          data-title="What Was a Computer For?"
-          data-reel="REEL I · WHAT IS THE QUESTION?"
-          data-transition="splice"
-          aria-hidden="true"
-        >
-          <div class="film-frame film-frame--bleed">
-            <div class="archive-triptych" aria-hidden="true">
-              <figure>
-                <img src="assets/archive/ibm-704-operations.jpg" alt="" />
-                <figcaption>COMPUTER OPERATIONS · NASA LANGLEY · 1957</figcaption>
-              </figure>
-              <figure>
-                <img src="assets/archive/keypunch-operators.jpg" alt="" />
-                <figcaption>KEYPUNCH OPERATORS · U.S. CENSUS · 1940</figcaption>
-              </figure>
-              <figure>
-                <img src="assets/archive/computer-frame.jpg" alt="" />
-                <figcaption>COMPUTER FRAME · U.S. CENSUS · 1950s</figcaption>
-              </figure>
-            </div>
-            <div class="checkpoint-card">
-              <span class="checkpoint-label">AUDIENCE CHECKPOINT 01</span>
-              <h2>What did people in 1960<br />think computers were <em>for?</em></h2>
-              <p class="build" data-build="1">Take three answers. There are no punch-card penalties.</p>
-            </div>
-            <div class="frame-stamp">AUTHENTIC ARCHIVAL IMAGES</div>
+          <div class="leader-cue leader-cue--number leader-cue--six" aria-hidden="true">
+            <span>6</span>
           </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 02 — What Was a Computer For?</h2>
-            <p><strong>Purpose:</strong> Make the audience articulate the period mental model before Licklider breaks it. This is intellectual participation, not an icebreaker.</p>
-            <p><strong>Delivery:</strong> Ask the question exactly as shown. Take roughly three answers: calculation, military work, payroll, census, science. Avoid correcting anyone. Advance to release the deadpan line.</p>
-            <p><strong>Scholarship:</strong> The photographs are authentic government/archive images, not generated reconstructions. They establish batch-oriented, operator-mediated computing without claiming every 1960 computer worked identically.</p>
-            <p><strong>Transition:</strong> Film splice into the simplified batch model.</p>
-            <p><strong>Sources:</strong> NASA Langley IBM 704 operations, 1957; U.S. Census Bureau keypunch and computer-frame photographs. Full links and licenses are in the reference panel.</p>
-            <p><strong>Short version:</strong> Take one answer, then advance.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--batch"
-          id="scene-03"
-          data-title="The Batch Model"
-          data-reel="REEL I · WHAT IS THE QUESTION?"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="film-frame paper-frame">
-            <p class="classification">PARAPHRASE · PAPER §2</p>
-            <div class="batch-line" aria-label="A conventional computing process">
-              <div class="batch-step">
-                <span>01</span>
-                <b>YOU FORMULATE<br />THE PROBLEM</b>
-              </div>
-              <i aria-hidden="true">→</i>
-              <div class="batch-step">
-                <span>02</span>
-                <b>SOMEONE<br />PROGRAMS IT</b>
-              </div>
-              <i aria-hidden="true">→</i>
-              <div class="batch-step">
-                <span>03</span>
-                <b>THE MACHINE<br />COMPUTES IT</b>
-              </div>
-              <i aria-hidden="true">→</i>
-              <div class="batch-step">
-                <span>04</span>
-                <b>YOU RECEIVE<br />THE RESULT</b>
-              </div>
-            </div>
-            <div class="paper-feed" aria-hidden="true">
-              <span>01278 09411 10110 00101 10111 00100</span>
-              <span>10100 01001 01101 00101 00000 00011</span>
-              <span>01111 01101 10000 10101 10100 00101</span>
-            </div>
-            <div class="batch-break build" data-build="1">
-              <p>BUT WHAT IF</p>
-              <h2>YOU DON’T KNOW<br />THE QUESTION YET?</h2>
-            </div>
+          <div class="leader-cue leader-cue--damage" aria-hidden="true">
+            <span>+</span>
+            <span>REEL 8B</span>
           </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 03 — The Batch Model</h2>
-            <p><strong>Purpose:</strong> Compress the existing model into one legible mechanism, then break it.</p>
-            <p><strong>Scholarship:</strong> Paraphrase of §2: present-day computers primarily solve preformulated problems or follow predetermined procedures; unforeseen alternatives stop the process.</p>
-            <p><strong>Delivery:</strong> Read the four stages quickly, almost bureaucratically. Advance and pause on the question. Optional line: “The machine is very fast. The queue is philosophical.”</p>
-            <p><strong>Transition:</strong> One-frame overexposure into the Poincaré passage.</p>
-            <p><strong>Source:</strong> Primary paper, §2 “Aims of Man-Computer Symbiosis.”</p>
-            <p><strong>Short version:</strong> Keep the final question; the pipeline can be covered in one sentence.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--question"
-          id="scene-04"
-          data-title="The Question"
-          data-reel="REEL I · WHAT IS THE QUESTION?"
-          data-transition="overexpose"
-          aria-hidden="true"
-        >
-          <div class="film-frame quote-frame">
-            <p class="classification">ORIGINAL TEXT · AS QUOTED BY LICKLIDER · PAPER §2</p>
-            <blockquote>
-              <span>“The question is not,</span>
-              <strong>‘What is the answer?’</strong>
-              <span>The question is,</span>
-              <strong>‘What is the question?’”</strong>
-            </blockquote>
-            <p class="quote-credit">— HENRI POINCARÉ, AS CITED BY LICKLIDER</p>
-            <div class="formulative build" data-build="1">
-              <span>SOLUTION STAGE</span>
-              <i>←</i>
-              <b>FORMULATIVE STAGE</b>
-              <p>THE COMPUTER MOVES HERE.</p>
-            </div>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 04 — The Question</h2>
-            <p><strong>Purpose:</strong> Make the conceptual turn from obtaining answers to shaping questions.</p>
-            <p><strong>Scholarship:</strong> The Poincaré line appears verbatim in Licklider’s §2. Attribute it as a quotation used by Licklider, not as Licklider’s own sentence. Licklider’s explicit aim is to bring computing into the “formulative parts” of technical problems.</p>
-            <p><strong>Delivery:</strong> Let the audience read the quote. Advance to move attention from solution to formulation. Do not mention contemporary chat systems; allow the resonance to emerge.</p>
-            <p><strong>Transition:</strong> A botanical educational-film cut: abstract question to literal symbiosis.</p>
-            <p><strong>Source:</strong> Primary paper, §2.</p>
-            <p><strong>Short version:</strong> Do not skip; this defines the paper’s first main aim.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--fig"
-          id="scene-05"
-          data-title="Enter: The Fig Wasp"
-          data-reel="REEL I · WHAT IS THE QUESTION?"
-          data-transition="splice"
-          aria-hidden="true"
-        >
-          <div class="film-frame botanical-frame">
-            <p class="educational-title">FILM UNIT 1.1 · SYMBIOSIS</p>
-            <figure class="fig-plate">
-              <img
-                src="assets/archive/fig-botanical.jpg"
-                alt="A nineteenth-century botanical plate showing a common fig tree and fruit"
-              />
-              <figcaption>ORGANISM A · FIG</figcaption>
-            </figure>
-            <figure class="wasp-plate">
-              <img
-                src="assets/archive/fig-wasp.png"
-                alt="An archival scientific illustration of a fig-pollinating wasp"
-              />
-              <figcaption>ORGANISM B · POLLINATING INSECT</figcaption>
-            </figure>
-            <div class="symbiosis-equation build" data-build="1">
-              <div><span>ALONE</span><b>INCONVENIENT</b></div>
-              <i>+</i>
-              <div><span>TOGETHER</span><b>THRIVING</b></div>
-            </div>
-            <p class="which-one build" data-build="2">SO WHICH ONE ARE WE?</p>
-            <p class="classification botanical-classification">PARAPHRASE · PAPER §1.1 · ARCHIVAL ILLUSTRATIONS</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 05 — Enter: The Fig Wasp</h2>
-            <p><strong>Purpose:</strong> Treat Licklider’s opening metaphor with comically excessive seriousness, then establish productive interdependence between dissimilar partners.</p>
-            <p><strong>Scholarship:</strong> §1.1 describes a fig tree and pollinating insect as mutually dependent and uses Webster’s definition of symbiosis: dissimilar organisms living together in close association. The visual pairing is illustrative; it is not presented as a specimen record of the exact taxon printed in the paper.</p>
-            <p><strong>Delivery:</strong> Advance through “alone/together,” then ask “So which one are we?” Do not answer. Optional line: “The film’s entomology department requests that we move along.”</p>
-            <p><strong>Transition:</strong> Botanical labels reorganize into a classification card.</p>
-            <p><strong>Sources:</strong> Primary paper §1.1; 1801 NYPL botanical plate; public-domain <em>Blastophaga</em> illustration. Full links in references.</p>
-            <p><strong>Short version:</strong> Show the pairing and move on after the unanswered question.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--classification"
-          id="scene-06"
-          data-title="Not Man Versus Machine"
-          data-reel="REEL I · WHAT IS THE QUESTION?"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="film-frame manual-frame">
-            <p class="manual-code">RELATIONSHIP CLASSIFICATION · FORM M/CS-12</p>
-            <div class="relationship-cards">
-              <article>
-                <span>CLASS A</span>
-                <h2>TOOL</h2>
-                <p>THE MACHINE EXTENDS THE HUMAN.</p>
-                <i class="status-light status-light--amber"></i>
-              </article>
-              <article>
-                <span>CLASS B</span>
-                <h2>REPLACEMENT</h2>
-                <p>THE HUMAN EXTENDS THE MACHINE.</p>
-                <i class="status-light status-light--red"></i>
-              </article>
-              <article class="partner-card build" data-build="1">
-                <span>CLASS C</span>
-                <h2>PARTNER</h2>
-                <p>DISSIMILAR CAPABILITIES. CLOSE COUPLING.</p>
-                <i class="status-light status-light--green"></i>
-                <b>SELECTED</b>
-              </article>
-            </div>
-            <p class="classification relationship-classification">PARAPHRASE · PAPER §1.2</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 06 — Not Man Versus Machine</h2>
-            <p><strong>Purpose:</strong> Position symbiosis between a mere mechanical extension and full replacement.</p>
-            <p><strong>Scholarship:</strong> §1.2 explicitly distinguishes symbiosis from “mechanically extended man” and from systems where people remain only because some functions could not be automated. “Tool / replacement / partner” is our compressed classification, not Licklider’s exact wording.</p>
-            <p><strong>Delivery:</strong> Explain A and B in one sentence each. Advance to “partner.” Stress that dissimilarity is the source of supplementation, not a defect.</p>
-            <p><strong>Transition:</strong> Reel-change blackout into the time-and-motion experiment.</p>
-            <p><strong>Source:</strong> Primary paper, §§1.2 and 3.1.</p>
-            <p><strong>Short version:</strong> Keep only the three-way distinction.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--experiment"
-          id="scene-07"
-          data-title="Experiment 57-B"
-          data-reel="REEL II · PREPARING TO THINK"
-          data-transition="reel"
-          aria-hidden="true"
-        >
-          <div class="film-frame experiment-frame">
-            <div class="experiment-heading">
-              <p>EXPERIMENT 57-B</p>
-              <h2>A PRELIMINARY AND INFORMAL<br />TIME-AND-MOTION ANALYSIS<br />OF TECHNICAL THINKING</h2>
-            </div>
-            <figure class="subject-card">
-              <div class="portrait-halftone">
-                <img src="assets/archive/licklider.jpg" alt="Portrait of J. C. R. Licklider" />
-              </div>
-              <figcaption>
-                <span>SUBJECT</span>
-                <b>J. C. R. LICKLIDER</b>
-                <span>ACTIVITY UNDER OBSERVATION</span>
-                <b>THINKING</b>
-              </figcaption>
-            </figure>
-            <div class="estimate-panel">
-              <span class="checkpoint-label">AUDIENCE CHECKPOINT 02</span>
-              <label for="thinking-estimate">What percentage of your workday<br />do you actually spend <em>thinking?</em></label>
-              <div class="estimate-control">
-                <input id="thinking-estimate" type="range" min="0" max="100" value="50" step="5" />
-                <output id="estimate-output" for="thinking-estimate">50%</output>
-              </div>
-              <button class="machine-button" id="lock-estimate" type="button">LOCK ESTIMATE</button>
-              <p id="estimate-status" aria-live="polite">OR TAKE GUESSES OUT LOUD</p>
-            </div>
-            <p class="classification experiment-classification">ORIGINAL STUDY DESCRIPTION · PAPER §3.1</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 07 — Experiment 57-B</h2>
-            <p><strong>Purpose:</strong> Turn the 1957 self-study into a deadpan scientific reveal and make the audience commit to an estimate.</p>
-            <p><strong>Scholarship:</strong> In spring and summer 1957, Licklider tracked the work of “one moderately technical person,” himself. He repeatedly calls the sample inadequate and the analysis preliminary and informal. “Experiment 57-B” is our theatrical label.</p>
-            <p><strong>Delivery:</strong> Ask for guesses aloud or use the slider. Let several people answer. Do not reveal the number here. Optional line: “The ethics committee consisted of the subject, who had concerns.”</p>
-            <p><strong>Transition:</strong> Hard numerical cut.</p>
-            <p><strong>Sources:</strong> Primary paper §3.1; public-domain Licklider portrait from the U.S. National Library of Medicine collection.</p>
-            <p><strong>Short version:</strong> Take two guesses and advance.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--eighty-five"
-          id="scene-08"
-          data-title="85%"
-          data-reel="REEL II · PREPARING TO THINK"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="number-field">
-            <span class="number-ghost">85</span>
-            <h2>85<span>%</span></h2>
-            <p class="build" data-build="1">OF HIS “THINKING” TIME WAS SPENT<br />GETTING INTO A POSITION TO THINK.</p>
-            <div class="clerical-orbit build" data-build="2" aria-label="Clerical and preparatory tasks">
-              <span>SEARCHING</span>
-              <span>CALCULATING</span>
-              <span>PLOTTING</span>
-              <span>TRANSFORMING</span>
-              <span>RETRIEVING</span>
-              <span>COMPARING</span>
-            </div>
-            <p class="classification number-classification">PARAPHRASE + ORIGINAL FIGURE · PAPER §3.1</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 08 — 85%</h2>
-            <p><strong>Purpose:</strong> Make the number land before explaining it. The emotional point is not inefficiency; it is the distance between a question and the conditions for insight.</p>
-            <p><strong>Scholarship:</strong> Licklider writes, “About 85 per cent of my ‘thinking’ time was spent getting into a position to think, to make a decision, to learn something I needed to know.” The surrounding task words are faithful paraphrases from §3.1.</p>
-            <p><strong>Delivery:</strong> Pause on the bare number. Advance for the sentence, then again for the orbiting tasks. Resist saying “wasted”; Licklider says these operations were necessary.</p>
-            <p><strong>Transition:</strong> Mechanical accumulation into the graph-making sequence.</p>
-            <p><strong>Source:</strong> Primary paper §3.1.</p>
-            <p><strong>Short version:</strong> Do not skip; this is the talk’s central evidence.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--graph-work"
-          id="scene-09"
-          data-title="The Graph · Part I"
-          data-reel="REEL II · PREPARING TO THINK"
-          data-transition="splice"
-          aria-hidden="true"
-        >
-          <div class="film-frame graph-paper-frame">
-            <p class="classification graph-classification">ILLUSTRATIVE RECONSTRUCTION · BASED ON PAPER §3.1</p>
-            <div class="raw-data-stack" aria-label="Six hard-to-compare experimental datasets">
-              <article class="data-card data-card--1">
-                <b>TRIAL A · S/N “RATIO”</b>
-                <span>0.14&nbsp;&nbsp;0.32&nbsp;&nbsp;0.61&nbsp;&nbsp;0.88</span>
-                <small>MEASURE: POWER</small>
-              </article>
-              <article class="data-card data-card--2">
-                <b>STUDY 4 · SPEECH LEVEL</b>
-                <span>−18&nbsp;&nbsp;−9&nbsp;&nbsp;−3&nbsp;&nbsp;+6</span>
-                <small>REFERENCE: UNSTATED</small>
-              </article>
-              <article class="data-card data-card--3">
-                <b>SERIES β · ARTICULATION</b>
-                <span>11&nbsp;&nbsp;28&nbsp;&nbsp;67&nbsp;&nbsp;93</span>
-                <small>UNITS: % WORDS</small>
-              </article>
-              <article class="data-card data-card--4">
-                <b>RUN VI · NOISE BAND</b>
-                <span>2.1&nbsp;&nbsp;3.4&nbsp;&nbsp;5.8&nbsp;&nbsp;8.0</span>
-                <small>MEASURE: VOLTAGE</small>
-              </article>
-              <article class="data-card data-card--5">
-                <b>REPORT K · “CLEAR”</b>
-                <span>POOR&nbsp;&nbsp;FAIR&nbsp;&nbsp;GOOD&nbsp;&nbsp;EXC.</span>
-                <small>DEFINITION: LOCAL</small>
-              </article>
-              <article class="data-card data-card--6">
-                <b>TEST 12 · INTELLIGIBILITY</b>
-                <span>.09&nbsp;&nbsp;.41&nbsp;&nbsp;.73&nbsp;&nbsp;.97</span>
-                <small>TRANSFORM: UNKNOWN</small>
-              </article>
-            </div>
-            <div class="work-stamps" aria-label="Preparatory operations">
-              <span class="build" data-build="1">FIND DATA</span>
-              <span class="build" data-build="2">CONVERT</span>
-              <span class="build" data-build="3">NORMALISE</span>
-              <span class="build" data-build="4">CALCULATE</span>
-              <span class="build" data-build="5">TRANSFORM</span>
-              <span class="build" data-build="6">PLOT</span>
-            </div>
-            <div class="hours-later build" data-build="6">SEVERAL HOURS LATER</div>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 09 — The Graph, Part I</h2>
-            <p><strong>Purpose:</strong> Let the audience feel the clerical barrier instead of merely hearing about it.</p>
-            <p><strong>Scholarship:</strong> Licklider describes comparing six determinations of speech intelligibility versus speech-to-noise ratio; no two experimenters used the same definition or measure. The values shown here are invented and clearly labelled “illustrative reconstruction.”</p>
-            <p><strong>Delivery:</strong> Advance through the operations at a steady, slightly oppressive rhythm. The repeated stamps are the joke. Let “Several hours later” sit for a beat.</p>
-            <p><strong>Transition:</strong> The graph-paper clutter resolves instantly into one clean display.</p>
-            <p><strong>Source:</strong> Primary paper §3.1. No claim is made that these were Licklider’s historical data.</p>
-            <p><strong>Short version:</strong> Advance quickly through all six operations; preserve the contrast with the next scene.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--graph-insight"
-          id="scene-10"
-          data-title="The Graph · Part II"
-          data-reel="REEL II · PREPARING TO THINK"
-          data-transition="resolve"
-          aria-hidden="true"
-        >
-          <div class="clean-graph-wrap">
-            <p class="classification graph-clean-classification">ILLUSTRATIVE RECONSTRUCTION</p>
-            <svg class="clean-graph" viewBox="0 0 1000 560" role="img" aria-labelledby="graph-title graph-desc">
-              <title id="graph-title">Normalised speech intelligibility relationship</title>
-              <desc id="graph-desc">Six sets of points align along one clear rising curve after their measures are made comparable.</desc>
-              <g class="grid-lines" aria-hidden="true">
-                <path d="M110 70V480M110 480H930" />
-                <path d="M110 398H930M110 316H930M110 234H930M110 152H930" />
-                <path d="M274 70V480M438 70V480M602 70V480M766 70V480M930 70V480" />
-              </g>
-              <g class="axis-labels" aria-hidden="true">
-                <text x="520" y="545">NORMALISED SPEECH-TO-NOISE RATIO</text>
-                <text transform="translate(35 330) rotate(-90)">SPEECH INTELLIGIBILITY</text>
-                <text x="88" y="486">0</text><text x="78" y="75">100</text>
-              </g>
-              <path class="relationship-curve" d="M130 448 C250 445 290 420 365 370 C450 312 470 225 545 164 C625 98 740 82 910 80" />
-              <g class="plot-points series-a">
-                <circle cx="150" cy="445" r="8"/><circle cx="302" cy="410" r="8"/><circle cx="474" cy="255" r="8"/><circle cx="690" cy="102" r="8"/>
-              </g>
-              <g class="plot-points series-b">
-                <rect x="211" y="424" width="15" height="15"/><rect x="366" y="353" width="15" height="15"/><rect x="535" y="158" width="15" height="15"/><rect x="802" y="77" width="15" height="15"/>
-              </g>
-              <g class="plot-points series-c">
-                <path d="M260 414l9 16h-18z"/><path d="M423 302l9 16h-18z"/><path d="M602 121l9 16h-18z"/><path d="M875 72l9 16h-18z"/>
-              </g>
-              <g class="plot-points series-d">
-                <circle cx="334" cy="391" r="7"/><circle cx="502" cy="207" r="7"/><circle cx="648" cy="109" r="7"/><circle cx="846" cy="83" r="7"/>
-              </g>
-              <g class="plot-points series-e">
-                <rect x="176" y="434" width="13" height="13"/><rect x="396" y="326" width="13" height="13"/><rect x="568" y="139" width="13" height="13"/><rect x="749" y="87" width="13" height="13"/>
-              </g>
-              <g class="plot-points series-f">
-                <path d="M282 400l8 14h-16z"/><path d="M450 275l8 14h-16z"/><path d="M622 110l8 14h-16z"/><path d="M900 73l8 14h-16z"/>
-              </g>
-            </svg>
-            <p class="oh build" data-build="1">“…oh.”</p>
-            <blockquote class="graph-quote build" data-build="2">
-              <span class="classification">ORIGINAL TEXT · PAPER §3.1</span>
-              “When the graphs were finished,<br />the relations were obvious at once…”
-            </blockquote>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 10 — The Graph, Part II</h2>
-            <p><strong>Purpose:</strong> Create the experience of immediate insight. The graph is not decoration; it is the object that makes the relationship perceptible.</p>
-            <p><strong>Scholarship:</strong> The plot is an illustrative reconstruction, not Licklider’s dataset. The short quotation is verbatim from §3.1. He continues that plotting “had to be done” to make the relation obvious.</p>
-            <p><strong>Delivery:</strong> Say nothing at first. Let people inspect the curve. Advance to “…oh.” Pause for the laugh, then reveal the quote. Explain verbally: the graph did not eliminate thinking; it enabled the interesting thinking.</p>
-            <p><strong>Transition:</strong> The curve becomes a stark manifesto.</p>
-            <p><strong>Source:</strong> Primary paper §3.1.</p>
-            <p><strong>Short version:</strong> Never rush the first silent beat.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--manifesto"
-          id="scene-11"
-          data-title="The Manifesto"
-          data-reel="REEL II · PREPARING TO THINK"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="manifesto-field">
-            <p class="classification">OUR INTERPRETATION · NOT A LICKLIDER QUOTATION</p>
-            <h2>AUTOMATING THE PLOTTING</h2>
-            <h2>IS NOT AUTOMATING THE THINKING.</h2>
-            <div class="manifesto-rule" aria-hidden="true"></div>
-            <div class="manifesto-second build" data-build="1">
-              <span>AUTOMATE THE DISTANCE</span>
-              <strong>BETWEEN INTERESTING THOUGHTS.</strong>
-            </div>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 11 — The Manifesto</h2>
-            <p><strong>Purpose:</strong> State our interpretation only after the audience has experienced the evidence.</p>
-            <p><strong>Scholarship:</strong> Neither displayed sentence is a direct Licklider quotation. They synthesize his distinction between clerical operations and decisions or insights, especially §§3.1 and 4.</p>
-            <p><strong>Delivery:</strong> Read the first pair. Advance and slow down for “between interesting thoughts.” This phrase becomes the motif for the rest of the film.</p>
-            <p><strong>Transition:</strong> Institutional product advertisement enters from the side.</p>
-            <p><strong>Source:</strong> Interpretation grounded in primary paper §§3.1–4.</p>
-            <p><strong>Short version:</strong> Do not skip; this is the thesis.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--symbiote"
-          id="scene-12"
-          data-title="Introducing the Symbiote"
-          data-reel="REEL III · THE SYMBIOTE"
-          data-transition="reel"
-          aria-hidden="true"
-        >
-          <div class="film-frame product-frame">
-            <div class="product-copy">
-              <p>NEW FROM THE<br />ELECTRONIC COOPERATION DIVISION</p>
-              <h2>SYMBIOTE<span>™</span></h2>
-              <h3>ELECTRONIC RESEARCH COMPANION</h3>
-              <dl>
-                <div><dt>MODEL</dt><dd>UNAVAILABLE</dd></div>
-                <div><dt>DELIVERY</dt><dd>10–500 YEARS</dd></div>
-                <div><dt>PRIMARY OUTPUT</dt><dd>THINGS TO THINK ABOUT</dd></div>
-              </dl>
-            </div>
-            <div class="symbiote-console" aria-label="Fictional Symbiote research console">
-              <div class="console-screen">
-                <div class="scanline"></div>
-                <p class="console-message">PREPARING TO THINK…</p>
-                <p class="console-message build" data-build="1">WOULD YOU LIKE TO SEE THAT<br />ANOTHER WAY?</p>
-                <p class="console-message build" data-build="2">THESE MEASUREMENTS USE<br />DIFFERENT DEFINITIONS.</p>
-                <p class="console-message build" data-build="3">I HAVE PLOTTED<br />THREE ALTERNATIVES.</p>
-                <p class="console-message build" data-build="4">THIS RESULT APPEARS UNUSUAL.</p>
-              </div>
-              <div class="console-controls" aria-hidden="true">
-                <i></i><i></i><i></i><i></i>
-                <span>QUERY</span><span>TRANSFORM</span><span>COMPARE</span><span>DISPLAY</span>
-              </div>
-            </div>
-            <p class="classification product-classification">ILLUSTRATIVE RECONSTRUCTION · INSPIRED BY PAPER §4</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 12 — Introducing the Symbiote</h2>
-            <p><strong>Purpose:</strong> Personify the imagined computer without making it humanoid, omniscient, or an answer machine.</p>
-            <p><strong>Scholarship:</strong> SYMBIOTE™ is fictional. Its messages paraphrase §4: the equipment tests models, transforms data, plots alternatives when the human is unsure, displays results, and performs routinizable work between decisions.</p>
-            <p><strong>Delivery:</strong> Advance through the messages as examples of a system presenting objects for judgement. Optional line: “Accessories include a precise draftsman and absolutely no face.”</p>
-            <p><strong>Transition:</strong> The console’s linear process diagram is stamped insufficient.</p>
-            <p><strong>Source:</strong> Primary paper §4.</p>
-            <p><strong>Short version:</strong> Show only the first and third messages.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--loop"
-          id="scene-13"
-          data-title="Not Question → Answer"
-          data-reel="REEL III · THE SYMBIOTE"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="film-frame diagram-frame">
-            <p class="classification">OUR INTERPRETATION · BASED ON PAPER §§2–4</p>
-            <div class="bad-model">
-              <span>QUESTION</span><i>→</i><span>COMPUTER</span><i>→</i><span>ANSWER</span>
-              <b class="build" data-build="1">INSUFFICIENT</b>
-            </div>
-            <div class="good-model build" data-build="2">
-              <div class="loop-node">QUESTION</div>
-              <i>→</i>
-              <div class="loop-node loop-node--machine">MACHINE</div>
-              <i>→</i>
-              <div class="loop-node loop-node--object">THING I CAN<br />LOOK AT</div>
-              <i>→</i>
-              <div class="loop-node loop-node--human">“…huh.”</div>
-              <i>→</i>
-              <div class="loop-node">BETTER<br />QUESTION</div>
-              <svg viewBox="0 0 600 120" aria-hidden="true"><path d="M560 20C540 106 100 112 35 45" /></svg>
-            </div>
-            <p class="loop-result build" data-build="3">NOT A PIPELINE. A CONVERSATION WITH REPRESENTATIONS.</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 13 — Not Question → Answer</h2>
-            <p><strong>Purpose:</strong> Replace the default input/output story with an iterative loop of representation and judgement.</p>
-            <p><strong>Scholarship:</strong> The diagram is our interpretation, not Licklider’s. It combines his formulative aim (§2), graph example (§3.1), and division of labour (§4).</p>
-            <p><strong>Delivery:</strong> Present the first diagram as deliberately boring. Advance for the stamp, then build the loop. Emphasize that the machine creates something the person can inspect, causing a better question.</p>
-            <p><strong>Transition:</strong> Loop nodes become departmental assignments.</p>
-            <p><strong>Source:</strong> Primary paper §§2–4.</p>
-            <p><strong>Short version:</strong> Skip the final caption if the loop is clear.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--departments"
-          id="scene-14"
-          data-title="Who Does What?"
-          data-reel="REEL III · THE SYMBIOTE"
-          data-transition="splice"
-          aria-hidden="true"
-        >
-          <div class="film-frame assignment-frame">
-            <header>
-              <p>OPERATING MANUAL · PERSONNEL ASSIGNMENT</p>
-              <h2>WHO DOES WHAT?</h2>
-            </header>
-            <div class="department department--human">
-              <h3>HUMAN DEPARTMENT</h3>
-              <ul>
-                <li>GOALS</li><li>MOTIVATION</li><li>HYPOTHESES</li><li>QUESTIONS</li>
-                <li>APPROXIMATE JUDGEMENT</li><li>CRITERIA</li><li>EVALUATION</li><li>THE UNUSUAL</li>
-              </ul>
-            </div>
-            <div class="department department--machine">
-              <h3>ELECTRONIC DEPARTMENT</h3>
-              <ul>
-                <li>TRANSFORMATIONS</li><li>SIMULATIONS</li><li>CALCULATIONS</li><li>GRAPH PLOTTING</li>
-                <li>MODEL TESTING</li><li>INTERPOLATION</li><li>DISPLAY</li><li>ROUTINIZABLE WORK</li>
-              </ul>
-            </div>
-            <div class="joint-operations build" data-build="1">
-              <span>JOINT OPERATIONS</span>
-              <b>THE CONTRIBUTIONS BLEND.</b>
-            </div>
-            <p class="classification assignment-classification">PARAPHRASE · PAPER §4</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 14 — Who Does What?</h2>
-            <p><strong>Purpose:</strong> Show complementarity as an operating assignment, then undermine any too-neat division with joint operations.</p>
-            <p><strong>Scholarship:</strong> The lists closely paraphrase §4. Licklider assigns people goals, hypotheses, questions, criteria, evaluations, and low-probability situations; equipment converts and tests models, simulates, transforms, plots, interpolates, and handles routinizable clerical operations.</p>
-            <p><strong>Delivery:</strong> Do not read every item. Point out two or three on each side, then advance. Licklider says the contributions may blend so completely they are hard to separate.</p>
-            <p><strong>Transition:</strong> Manual page folds into classified future-technology dossiers.</p>
-            <p><strong>Source:</strong> Primary paper §4.</p>
-            <p><strong>Short version:</strong> Name one human contribution, one machine contribution, and reveal “joint operations.”</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--dossiers"
-          id="scene-15"
-          data-title="The Machine That Did Not Exist"
-          data-reel="REEL IV · MACHINES THAT DO NOT YET EXIST"
-          data-transition="reel"
-          aria-hidden="true"
-        >
-          <div class="film-frame dossier-frame">
-            <header>
-              <span>FUTURE TECHNOLOGY DIVISION</span>
-              <h2>PREREQUISITES FOR SYMBIOSIS</h2>
-              <b>STATUS: MOSTLY UNAVAILABLE</b>
-            </header>
-            <div class="dossier-files">
-              <article><span>FILE 01</span><h3>TIME<br />SHARING</h3><p>MANY PEOPLE. ONE FAST MACHINE. REAL-TIME ACCESS.</p></article>
-              <article><span>FILE 02</span><h3>MEMORY</h3><p>ENOUGH STORAGE TO SUPPORT TECHNICAL WORK.</p></article>
-              <article><span>FILE 03</span><h3>RETRIEVAL</h3><p>BY NAME <em>AND</em> BY PATTERN. FASTER THAN SERIAL SEARCH.</p></article>
-              <article><span>FILE 04</span><h3>LANGUAGE</h3><p>HUMANS SPECIFY GOALS. COMPUTERS SPECIFY COURSES.</p></article>
-              <article><span>FILE 05</span><h3>INPUT /<br />OUTPUT</h3><p>DISPLAYS AND CONTROLS FIT FOR A CONVERSATION.</p></article>
-            </div>
-            <blockquote class="dossier-quote build" data-build="1">
-              <span class="classification">ORIGINAL TEXT · PAPER §5.4</span>
-              “Instructions directed to computers specify courses;<br />instructions directed to human beings specify goals.”
-            </blockquote>
-            <p class="classification dossier-classification">PARAPHRASE · PAPER §5</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 15 — The Machine That Did Not Exist</h2>
-            <p><strong>Purpose:</strong> Turn §5’s prerequisites into future engineering dossiers rather than a prediction checklist.</p>
-            <p><strong>Scholarship:</strong> The paper identifies time sharing, memory hardware, memory organisation, language, and input/output. It requires retrieval by name and pattern. The displayed goals/courses sentence is verbatim apart from silently correcting the source page’s stray hyphen in “instructions-directed.”</p>
-            <p><strong>Delivery:</strong> Scan the five files; do not lecture on each technology. Advance to the goals/courses distinction, which remains conceptually important.</p>
-            <p><strong>Transition:</strong> Open FILE 05 into the desk-surface display.</p>
-            <p><strong>Source:</strong> Primary paper §5, especially §§5.1–5.5.</p>
-            <p><strong>Short version:</strong> Name the five prerequisites and keep the quote.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--desk"
-          id="scene-16"
-          data-title="The Desk of the Future"
-          data-reel="REEL IV · MACHINES THAT DO NOT YET EXIST"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="desk-room">
-            <div class="desk-copy">
-              <p class="classification">PARAPHRASE · PAPER §5.5.1</p>
-              <h2>THE DESK<br />OF THE FUTURE</h2>
-              <ol>
-                <li class="build" data-build="1">DRAW ON THE SCREEN.</li>
-                <li class="build" data-build="2">COMPUTER READS YOUR WRITING.</li>
-                <li class="build" data-build="3">COMPUTER CLEANS UP THE TABLE.</li>
-                <li class="build" data-build="4">HUMAN CORRECTS COMPUTER.</li>
-                <li class="build" data-build="5">BOTH USE THE SAME SURFACE.</li>
-              </ol>
-              <b class="tiny-1960 build" data-build="5">1960.</b>
-            </div>
-            <div class="desk-console">
-              <header><span>DESK-SURFACE DISPLAY / CONTROL</span><i>ONLINE</i></header>
-              <div class="sketch-surface" id="sketch-surface">
-                <canvas id="sketch-canvas" aria-label="A drawable sketch surface"></canvas>
-                <svg class="cleaned-sketch" id="cleaned-sketch" viewBox="0 0 640 360" aria-hidden="true">
-                  <path d="M40 306H610M55 320V35" class="sketch-axis" />
-                  <path d="M70 280 C140 275 205 250 258 206 C318 156 370 90 570 68" class="sketch-curve" />
-                  <text x="390" y="42">NORMALISED</text>
-                </svg>
-                <span class="sketch-prompt">DRAW A ROUGH RELATIONSHIP</span>
-              </div>
-              <div class="desk-buttons">
-                <button type="button" class="machine-button" id="clean-sketch">CLEAN THIS UP</button>
-                <button type="button" class="machine-button machine-button--quiet" id="reset-sketch">RESET</button>
-                <output id="sketch-status" aria-live="polite">HUMAN INPUT READY</output>
-              </div>
-            </div>
-            <p class="reconstruction-label">ILLUSTRATIVE INTERACTION · NOT A HISTORICAL INTERFACE</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 16 — The Desk of the Future</h2>
-            <p><strong>Purpose:</strong> Let the audience encounter the physical intimacy Licklider imagined, one capability at a time.</p>
-            <p><strong>Scholarship:</strong> §5.5.1 explicitly proposes a shared display surface for graphs, pictures, notes, and equations; rough graph input; handwriting recognition; symbol definition; table cleanup; data correction; flow diagrams; and interaction resembling work with another engineer.</p>
-            <p><strong>Delivery:</strong> Build the five actions. You may draw a rough curve on the surface and press “Clean this up.” The interaction is illustrative, not a claim about a 1960 prototype. Let the tiny “1960.” do the work; avoid “he invented the iPad.”</p>
-            <p><strong>Transition:</strong> Desk console microphone test.</p>
-            <p><strong>Source:</strong> Primary paper §5.5.1.</p>
-            <p><strong>Short version:</strong> Show the first, third, and fifth actions; demonstration optional.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--speech"
-          id="scene-17"
-          data-title="Talking to the Machine"
-          data-reel="REEL IV · MACHINES THAT DO NOT YET EXIST"
-          data-transition="splice"
-          aria-hidden="true"
-        >
-          <div class="film-frame speech-frame">
-            <figure class="oscilloscope-figure">
-              <img src="assets/archive/oscilloscope.jpg" alt="A vintage DuMont Type 303 oscilloscope" />
-              <figcaption>PERIOD OSCILLOSCOPE · ILLUSTRATIVE CONTEXT</figcaption>
-            </figure>
-            <div class="speech-test">
-              <p>AUTOMATIC SPEECH PRODUCTION / RECOGNITION</p>
-              <h2>COMPUTER,<br />CAN YOU HEAR ME?</h2>
-              <div class="waveform" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              <button type="button" class="machine-button" id="microphone-test">TEST MICROPHONE</button>
-              <output id="microphone-status" aria-live="polite">STATIC.</output>
-            </div>
-            <div class="speech-spec build" data-build="1">
-              <span>DESIRED VOCABULARY</span>
-              <b>≈ 2,000 WORDS</b>
-              <p>CLEAR SPEECH · DICTATION STYLE · NO UNUSUAL ACCENT</p>
-            </div>
-            <p class="classification speech-classification">PARAPHRASE · PAPER §5.5.3</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 17 — Talking to the Machine</h2>
-            <p><strong>Purpose:</strong> Add a brief physical-interaction example without turning the talk into a speech-recognition history.</p>
-            <p><strong>Scholarship:</strong> §5.5.3 discusses speech production and recognition, notes 98% recognition of spoken decimal digits, and estimates that symbiotic interaction might require about 2,000 words under constrained speaking conditions.</p>
-            <p><strong>Delivery:</strong> Use the fake microphone test if desired; it requests no microphone access. Advance for the 2,000-word specification. Optional line: “Model currently fluent in digits and optimism.”</p>
-            <p><strong>Transition:</strong> The oscilloscope glow expands into a node on a network.</p>
-            <p><strong>Sources:</strong> Primary paper §5.5.3; CC BY 2.0 DuMont oscilloscope photograph by Tomislav Medak.</p>
-            <p><strong>Short version:</strong> One sentence and the specification card.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--centers"
-          id="scene-18"
-          data-title="The Thinking Centre"
-          data-reel="REEL IV · MACHINES THAT DO NOT YET EXIST"
-          data-transition="node"
-          aria-hidden="true"
-        >
-          <div class="film-frame network-frame">
-            <figure class="war-room-figure">
-              <img src="assets/archive/war-room.png" alt="A 1964 NORAD operations room with a large shared wall display" />
-              <figcaption>SHARED DISPLAY ENVIRONMENT · NORAD · c.1965</figcaption>
-            </figure>
-            <div class="network-copy">
-              <p class="classification">PARAPHRASE · PAPER §5.1</p>
-              <h2>THE THINKING CENTRE</h2>
-              <p>LIBRARY + STORAGE + RETRIEVAL + SYMBIOTIC FUNCTION</p>
-            </div>
-            <svg class="node-map" viewBox="0 0 900 430" role="img" aria-label="A network of thinking centres">
-              <g class="network-links">
-                <path class="build" data-build="2" d="M450 215L240 110M450 215L680 95M450 215L745 300M450 215L210 325" />
-              </g>
-              <g transform="translate(450 215)"><g class="node node--main build" data-build="1"><circle r="46"/><circle r="67"/><text y="5">CENTRE 01</text></g></g>
-              <g transform="translate(240 110)"><g class="node build" data-build="2"><circle r="28"/><text y="5">02</text></g></g>
-              <g transform="translate(680 95)"><g class="node build" data-build="2"><circle r="28"/><text y="5">03</text></g></g>
-              <g transform="translate(745 300)"><g class="node build" data-build="2"><circle r="28"/><text y="5">04</text></g></g>
-              <g transform="translate(210 325)"><g class="node build" data-build="2"><circle r="28"/><text y="5">05</text></g></g>
-            </svg>
-            <p class="wide-band build" data-build="3">CONNECTED BY WIDE-BAND COMMUNICATION LINES</p>
-            <p class="not-arpanet build" data-build="3">THIS IS NOT THE ARPANET REEL.</p>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 18 — The Thinking Centre</h2>
-            <p><strong>Purpose:</strong> Briefly expand symbiosis from one desk to shared institutions and a network, then stop before the talk becomes networking history.</p>
-            <p><strong>Scholarship:</strong> §5.1 imagines, 10 or 15 years ahead, a “thinking center” combining libraries, information storage and retrieval, and symbiotic functions, then a network of such centres connected by wide-band lines.</p>
-            <p><strong>Delivery:</strong> Build one node, then the network. Say explicitly: “That is another reel.” The historical operations-room image illustrates shared-display context; it is not a photograph of Licklider’s proposed thinking centre.</p>
-            <p><strong>Transition:</strong> Network collapses into a cosmic field-guide interruption.</p>
-            <p><strong>Sources:</strong> Primary paper §5.1; public-domain NORAD operations-room booklet image, c.1965.</p>
-            <p><strong>Short version:</strong> Show one node and the network; omit the image discussion.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--panic"
-          id="scene-19"
-          data-title="Don’t Panic"
-          data-reel="INTERLUDE"
-          data-transition="jam"
-          aria-hidden="true"
-        >
-          <div class="cosmic-field">
-            <div class="planet" aria-hidden="true"><i></i></div>
-            <p class="field-entry">FIELD GUIDE ENTRY 19-B</p>
-            <h2>DON’T PANIC.</h2>
-            <p class="build" data-build="1">THE COMPUTER IS NOT THE ANSWER.</p>
-            <p class="build" data-build="2">IT MIGHT HELP YOU DISCOVER THE QUESTION.</p>
-            <span class="classification panic-classification">OUR INTERPRETATION · NOT A LICKLIDER QUOTATION</span>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 19 — Don’t Panic</h2>
-            <p><strong>Purpose:</strong> Give the audience a tonal breath while restating formulation over answer production.</p>
-            <p><strong>Scholarship:</strong> Both sentences are our thematic interpretation and are labelled accordingly. They synthesize §2 rather than quote it.</p>
-            <p><strong>Delivery:</strong> Keep it brief. Deadpan, not winking. Optional line: “This page was filed in the wrong film canister.”</p>
-            <p><strong>Transition:</strong> Cosmic field snaps into contemporary work surfaces.</p>
-            <p><strong>Source:</strong> Interpretation grounded in primary paper §2.</p>
-            <p><strong>Short version:</strong> This entire scene may be skipped if timing is tight.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--present"
-          id="scene-20"
-          data-title="The Friction Now"
-          data-reel="REEL V · LIVING TOGETHER"
-          data-transition="overexpose"
-          aria-hidden="true"
-        >
-          <div class="film-frame present-frame">
-            <p class="classification">OUR INTERPRETATION · CONTEMPORARY CONNECTION</p>
-            <div class="tool-ribbon" aria-label="Examples of contemporary thinking tools">
-              <span>SEARCH</span><span>NOTEBOOKS</span><span>SPREADSHEETS</span><span>DEBUGGERS</span>
-              <span>SIMULATIONS</span><span>VISUALISATION</span><span>CODING ASSISTANTS</span><span>CONVERSATIONAL SYSTEMS</span>
-            </div>
-            <div class="thought-corridor">
-              <article><span>INTERESTING THOUGHT</span><b>01</b><p>“WHAT IF THE PATTERN CHANGES<br />UNDER THIS ASSUMPTION?”</p></article>
-              <div class="friction-zone">
-                <span>SEARCH</span><span>RE-FORMAT</span><span>RE-RUN</span><span>CONVERT</span><span>WAIT</span><span>COMPARE</span>
-                <i aria-hidden="true">→</i>
-              </div>
-              <article><span>INTERESTING THOUGHT</span><b>02</b><p>“OH. THEN THE QUESTION<br />IS ACTUALLY…”</p></article>
-            </div>
-            <div class="present-question build" data-build="1">
-              <span>NOT</span><p>CAN AI DO MY WORK?</p>
-              <span>BUT</span><h2>WHERE IS THE FRICTION<br />BETWEEN ONE INTERESTING<br />THOUGHT AND THE NEXT?</h2>
-            </div>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 20 — The Friction Now</h2>
-            <p><strong>Purpose:</strong> Bring the paper into the present without turning the final act into an AI product pitch.</p>
-            <p><strong>Scholarship:</strong> Contemporary tool names and both questions are our interpretation. The framing follows Licklider’s concern with routinizable operations between decisions and insights.</p>
-            <p><strong>Delivery:</strong> Name a few tools, not all. Track the corridor from thought 01 through friction to thought 02. Advance and distinguish task replacement from interval compression.</p>
-            <p><strong>Transition:</strong> Remove everything except the audience’s own friction.</p>
-            <p><strong>Source:</strong> Interpretation grounded in primary paper §§3.1–4.</p>
-            <p><strong>Short version:</strong> Go directly to the large question.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--checkpoint"
-          id="scene-21"
-          data-title="What Do You Mistake for Thinking?"
-          data-reel="REEL V · LIVING TOGETHER"
-          data-transition="cut"
-          aria-hidden="true"
-        >
-          <div class="checkpoint-field">
-            <span class="checkpoint-label">AUDIENCE CHECKPOINT 03</span>
-            <h2>WHAT DO YOU DO<br />IN ORDER TO THINK<br />THAT YOU FREQUENTLY<br /><em>MISTAKE FOR THINKING?</em></h2>
-            <form class="word-entry" id="word-entry">
-              <label class="sr-only" for="friction-word">Add an audience answer</label>
-              <input id="friction-word" maxlength="36" placeholder="TYPE A SHOUTED ANSWER…" autocomplete="off" />
-              <button class="machine-button" type="submit">ADD TO FIELD</button>
-              <button class="machine-button machine-button--quiet" id="clear-words" type="button">CLEAR</button>
-            </form>
-            <div class="word-field" id="word-field" aria-live="polite">
-              <span>SEARCHING</span><span>FORMATTING</span><span>GETTING TOOLS TO TALK</span>
-            </div>
-            <div class="checkpoint-followup build" data-build="1">
-              <p>IF THAT DISAPPEARED TOMORROW,</p>
-              <h3>WOULD YOU BECOME LESS CAPABLE?</h3>
-              <p>OR WOULD YOU GET TO THE INTERESTING QUESTION SOONER?</p>
-            </div>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 21 — What Do You Mistake for Thinking?</h2>
-            <p><strong>Purpose:</strong> Make the audience apply Licklider’s self-study to their own work. This is the most important participation pause.</p>
-            <p><strong>Scholarship:</strong> The question is ours, derived from Licklider’s distinction between thinking and the clerical preparation that occupied most of his “thinking” time.</p>
-            <p><strong>Delivery:</strong> Read the question and wait. Take shouted answers; type a few into the local word field if useful. Nothing is transmitted or stored beyond this browser. Advance only after the room has had time. Then ask the two follow-ups without forcing a consensus.</p>
-            <p><strong>Transition:</strong> Audience words drift into the final human/machine pairing.</p>
-            <p><strong>Source:</strong> Interpretation grounded in primary paper §3.1.</p>
-            <p><strong>Short version:</strong> Take three answers and use only the final follow-up.</p>
-          </aside>
-        </section>
-
-        <section
-          class="slide slide--finale"
-          id="scene-22"
-          data-title="Compress the Distance"
-          data-reel="REEL V · LIVING TOGETHER"
-          data-transition="fade"
-          aria-hidden="true"
-        >
-          <div class="finale-field">
-            <div class="final-organisms" aria-hidden="true">
-              <div class="final-fig"><img src="assets/archive/fig-botanical.jpg" alt="" /></div>
-              <div class="final-wasp"><img src="assets/archive/fig-wasp.png" alt="" /></div>
-            </div>
-            <div class="final-pair">
-              <span>HUMAN</span>
-              <i>+</i>
-              <span>MACHINE</span>
-            </div>
-            <div class="intermixed-words build" data-build="1" aria-label="Complementary human and machine capabilities">
-              <span>QUESTIONS</span><span>TRANSFORMATIONS</span><span>JUDGEMENT</span>
-              <span>SPEED</span><span>CURIOSITY</span><span>MEMORY</span>
-            </div>
-            <div class="final-statement build" data-build="2">
-              <p class="classification">OUR INTERPRETATION · THE FILM’S CENTRAL ARGUMENT</p>
-              <h2>COMPRESS THE DISTANCE</h2>
-              <h2>BETWEEN INTERESTING THOUGHTS.</h2>
-            </div>
-            <div class="projector-end build" data-build="3">
-              <span>END OF REEL</span>
-              <div class="post-credit">
-                <p>NEXT REEL?</p>
-                <ul>
-                  <li>THE INTERGALACTIC COMPUTER NETWORK</li>
-                  <li>ENGELBART &amp; AUGMENTING HUMAN INTELLECT</li>
-                  <li>ARPANET · INTERACTIVE COMPUTING · XEROX PARC</li>
-                </ul>
-                <small>REFERENCE FILE: PRESS <kbd>R</kbd></small>
-              </div>
-            </div>
-          </div>
-
-          <aside class="speaker-notes" hidden>
-            <h2>Scene 22 — Compress the Distance</h2>
-            <p><strong>Purpose:</strong> Return to the fig metaphor and end on productive difference, not human-versus-machine competition.</p>
-            <p><strong>Scholarship:</strong> The capability words paraphrase §§3.1–4. The final statement is our interpretation, clearly labelled, not a Licklider quote.</p>
-            <p><strong>Delivery:</strong> Recall that productive partners need not be alike. Advance for the intermingled capabilities, then the final statement. Let it sit. Advance once more: the projector stops, and the post-credit card appears after a delay. Do not narrate the sequel list unless invited.</p>
-            <p><strong>Closing option:</strong> “Tomorrow, notice one tedious operation between two interesting questions. Licklider would automate that bit.”</p>
-            <p><strong>Transition:</strong> Black. Projector stops. Post-credit card.</p>
-            <p><strong>Sources:</strong> Primary paper §§1.1, 3.1, and 4; archival botanical sources in references.</p>
-            <p><strong>Short version:</strong> Do not skip the final statement; the post-credit card may be omitted.</p>
-          </aside>
-        </section>
-      </main>
-
-      <div class="film-damage" aria-hidden="true"><i></i><i></i><i></i></div>
-      <div class="overexposure-flash" id="overexposure-flash" aria-hidden="true"></div>
-      <div class="sr-only" id="slide-announcer" aria-live="polite"></div>
-
-      <nav class="chrome" id="chrome" aria-label="Presentation controls">
-        <button class="chrome-button" type="button" data-action="previous" aria-label="Previous build or scene">←</button>
-        <div class="scene-readout">
-          <span id="reel-readout">PROLOGUE</span>
-          <b><span id="scene-current">01</span> / <span id="scene-total">22</span></b>
+          <p class="projector-instruction">Press Space or click to start projector</p>
         </div>
-        <div class="progress-track" aria-hidden="true"><i id="progress-bar"></i></div>
-        <button class="chrome-button" type="button" data-action="next" aria-label="Next build or scene">→</button>
-        <button class="chrome-button chrome-button--text" type="button" data-action="notes" aria-label="Toggle speaker notes">N</button>
-        <button class="chrome-button chrome-button--text" type="button" data-action="references" aria-label="Open references">R</button>
-        <button class="chrome-button chrome-button--text" type="button" data-action="sound" aria-label="Toggle projector sounds" aria-pressed="false">S</button>
-        <button class="chrome-button chrome-button--text" type="button" data-action="fullscreen" aria-label="Toggle fullscreen">F</button>
-        <button class="chrome-button chrome-button--text" type="button" data-action="help" aria-label="Show keyboard help">?</button>
-      </nav>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 00 — The projector starts</h2>
+          <p><strong>Purpose:</strong> Establish a screening before the audience knows there is a talk.</p>
+          <p><strong>Delivery:</strong> Say nothing. Press once when the room is settled, let the damaged leader run, then hold on black before advancing.</p>
+          <p><strong>Sound:</strong> The first gesture arms the browser audio context and begins the local procedural projector, splice, and countdown track.</p>
+          <p><strong>Transition:</strong> The countdown deliberately stops at six. Advance from the final black frame directly into the fig.</p>
+          <p><strong>Source:</strong> The leader and fictional laboratory card are original reconstructions, not archival footage.</p>
+        </aside>
+      </section>
 
-      <aside class="notes-panel" id="notes-panel" aria-hidden="true" aria-label="Speaker notes">
-        <header>
-          <span>SPEAKER NOTES</span>
-          <button type="button" data-action="notes" aria-label="Close speaker notes">×</button>
-        </header>
-        <div id="notes-content"></div>
-      </aside>
-
-      <aside class="reference-panel" id="reference-panel" aria-hidden="true" aria-label="Reference file">
-        <header>
-          <div><span>REFERENCE FILE</span><b>MC/SYMB · RESTORATION COPY</b></div>
-          <button type="button" data-action="references" aria-label="Close references">×</button>
-        </header>
-        <div class="reference-scroll">
-          <section>
-            <h2>Primary Source</h2>
-            <p>J. C. R. Licklider, “Man-Computer Symbiosis,” <em>IRE Transactions on Human Factors in Electronics</em>, volume HFE-1, pages 4–11, March 1960.</p>
-            <a href="https://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank" rel="noreferrer">MIT-hosted full text ↗</a>
-          </section>
-          <section>
-            <h2>Quote Register</h2>
-            <ul>
-              <li><b>Scene 04:</b> Poincaré passage as quoted in paper §2.</li>
-              <li><b>Scene 10:</b> “When the graphs were finished…” from §3.1.</li>
-              <li><b>Scene 15:</b> goals versus courses from §5.4.</li>
-              <li><b>Everything labelled “our interpretation” is not a Licklider quotation.</b></li>
-            </ul>
-          </section>
-          <section>
-            <h2>Archival Images</h2>
-            <ul class="asset-reference-list">
-              <li><a href="https://commons.wikimedia.org/wiki/File:J._C._R._Licklider.jpg" target="_blank" rel="noreferrer">J. C. R. Licklider portrait</a> · U.S. NLM collection · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:IBM_704_Computer_Operations_(LRC-1957-B701_P-05391).tiff" target="_blank" rel="noreferrer">IBM 704 Computer Operations</a> · NASA Langley/NACA, Taub · 1957 · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg" target="_blank" rel="noreferrer">IBM Electronic Data Processing Machine</a> · NASA · 1957 · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:US_Census_Bureau_keypunch_operators,_Negro_section.jpg" target="_blank" rel="noreferrer">Keypunch operators</a> · U.S. Census Bureau · 1940 · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:Census_Bureau_techs_check_out_computer_frame.jpg" target="_blank" rel="noreferrer">Computer frame technicians</a> · U.S. Census Bureau · 1950s · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:Ficus_-_Figuier._(Ficus_carica_or_the_Common_Fig)_(NYPL_b14485031-1109301).tiff" target="_blank" rel="noreferrer">Common fig botanical plate</a> · NYPL scan · 1801 · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:Blastophaga_psenes2.png" target="_blank" rel="noreferrer"><em>Blastophaga</em> illustration</a> · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:DuMont_Type_303_oscilloscope.jpg" target="_blank" rel="noreferrer">DuMont Type 303 oscilloscope</a> · Tomislav Medak · CC BY 2.0.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:1964_Chidlaw_Building_war_room.png" target="_blank" rel="noreferrer">NORAD shared-display operations room</a> · c.1965 · public domain.</li>
-              <li><a href="https://commons.wikimedia.org/wiki/File:SAGE_console_and_light_gun_at_CHM.jpg" target="_blank" rel="noreferrer">SAGE console and light gun</a> · Tomwsulcer · CC0. Retained in archive set.</li>
-            </ul>
-          </section>
-          <section>
-            <h2>Further Reading</h2>
-            <p>Douglas Engelbart, “Augmenting Human Intellect” (1962); Licklider and Clark, “On-Line Man-Computer Communication” (1962); Licklider, “The Computer as a Communication Device” (1968).</p>
-            <p>Full asset metadata and intended uses are recorded in <a href="SOURCES.md" target="_blank">SOURCES.md</a>. Complete delivery notes are in <a href="speaker-notes.md" target="_blank">speaker-notes.md</a>.</p>
-          </section>
+      <section
+        id="scene-01"
+        class="scene scene--fig"
+        data-title="A fig"
+        data-reel="REEL I · TWO ORGANISMS"
+        data-transition="hard-cut"
+        aria-label="Scene 1: A fig"
+      >
+        <div class="scene-stage fig-stage">
+          <img
+            class="fig-image"
+            src="assets/archive/fig-cut.jpg"
+            alt="Extreme close photograph of the intricate red interior of a cut fig against black"
+            draggable="false"
+          />
+          <div class="fig-aperture" aria-hidden="true"></div>
         </div>
-      </aside>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 01 — A fig</h2>
+          <p><strong>Purpose:</strong> Begin the subject with beauty and productive confusion, not explanation.</p>
+          <p><strong>Delivery:</strong> Hold before saying, “I want to begin with a computer scientist talking about…” Pause again. “…figs.” Let the room react.</p>
+          <p><strong>Motion:</strong> The image performs a very slow optical push while the slide remains otherwise empty.</p>
+          <p><strong>Transition:</strong> Cut, rather than dissolve, to the insect specimen.</p>
+          <p><strong>Source:</strong> “Cut Fig 01,” Jedesto, 2021, CC BY-SA 4.0, via Wikimedia Commons.</p>
+        </aside>
+      </section>
 
-      <div class="help-panel" id="help-panel" aria-hidden="true" role="dialog" aria-label="Keyboard controls">
-        <div>
-          <header><span>PROJECTOR CONTROLS</span><button type="button" data-action="help" aria-label="Close help">×</button></header>
-          <dl>
-            <div><dt>→ / SPACE</dt><dd>Next build or scene</dd></div>
-            <div><dt>←</dt><dd>Previous build or scene</dd></div>
-            <div><dt>HOME / END</dt><dd>First / final scene</dd></div>
-            <div><dt>N</dt><dd>Speaker notes</dd></div>
-            <div><dt>R</dt><dd>Reference file</dd></div>
-            <div><dt>S</dt><dd>Projector sound</dd></div>
-            <div><dt>F</dt><dd>Fullscreen</dd></div>
-            <div><dt>?</dt><dd>This card</dd></div>
-          </dl>
-          <p>Swipe horizontally on touch screens. Click the lower controls if the projector operator has misplaced the keyboard.</p>
+      <section
+        id="scene-02"
+        class="scene scene--wasp"
+        data-title="A wasp"
+        data-reel="REEL I · TWO ORGANISMS"
+        data-transition="splice"
+        aria-label="Scene 2: A wasp"
+      >
+        <div class="scene-stage wasp-stage">
+          <img
+            class="wasp-habitat"
+            src="assets/archive/fig-wasp-habitat.jpg"
+            alt="Macro photograph of a tiny black fig wasp standing inside a fig"
+            draggable="false"
+          />
+          <figure class="specimen-window build" data-build="1">
+            <img
+              src="assets/archive/fig-wasp-specimen.jpg"
+              alt="Scientific macro specimen photograph of an adult female Blastophaga psenes fig wasp"
+              draggable="false"
+            />
+            <figcaption>SPECIMEN 44–B · ♀</figcaption>
+          </figure>
+          <div class="specimen-rule build" data-build="2" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="specimen-label build" data-build="2">
+            <span>BLASTOPHAGA</span>
+            <small>FIG-POLLINATING INSECT</small>
+          </div>
         </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 02 — A wasp</h2>
+          <p><strong>Purpose:</strong> Use the paper’s own strange biological opening rather than treating it as a disposable metaphor.</p>
+          <p><strong>Delivery:</strong> Explain that the insect pollinates the fig and that the two depend on one another. Avoid introducing computers until the end.</p>
+          <p><strong>Builds:</strong> First reveal the isolated scientific specimen; then add the physical measurement rule and taxonomic label.</p>
+          <p><strong>Transition:</strong> Use the word “symbiosis” only at the end, then advance into the definition.</p>
+          <p><strong>Source:</strong> Habitat image by P. Zborowski/CSIRO, CC BY 3.0. Specimen by Dr. Stefan Schmidt, SNSB, CC BY-SA 4.0.</p>
+        </aside>
+      </section>
+
+      <section
+        id="scene-03"
+        class="scene scene--symbiosis"
+        data-title="Symbiosis"
+        data-reel="REEL I · TWO ORGANISMS"
+        data-transition="optical"
+        aria-label="Scene 3: Symbiosis"
+      >
+        <div class="scene-stage symbiosis-stage">
+          <div class="organism-frame organism-frame--fig">
+            <img
+              src="assets/archive/fig-cut-macro.jpg"
+              alt="Macro photograph of structures inside a cut fig"
+              draggable="false"
+            />
+            <span>ORGANISM A</span>
+          </div>
+          <div class="organism-frame organism-frame--wasp">
+            <img
+              src="assets/archive/fig-wasp-specimen.jpg"
+              alt="Scientific specimen photograph of a fig wasp"
+              draggable="false"
+            />
+            <span>ORGANISM B</span>
+          </div>
+          <div class="typed-definition" aria-label="Definition of symbiosis">
+            <p class="type-line build" data-build="1">SYMBIOSIS</p>
+            <p class="type-line type-line--definition build" data-build="2">TWO DISSIMILAR ORGANISMS.</p>
+          </div>
+          <div class="coupling-line build" data-build="3" aria-hidden="true">
+            <span></span>
+          </div>
+          <p class="computer-question build" data-build="4">ONE OF THEM IS A COMPUTER.</p>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 03 — SYMBIOSIS</h2>
+          <p><strong>Purpose:</strong> Make the biological idea physical before making the first conceptual reveal.</p>
+          <p><strong>Delivery:</strong> Define symbiosis in ordinary language. Emphasise “dissimilar.” Then ask what happens if one organism is us and the other a computer.</p>
+          <p><strong>Builds:</strong> Type the term, type the definition, couple the physical frames, then reveal the computer sentence only after it has been spoken.</p>
+          <p><strong>Transition:</strong> The final sentence cuts to black. Do not speak over the title card that follows.</p>
+          <p><strong>Source:</strong> Opening argument closely paraphrases Licklider’s first two paragraphs. Images are registered in `SOURCES.md`.</p>
+        </aside>
+      </section>
+
+      <section
+        id="scene-04"
+        class="scene scene--title"
+        data-title="Title card, finally"
+        data-reel="REEL I · TWO ORGANISMS"
+        data-transition="title-cut"
+        aria-label="Scene 4: Title card"
+      >
+        <div class="scene-stage title-stage">
+          <div class="title-rule" aria-hidden="true"></div>
+          <p class="archive-series">RESEARCH FILM · SERIES 8B</p>
+          <h1>MAN–COMPUTER<br />SYMBIOSIS</h1>
+          <p class="title-credit build" data-build="1">J. C. R. LICKLIDER <span>—</span> 1960</p>
+          <div class="reel-change-mark build" data-build="2" aria-hidden="true"></div>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 04 — Title card, finally</h2>
+          <p><strong>Purpose:</strong> Reveal the paper only after the audience has encountered its opening metaphor.</p>
+          <p><strong>Delivery:</strong> Do not speak over the main title. On the first build, identify Licklider and the March 1960 paper briefly; avoid a biography dump.</p>
+          <p><strong>Builds:</strong> Main title is immediate, author and year arrive second, reel-change mark flashes last.</p>
+          <p><strong>Transition:</strong> Let the optical title chord finish, then cut into the room-sized computer.</p>
+          <p><strong>Source:</strong> Bibliographic details from the original paper, IRE Transactions on Human Factors in Electronics, HFE-1, March 1960.</p>
+        </aside>
+      </section>
+
+      <section
+        id="scene-05"
+        class="scene scene--computer"
+        data-title="The computer, 1960"
+        data-reel="REEL I · TWO ORGANISMS"
+        data-transition="montage"
+        aria-label="Scene 5: The computer, 1960"
+      >
+        <div class="scene-stage computer-stage">
+          <figure class="machine-shot machine-shot--hero">
+            <img
+              src="assets/archive/ibm-704-operations.jpg"
+              alt="Operators working with an IBM 704 computer at NACA Langley in 1957"
+              draggable="false"
+            />
+            <figcaption>THE COMPUTER, 1960</figcaption>
+          </figure>
+          <div class="process-card process-card--one build" data-build="1">
+            <span>DAY ONE</span>
+            <strong>FORMULATE PROBLEM</strong>
+          </div>
+          <figure class="machine-shot machine-shot--operator build" data-build="2">
+            <img
+              src="assets/archive/keypunch-operators.jpg"
+              alt="Rows of operators working at keypunch machines"
+              draggable="false"
+            />
+            <figcaption>DAY TWO · EXPLAIN PROBLEM</figcaption>
+          </figure>
+          <figure class="machine-shot machine-shot--compute build" data-build="3">
+            <img
+              src="assets/archive/computer-frame.jpg"
+              alt="Early U.S. Census computer equipment filling a room"
+              draggable="false"
+            />
+            <figcaption>LATER · COMPUTE</figcaption>
+          </figure>
+          <div class="output-card build" data-build="4">RECEIVE OUTPUT</div>
+          <div class="paper-output build" data-build="5" aria-hidden="true">
+            <span>000418 001972 002113 008441 013009</span>
+            <span>000419 001973 002114 008442 013010</span>
+            <span>000420 001974 002115 008443 013011</span>
+            <span>000421 001975 002116 008444 013012</span>
+            <span>000422 001976 002117 008445 013013</span>
+          </div>
+          <div class="another-experiment build" data-build="6">
+            <small>RESULT OF INSPECTION</small>
+            <strong>ANOTHER EXPERIMENT<br />IS REQUIRED</strong>
+          </div>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 05 — THE COMPUTER, 1960</h2>
+          <p><strong>Purpose:</strong> Establish the long, mediated batch process that Licklider wanted to replace with close interaction.</p>
+          <p><strong>Delivery:</strong> Formulate today, explain tomorrow, compute later, receive mountains of output, then discover the next experiment. Let the paper strip become excessive before landing the final card.</p>
+          <p><strong>Builds:</strong> Six distinct montage beats. Each is a real narrative step, not decorative motion.</p>
+          <p><strong>Transition:</strong> Printer and machine noise stop instantly on the cut to the question.</p>
+          <p><strong>Source:</strong> Process closely paraphrases §2 of the paper. NASA/NACA and U.S. Census archival images are public domain; full records appear in `SOURCES.md`.</p>
+        </aside>
+      </section>
+
+      <section
+        id="scene-06"
+        class="scene scene--question"
+        data-title="What is the question?"
+        data-reel="REEL I · TWO ORGANISMS"
+        data-transition="silence"
+        aria-label="Scene 6: What is the question?"
+      >
+        <div class="scene-stage question-stage">
+          <p>WHAT IS<br />THE QUESTION?</p>
+          <span class="question-registration" aria-hidden="true">+</span>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 06 — WHAT IS THE QUESTION?</h2>
+          <p><strong>Purpose:</strong> Make the first philosophical turn: computers should help formulate problems, not only solve already formulated ones.</p>
+          <p><strong>Delivery:</strong> Let the machine room vanish. Hold the sentence unchanged while explaining the distinction, then name problem formulation as one of Licklider’s two central aims.</p>
+          <p><strong>Motion:</strong> No progressive builds and no ornamental animation. The text holds long enough to change meaning.</p>
+          <p><strong>Transition:</strong> Move into Licklider’s self-study: he investigated what kept him from reaching good questions.</p>
+          <p><strong>Source:</strong> Licklider quotes Poincaré—“The question is not, ‘What is the answer?’ The question is, ‘What is the question?’”—in §2.</p>
+        </aside>
+      </section>
+
+      <section id="scene-07" class="scene scene--workprint" data-title="Field study: one thinking human" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 7 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 07</span><p class="workprint-kicker">FIELD STUDY</p><h2>ONE THINKING HUMAN</h2><div class="workprint-card">SUBJECT: J.C.R.L.<br />ACTIVITY: THINKING<br />YEAR: 1957</div><small>ASSEMBLY BAY · NEXT CHECKPOINT</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 07 — Field study</h2><p><strong>Purpose:</strong> Introduce Licklider’s informal self-observation with deadpan laboratory seriousness.</p><p><strong>Status:</strong> Workprint scene awaiting the thinking-experiment build.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      </section>
+
+      <section id="scene-08" class="scene scene--workprint" data-title="Audience experiment one" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 8 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 08</span><p class="workprint-kicker">AUDIENCE EXPERIMENT 01</p><h2>HOW MUCH IS<br />ACTUALLY THINKING?</h2><div class="workprint-dial">0 <span></span> 100%</div><small>INTERACTION ASSEMBLY PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 08 — Audience experiment #1</h2><p><strong>Purpose:</strong> Ask the room to estimate its own thinking time before revealing Licklider’s result.</p><p><strong>Status:</strong> Workprint scene awaiting the physical dial interaction.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      </section>
+
+      <section id="scene-09" class="scene scene--workprint" data-title="85%" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 9 workprint">
+        <div class="scene-stage workprint-stage workprint-stage--number"><span class="workprint-edge">WORKPRINT · 09</span><h2>85%</h2><small>NUMBER CARD · SHAKE TEST PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 09 — 85%</h2><p><strong>Purpose:</strong> Reveal the proportion of Licklider’s “thinking” time spent preparing to think.</p><p><strong>Status:</strong> Workprint number card awaiting sound and gate-weave pass.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      </section>
+
+      <section id="scene-10" class="scene scene--workprint" data-title="The graph, part one" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 10 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 10</span><p class="workprint-kicker">THE GRAPH · PART I</p><h2>SIX EXPERIMENTS.<br />SIX DEFINITIONS.</h2><small>DATA PROP FABRICATION IN PROGRESS</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 10 — The graph, part I</h2><p><strong>Purpose:</strong> Make incompatible data physically and cognitively messy.</p><p><strong>Status:</strong> Workprint scene awaiting six source-data props.</p><p><strong>Source:</strong> Speech-intelligibility example in Licklider, §3.1.</p></aside>
+      </section>
+
+      <section id="scene-11" class="scene scene--workprint" data-title="The graph, part two" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 11 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 11</span><p class="workprint-kicker">THE GRAPH · PART II</p><h2>CONVERT → NORMALISE<br />CALCULATE → PLOT</h2><small>CLERICAL TIMER TEST PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 11 — The graph, part II</h2><p><strong>Purpose:</strong> Force the audience to experience 10–15 seconds of real preparatory delay.</p><p><strong>Status:</strong> Workprint scene awaiting deterministic data transformations.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      </section>
+
+      <section id="scene-12" class="scene scene--workprint" data-title="The graph, part three" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 12 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 12</span><p class="workprint-kicker">THE GRAPH · PART III</p><h2>“…RIGHT.”</h2><small>CLEAN GRAPH AND SILENCE PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 12 — The graph, part III</h2><p><strong>Purpose:</strong> Deliver the immediate visual insight at the emotional centre of the film.</p><p><strong>Status:</strong> Workprint scene awaiting the final graph.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      </section>
+
+      <section id="scene-13" class="scene scene--workprint" data-title="A manifesto" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 13 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 13</span><p class="workprint-kicker">OUR INTERPRETATION</p><h2>THE MACHINE DID NOT<br />HAVE THE INSIGHT.</h2><small>SECOND STATEMENT HELD FOR NEXT BUILD</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 13 — A manifesto</h2><p><strong>Purpose:</strong> Name the presentation’s interpretation after the graph demonstrates it.</p><p><strong>Status:</strong> Workprint typography awaiting two-beat build.</p><p><strong>Source:</strong> Presentation interpretation, not a Licklider quotation.</p></aside>
+      </section>
+
+      <section id="scene-14" class="scene scene--workprint" data-title="Symbiote enters" data-reel="REEL I · ELECTRONIC COMPANION" data-transition="workprint" aria-label="Scene 14 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 14</span><p class="workprint-kicker">INTRODUCING</p><h2>SYMBIOTE™</h2><div class="workprint-card">ELECTRONIC RESEARCH COMPANION<br />MODEL: UNAVAILABLE</div><small>PRODUCT PHOTOGRAPHY PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 14 — SYMBIOTE™ enters</h2><p><strong>Purpose:</strong> Introduce the fictional product-film character with total institutional sincerity.</p><p><strong>Status:</strong> Workprint awaiting console construction.</p><p><strong>Source:</strong> Fictional reconstruction inspired by capabilities in Licklider, §4.</p></aside>
+      </section>
+
+      <section id="scene-15" class="scene scene--workprint" data-title="Human and Symbiote" data-reel="REEL I · ELECTRONIC COMPANION" data-transition="workprint" aria-label="Scene 15 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 15</span><p class="workprint-kicker">HUMAN / SYMBIOTE</p><h2>QUESTIONS ↔ OPERATIONS</h2><small>CARD EXCHANGE MECHANISM PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 15 — Human / Symbiote</h2><p><strong>Purpose:</strong> Stage the bidirectional division of labour between unlike capabilities.</p><p><strong>Status:</strong> Workprint awaiting physical card choreography.</p><p><strong>Source:</strong> Licklider, §§3–4.</p></aside>
+      </section>
+
+      <section id="scene-16" class="scene scene--workprint" data-title="I don't know what graph I want" data-reel="REEL I · ELECTRONIC COMPANION" data-transition="workprint" aria-label="Scene 16 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 16</span><p class="workprint-kicker">SYMBIOTE™ REQUEST 004</p><h2>I DON’T KNOW<br />WHAT GRAPH I WANT.</h2><small>ALTERNATE PLOTS PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 16 — I don’t know what graph I want</h2><p><strong>Purpose:</strong> Show exploration through alternative representations, not only requested automation.</p><p><strong>Status:</strong> Workprint awaiting three plot mechanisms.</p><p><strong>Source:</strong> Licklider’s plotting alternatives in §4.</p></aside>
+      </section>
+
+      <section id="scene-17" class="scene scene--workprint" data-title="Audience experiment two" data-reel="REEL I · ELECTRONIC COMPANION" data-transition="workprint" aria-label="Scene 17 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 17</span><p class="workprint-kicker">GOVERNMENT QUESTIONNAIRE 17–C</p><h2>ONE THING YOU DO<br />IN ORDER TO THINK.</h2><small>LOCAL RESPONSE FIELD PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 17 — Audience experiment #2</h2><p><strong>Purpose:</strong> Let the room identify its own clerical distance to thought.</p><p><strong>Status:</strong> Workprint awaiting optional local response field.</p><p><strong>Source:</strong> Presentation participation prompt grounded in §3.1.</p></aside>
+      </section>
+
+      <section id="scene-18" class="scene scene--workprint" data-title="Reel change" data-reel="REEL CHANGE" data-transition="workprint" aria-label="Scene 18 workprint">
+        <div class="scene-stage workprint-stage workprint-stage--burn"><span class="workprint-edge">WORKPRINT · 18</span><p class="workprint-kicker">REEL CHANGE</p><h2>REEL II<br />THE IMPOSSIBLE MACHINE</h2><small>BURN TEST PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 18 — Reel change</h2><p><strong>Purpose:</strong> Give the room a physical reset before the future-machine reel.</p><p><strong>Status:</strong> Workprint awaiting accessible projector-burn sequence.</p><p><strong>Source:</strong> Original transition device.</p></aside>
+      </section>
+
+      <section id="scene-19" class="scene scene--workprint" data-title="The desk of the future" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 19 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 19</span><p class="workprint-kicker">THE DESK OF THE FUTURE</p><h2>DRAW HERE.<br />THE MACHINE WILL FOLLOW.</h2><small>SHARED SURFACE RIG PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 19 — The desk of the future</h2><p><strong>Purpose:</strong> Reconstruct Licklider’s shared drawing surface literally, without modern app icons.</p><p><strong>Status:</strong> Workprint awaiting hand and plotter interaction.</p><p><strong>Source:</strong> Licklider, §5.5.1.</p></aside>
+      </section>
+
+      <section id="scene-20" class="scene scene--workprint" data-title="The thinking center" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 20 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 20</span><p class="workprint-kicker">THE THINKING CENTER</p><h2>LIBRARY → MACHINE → NETWORK</h2><small>EDUCATIONAL DIAGRAM PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 20 — The thinking center</h2><p><strong>Purpose:</strong> Expand library, retrieval, and computation into connected centers.</p><p><strong>Status:</strong> Workprint awaiting diagram animation.</p><p><strong>Source:</strong> Licklider, §5.6.</p></aside>
+      </section>
+
+      <section id="scene-21" class="scene scene--workprint" data-title="Not a prophecy slideshow" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 21 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 21</span><p class="workprint-kicker">RAPID MONTAGE</p><h2>THIS IS NOT<br />THE INTERESTING PART.</h2><small>STAMP AND MONTAGE PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 21 — Don’t make it a prophecy slideshow</h2><p><strong>Purpose:</strong> Acknowledge familiar technologies and immediately reject prediction as the thesis.</p><p><strong>Status:</strong> Workprint awaiting rapid montage and interrupting stamp.</p><p><strong>Source:</strong> Presentation interpretation.</p></aside>
+      </section>
+
+      <section id="scene-22" class="scene scene--workprint" data-title="The actual strange idea" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 22 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 22</span><p class="workprint-kicker">RETURN TO SPECIMEN</p><h2>DIFFERENT CAPABILITIES.<br />ONE PARTNERSHIP.</h2><small>FIG / CIRCUIT MATCH CUT PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 22 — The actual strange idea</h2><p><strong>Purpose:</strong> Return to symbiosis as partnership rather than extension or leftover automation.</p><p><strong>Status:</strong> Workprint awaiting opening-image reprise.</p><p><strong>Source:</strong> Licklider, §1.</p></aside>
+      </section>
+
+      <section id="scene-23" class="scene scene--workprint" data-title="Audience experiment three" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 23 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 23</span><p class="workprint-kicker">AUDIENCE EXPERIMENT 03</p><h2>TOOL · SERVANT · PARTNER</h2><small>PHYSICAL CARD POLL PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 23 — Audience experiment #3</h2><p><strong>Purpose:</strong> Ask which relationship people want and what partnership would require.</p><p><strong>Status:</strong> Workprint awaiting three-card interaction.</p><p><strong>Source:</strong> Presentation discussion prompt grounded in §1.</p></aside>
+      </section>
+
+      <section id="scene-24" class="scene scene--workprint" data-title="The uncomfortable frame" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 24 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 24</span><p class="workprint-kicker">THE UNCOMFORTABLE FRAME</p><h2>QUESTION → MACHINE →<br />BETTER QUESTION → …</h2><small>GREASE-PENCIL CORRECTION PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 24 — The uncomfortable frame</h2><p><strong>Purpose:</strong> State the presentation thesis after the audience has earned it.</p><p><strong>Status:</strong> Workprint awaiting crossed-out answer pipeline.</p><p><strong>Source:</strong> Presentation interpretation grounded in Licklider’s formulative aims.</p></aside>
+      </section>
+
+      <section id="scene-25" class="scene scene--workprint" data-title="Final image" data-reel="EPILOGUE" data-transition="workprint" aria-label="Scene 25 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 25</span><p class="workprint-kicker">RETURN TO FIG</p><h2>WHAT WOULD YOU DO<br />WITH YOUR 85%?</h2><small>FINAL HOLD PENDING</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 25 — Final image</h2><p><strong>Purpose:</strong> Return to the original fig and ask rather than conclude.</p><p><strong>Status:</strong> Workprint awaiting silent wasp entrance and final hold.</p><p><strong>Source:</strong> Presentation closing question.</p></aside>
+      </section>
+
+      <section id="scene-26" class="scene scene--workprint" data-title="End credits" data-reel="EPILOGUE" data-transition="workprint" aria-label="Scene 26 workprint">
+        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 26</span><p class="workprint-kicker">END CREDITS</p><h2>FIGS · WASPS · MACHINES<br />J.C.R.L. · THE AUDIENCE</h2><small>PLEASE RETURN THIS WORKPRINT TO THE ARCHIVE</small></div>
+        <aside class="speaker-notes" hidden><h2>Scene 26 — End credits</h2><p><strong>Purpose:</strong> Preserve the film fiction while questions begin, without displaying a Q&amp;A slide.</p><p><strong>Status:</strong> Workprint awaiting final credit roll and mechanical reprise.</p><p><strong>Source:</strong> Original credits design.</p></aside>
+      </section>
+    </main>
+
+    <nav id="projector-chrome" class="projector-chrome" aria-label="Presentation controls">
+      <button type="button" data-action="previous" aria-label="Previous build or scene">←</button>
+      <button type="button" data-action="next" aria-label="Next build or scene">→</button>
+      <button type="button" id="scene-indicator" data-action="overview" aria-label="Current scene">00 / 26</button>
+      <button type="button" data-action="sound" aria-label="Toggle sound">SOUND</button>
+      <button type="button" data-action="notes" aria-label="Open speaker notes">NOTES</button>
+      <button type="button" data-action="references" aria-label="Open references">REF</button>
+      <button type="button" data-action="fullscreen" aria-label="Toggle fullscreen">FULL</button>
+    </nav>
+
+    <aside id="notes-panel" class="utility-panel" aria-hidden="true" aria-label="Speaker notes">
+      <header><span>SPEAKER RECORD</span><button type="button" data-close-panel aria-label="Close speaker notes">×</button></header>
+      <div id="notes-content" class="panel-content"></div>
+    </aside>
+
+    <aside id="reference-panel" class="utility-panel" aria-hidden="true" aria-label="References">
+      <header><span>ARCHIVE REGISTER</span><button type="button" data-close-panel aria-label="Close references">×</button></header>
+      <div class="panel-content">
+        <p class="panel-kicker">PRIMARY PAPER</p>
+        <h2>Man–Computer Symbiosis</h2>
+        <p>J. C. R. Licklider, <em>IRE Transactions on Human Factors in Electronics</em>, HFE-1, 4–11, March 1960.</p>
+        <p><a href="https://groups.csail.mit.edu/medg/people/psz/Licklider.html" target="_blank" rel="noreferrer">Read the complete MIT-hosted transcription</a></p>
+        <hr />
+        <p class="panel-kicker">OPENING REEL ASSETS</p>
+        <ul>
+          <li>Cut-fig photographs: Jedesto, CC BY-SA 4.0.</li>
+          <li>Fig wasp in habitat: P. Zborowski / CSIRO, CC BY 3.0.</li>
+          <li><em>Blastophaga psenes</em> specimen: Dr. Stefan Schmidt / SNSB, CC BY-SA 4.0.</li>
+          <li>IBM/NACA and U.S. Census machine-room photographs: public domain.</li>
+        </ul>
+        <p>Complete URLs, creators, rights, quote status, and scene usage are maintained in <a href="SOURCES.md">SOURCES.md</a>.</p>
       </div>
-    </div>
+    </aside>
 
-    <noscript>This presentation requires JavaScript for scene navigation and progressive reveals.</noscript>
-    <script src="presentation.js"></script>
+    <aside id="help-panel" class="utility-panel utility-panel--compact" aria-hidden="true" aria-label="Keyboard help">
+      <header><span>PROJECTOR CONTROLS</span><button type="button" data-close-panel aria-label="Close keyboard help">×</button></header>
+      <div class="panel-content control-list">
+        <span>SPACE / →</span><strong>advance</strong>
+        <span>←</span><strong>return</strong>
+        <span>M</span><strong>mute</strong>
+        <span>N</span><strong>notes</strong>
+        <span>R</span><strong>references</strong>
+        <span>F</span><strong>fullscreen</strong>
+        <span>?</span><strong>this card</strong>
+      </div>
+    </aside>
+
+    <p id="projector-status" class="sr-only" aria-live="polite"></p>
   </body>
 </html>
