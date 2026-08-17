@@ -9,7 +9,7 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
   test("loads the complete 27-scene workprint and its local assets", async ({ page }) => {
     await expect(page.locator(".scene")).toHaveCount(27);
     await expect(page.locator(".speaker-notes")).toHaveCount(27);
-    await expect(page.locator(".scene--workprint")).toHaveCount(6);
+    await expect(page.locator(".scene--workprint")).toHaveCount(3);
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-00");
 
     const incompleteImages = await page.locator("img").evaluateAll((images) =>
@@ -171,6 +171,32 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
     await expect(page.locator("#scene-20 .network-board")).toHaveClass(/is-visible/);
     await expect(page.locator("#scene-20 .center-node")).toHaveCount(3);
     await expect(page.locator("#scene-20 .wide-band-label")).toHaveClass(/is-visible/);
+  });
+
+  test("interrupts the familiar-technology montage before it becomes prophecy", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(21, { build: 7, silent: true }));
+    await expect(page.locator("#scene-21 .montage-shot.is-visible")).toHaveCount(6);
+    await expect(page.locator("#scene-21 .prophecy-stamp")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-21 .prophecy-stamp")).toContainText("INTERESTING PART");
+  });
+
+  test("returns to the biological composition as a partnership of unlike capabilities", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(22, { silent: true }));
+    await expect(page.locator("#scene-22 .reprise-panel > img")).toHaveCount(2);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(4, { silent: true }));
+    await expect(page.locator("#scene-22 .reprise-replacement.is-visible")).toHaveCount(2);
+    await expect(page.locator("#scene-22 .rejected-model.is-visible")).toHaveCount(2);
+    await expect(page.locator("#scene-22 .partnership-card")).toHaveClass(/is-visible/);
+  });
+
+  test("offers a local tool servant partner poll without inventing a tally", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(23, { silent: true }));
+    await page.locator("#scene-23 .relationship-card--servant").click();
+    await expect(page.locator("#scene-23 .relationship-card.is-selected")).toHaveCount(1);
+    await expect(page.locator("#scene-23 .relationship-card--servant")).toHaveAttribute("aria-pressed", "true");
+    await expect(page.locator("#scene-23 .relationship-followup")).toHaveClass(/is-visible/);
+    await expect(page.locator("#relationship-status")).toContainText("Selected servant");
+    await expect(page.locator("#scene-23")).toContainText("NO CONSENSUS WILL BE TABULATED");
   });
 
   test("keeps notes, references, sound, and direct scene navigation available", async ({ page }) => {

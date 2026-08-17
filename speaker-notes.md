@@ -2,7 +2,7 @@
 
 These notes follow the redesigned 27-scene sequence from Scene 00 through Scene 26. The same scene-specific notes are embedded in `index.html` and available during playback with `N`.
 
-Scenes 00–20 are the finished opening, graph, SYMBIOTE™, and Impossible Machine reels. Scenes 21–26 are assembly notes for visible workprint cards and will become full delivery records in the final reel.
+Scenes 00–23 are finished through the anti-prophecy turn, partnership return, and final audience experiment. Scenes 24–26 are assembly notes for visible workprint cards and will become full delivery records in the final reel.
 
 ## Global delivery
 

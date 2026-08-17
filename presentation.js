@@ -109,7 +109,7 @@
 
     setScene(sceneIndex) {
       if (!this.context || !this.bedGain) return;
-      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001, 0.013, 0.009, 0.018, 0.006, 0.021, 0.008, 0.011];
+      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001, 0.013, 0.009, 0.018, 0.006, 0.021, 0.008, 0.011, 0.016, 0.005, 0.004, 0.004, 0.001, 0.009];
       const target = levels[sceneIndex] ?? 0.007;
       const now = this.context.currentTime;
       this.bedGain.gain.cancelScheduledValues(now);
@@ -197,6 +197,12 @@
       if (sceneIndex === 18) this.playTone({ frequency: 58, duration: 0.42, gain: 0.04, type: "sawtooth" });
       if (sceneIndex === 19) this.playNoiseBurst({ duration: 0.035, gain: 0.035 });
       if (sceneIndex === 20) this.playTone({ frequency: 146, duration: 0.22, gain: 0.026, type: "triangle" });
+      if (sceneIndex === 21) this.playTone({ frequency: 188, duration: 0.14, gain: 0.028, type: "triangle" });
+      if (sceneIndex === 22) {
+        this.playTone({ frequency: 174, duration: 0.46, gain: 0.018, type: "sine" });
+        this.playTone({ frequency: 261, duration: 0.5, gain: 0.014, delay: 0.05, type: "sine" });
+      }
+      if (sceneIndex === 23) this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
     }
 
     cueBuild(sceneIndex, buildIndex) {
@@ -253,6 +259,28 @@
       if (sceneIndex === 20) {
         this.playTone({ frequency: 126 + buildIndex * 42, duration: 0.08, gain: 0.03, type: "triangle" });
         if (buildIndex >= 3) this.playNoiseBurst({ duration: 0.04, gain: 0.03 });
+      }
+      if (sceneIndex === 21) {
+        if (buildIndex <= 6) {
+          this.playTone({ frequency: 170 + buildIndex * 58, duration: 0.055, gain: 0.032, type: "square" });
+          this.playNoiseBurst({ duration: 0.025, gain: 0.026, delay: 0.015 });
+        } else {
+          this.playNoiseBurst({ duration: 0.18, gain: 0.11 });
+          this.playTone({ frequency: 66, duration: 0.22, gain: 0.045, type: "square" });
+        }
+      }
+      if (sceneIndex === 22) {
+        if (buildIndex === 1) this.playNoiseBurst({ duration: 0.035, gain: 0.032 });
+        if (buildIndex === 2) this.playTone({ frequency: 116, duration: 0.08, gain: 0.035, type: "square" });
+        if (buildIndex === 3) this.playNoiseBurst({ duration: 0.09, gain: 0.065 });
+        if (buildIndex === 4) {
+          this.playTone({ frequency: 196, duration: 0.38, gain: 0.024, type: "sine" });
+          this.playTone({ frequency: 294, duration: 0.44, gain: 0.018, delay: 0.04, type: "sine" });
+        }
+      }
+      if (sceneIndex === 23) {
+        this.playNoiseBurst({ duration: 0.055, gain: 0.052 });
+        this.playTone({ frequency: 102 + buildIndex * 24, duration: 0.045, gain: 0.022, type: "square" });
       }
     }
 
@@ -711,6 +739,27 @@
     });
   }
 
+  function initializeRelationshipPoll() {
+    const cards = Array.from(document.querySelectorAll(".relationship-card"));
+    const status = document.querySelector("#relationship-status");
+    if (!cards.length || !status) return;
+
+    cards.forEach((card, cardIndex) => {
+      card.addEventListener("click", () => {
+        cards.forEach((candidate) => {
+          const selected = candidate === card;
+          candidate.classList.toggle("is-selected", selected);
+          candidate.setAttribute("aria-pressed", String(selected));
+        });
+
+        const relation = card.dataset.relation || card.textContent.trim();
+        status.textContent = `Selected ${relation}. Now consider what would have to be true to call a computer a partner.`;
+        if (presentationState.index === 23 && presentationState.build < 1) setBuild(1, { silent: true });
+        sound.cueBuild(23, cardIndex + 1);
+      });
+    });
+  }
+
   function initialize() {
     const initialIndex = parseHash();
     body.classList.toggle("sound-muted", sound.muted);
@@ -718,6 +767,7 @@
     if (initialIndex > 0) startProjector({ silent: true });
     initializeThinkingDial();
     initializeThinkingResponses();
+    initializeRelationshipPoll();
 
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("click", handleDocumentClick);

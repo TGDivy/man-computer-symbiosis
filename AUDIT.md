@@ -1,6 +1,6 @@
-# Redesign Audit — Opening through Impossible Machine Checkpoint
+# Redesign Audit — Opening through Partnership Checkpoint
 
-This is a workprint audit, not a final compliance claim. It records what is live after the fourth redesign checkpoint and makes unfinished scenes explicit.
+This is a workprint audit, not a final compliance claim. It records what is live after the fifth redesign checkpoint and makes unfinished scenes explicit.
 
 ## Checkpoint Scope
 
@@ -23,8 +23,11 @@ This is a workprint audit, not a final compliance claim. It records what is live
 | Scene 18 creates a physical reel change | Presenter-controlled changeover card, scorched-film transition, and Reel II title | Complete |
 | Scene 19 literalises the shared desk | Rough human marks become interpreted geometry on one drafting surface | Complete |
 | Scene 20 expands into thinking centers | Library, retrieval, computation, and wide-band network diagram unfold in four builds | Complete |
+| Scene 21 rejects prediction as the thesis | Six rapid forecast frames are physically interrupted by the anti-prophecy stamp | Complete |
+| Scene 22 returns to the biological composition | Fig and wasp become human and machine before extension and leftover-human models are rejected | Complete |
+| Scene 23 stages the final audience experiment | Selectable physical cards reveal the partnership question without counting or transmitting votes | Complete |
 | All planned scenes have stable rehearsal addresses | `scene-00` through `scene-26` and URL hashes | Complete |
-| Unbuilt material is honestly represented | Scenes 21–26 use a consistent visible `WORKPRINT` treatment | Complete |
+| Unbuilt material is honestly represented | Scenes 24–26 use a consistent visible `WORKPRINT` treatment | Complete |
 
 ## Scene Assembly Status
 
@@ -34,7 +37,8 @@ This is a workprint audit, not a final compliance claim. It records what is live
 | 07–13 | Thinking experiment, 85%, and graph sequence | Finished checkpoint |
 | 14–17 | SYMBIOTE™ and audience experiment #2 | Finished checkpoint |
 | 18–20 | Reel change, future desk, thinking center | Finished checkpoint |
-| 21–26 | Anti-prophecy turn, partnership thesis, ending | Workprint cards |
+| 21–23 | Anti-prophecy turn, partnership return, audience experiment #3 | Finished checkpoint |
+| 24–26 | Thesis correction, final fig, credits | Workprint cards |
 
 ## Scholarship
 
@@ -50,10 +54,10 @@ This is a workprint audit, not a final compliance claim. It records what is live
 
 | Requirement | Evidence | Status |
 |---|---|---|
-| Found educational film, not retro UI | Full-frame scenes, optical title, physical dossiers, product catalog film, index-card exchange, drafting surface, educational diagram, and gate weave | Complete for Scenes 00–20 |
+| Found educational film, not retro UI | Full-frame scenes, optical title, physical dossiers, product catalog film, drafting surface, photographed diagrams, specimen diptych, stamped cards, and gate weave | Complete for Scenes 00–23 |
 | Explanation remains primarily verbal | Fig, title, and question frames contain no explanatory paragraphs | Complete |
 | Small physical motion vocabulary | Hard cut, splice, optical title, leader, card placement, paper feed | Complete |
-| Sound is narrative and optional | Projector leader, title chord, machine cues, clerical sequence, product chime, reel burn, `M` mute, silent fallback | Opening through Scene 20 pass complete |
+| Sound is narrative and optional | Projector leader, title chord, machine cues, clerical sequence, product chime, reel burn, montage acceleration, card placement, `M` mute, silent fallback | Opening through Scene 23 pass complete |
 | No modern AI imagery | No modern interface, chatbot, logo, or AI claim appears | Complete |
 | Target viewports remain legible | Manual review at 1600×900 and 1366×768 | Complete |
 
@@ -67,16 +71,15 @@ This is a workprint audit, not a final compliance claim. It records what is live
 | Local audience interactions | Estimate dial and questionnaire response cards | Pass |
 | Notes, references, sound, hashes | Playwright interaction checks | Pass |
 | Runtime errors and viewport bounds | All-scene loop in both Chromium projects | Pass |
-| Local automated result | `npm test`: 30 tests across two viewports | Pass after final rerun |
+| Local automated result | `npm test`: 36 tests across two viewports | Pass after final rerun |
 | GitHub Pages pipeline | Verify → deploy → deployed-site Playwright | Configured |
 | Public URL | <https://www.divyb.xyz/man-computer-symbiosis/> | Active |
 | BBGitHub mirror and Pages | Native Pages sourced from mirrored `main` | Active |
 
 ## Remaining Definition of Done
 
-- Replace the remaining 6 workprint cards with storyboarded scenes.
+- Replace the remaining 3 workprint cards with storyboarded scenes.
 - Rehearse the 85% and graph sequence at its intended 4–5 minute dramatic duration.
-- Build audience experiment #3 without a network dependency.
-- Complete the anti-prophecy turn, partnership thesis, fig return, and credits.
+- Complete the thesis correction, fig return, and credits.
 - Finish the scene-specific soundtrack and final audio balance.
 - Expand this workprint audit into the final 27-scene requirement audit.

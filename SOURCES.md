@@ -36,6 +36,9 @@ These lines are presentation arguments, not quotations from Licklider. They are 
 - **Scene 18:** The changeover card and burning-frame effect are original transition devices, not historical film footage.
 - **Scene 19:** The shared desk surface is an interactive reconstruction inspired by §5.5.1, not a historical interface.
 - **Scene 20:** The thinking-center network is an original educational-film diagram based on §5.6, not historical network footage; its center names and routes are invented.
+- **Scene 21:** The six forecast frames are original graphic reconstructions used to reject prophecy as the presentation thesis; they are not historical product drawings.
+- **Scene 22:** The hand, circuit, rejected-model labels, and partnership card are original educational-film diagrams grounded in Licklider’s distinctions in §1.
+- **Scene 23:** The three relationship cards are a local presentation interaction. They do not record, count, store, or transmit audience votes.
 
 ## Archival Asset Log
 
