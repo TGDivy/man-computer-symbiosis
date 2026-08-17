@@ -1,15 +1,15 @@
 const { test, expect } = require("@playwright/test");
 
-test.describe("Man–Computer Symbiosis found-film workprint", () => {
+test.describe("Man–Computer Symbiosis found-film presentation", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("./");
     await page.waitForFunction(() => Boolean(window.__symbiosisDeck));
   });
 
-  test("loads the complete 27-scene workprint and its local assets", async ({ page }) => {
+  test("loads the complete 27-scene presentation and its local assets", async ({ page }) => {
     await expect(page.locator(".scene")).toHaveCount(27);
     await expect(page.locator(".speaker-notes")).toHaveCount(27);
-    await expect(page.locator(".scene--workprint")).toHaveCount(3);
+    await expect(page.locator(".scene--workprint")).toHaveCount(0);
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-00");
 
     const incompleteImages = await page.locator("img").evaluateAll((images) =>
@@ -197,6 +197,33 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
     await expect(page.locator("#scene-23 .relationship-followup")).toHaveClass(/is-visible/);
     await expect(page.locator("#relationship-status")).toContainText("Selected servant");
     await expect(page.locator("#scene-23")).toContainText("NO CONSENSUS WILL BE TABULATED");
+  });
+
+  test("crosses out the answer pipeline and replaces it with a better-question chain", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(24, { silent: true }));
+    await expect(page.locator("#scene-24 .corrected-model")).not.toHaveClass(/is-visible/);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(1, { silent: true }));
+    await expect(page.locator("#scene-24 .grease-correction")).toHaveClass(/is-visible/);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(3, { silent: true }));
+    await expect(page.locator("#scene-24 .corrected-model")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-24 .thought-card")).toHaveCount(5);
+    await expect(page.locator("#scene-24 .distance-annotation")).toHaveClass(/is-visible/);
+  });
+
+  test("returns to the fig without putting the closing question on screen", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(25, { silent: true }));
+    await expect(page.locator("#scene-25 .final-wasp")).not.toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-25 .scene-stage")).toHaveText("");
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(1, { silent: true }));
+    await expect(page.locator("#scene-25 .final-wasp")).toHaveClass(/is-visible/);
+  });
+
+  test("ends on optical credits and a persistent archive return card", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(26, { build: 4, silent: true }));
+    await expect(page.locator("#scene-26 .credit-card.build.is-visible")).toHaveCount(4);
+    await expect(page.locator("#scene-26 .credit-card--archive")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-26 .archive-return-card")).toContainText("PLEASE RETURN THIS FILM");
+    await expect(page.locator("body")).not.toContainText("Q&A");
   });
 
   test("keeps notes, references, sound, and direct scene navigation available", async ({ page }) => {

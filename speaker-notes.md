@@ -1,8 +1,8 @@
-# Speaker Notes — Found-Film Workprint
+# Speaker Notes — Found-Film Presentation
 
 These notes follow the redesigned 27-scene sequence from Scene 00 through Scene 26. The same scene-specific notes are embedded in `index.html` and available during playback with `N`.
 
-Scenes 00–23 are finished through the anti-prophecy turn, partnership return, and final audience experiment. Scenes 24–26 are assembly notes for visible workprint cards and will become full delivery records in the final reel.
+All 27 scenes are implemented. These notes are the complete delivery record for the leader, two reels, final image, and archive credits.
 
 ## Global delivery
 

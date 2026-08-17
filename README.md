@@ -1,8 +1,8 @@
-# Man–Computer Symbiosis — Found-Film Workprint
+# Man–Computer Symbiosis — Found-Film Presentation
 
 A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 paper “Man-Computer Symbiosis.” The redesign begins as an unidentified educational film about a fig and withholds the paper title until Scene 04.
 
-## Live Workprint
+## Live Presentation
 
 - GitHub Pages: <https://www.divyb.xyz/man-computer-symbiosis/>
 - Repository: <https://github.com/TGDivy/man-computer-symbiosis>
@@ -10,7 +10,7 @@ A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 pa
 - BBGitHub Pages: <https://bbgithub.dev.bloomberg.com/pages/dbramhecha/man-computer-symbiosis/>
 - BBGitHub mirror: <https://bbgithub.dev.bloomberg.com/dbramhecha/man-computer-symbiosis>
 
-The project is being published in reel-sized checkpoints. Scenes 00–23 contain the rebuilt opening, graph, SYMBIOTE™, Impossible Machine, anti-prophecy, partnership, and audience-poll sequences; Scenes 24–26 remain intentional workprint assembly cards until the final checkpoint lands.
+All 27 storyboarded scenes are implemented. The finished film moves from the unidentified leader and biological opening through the 85% graph sequence, SYMBIOTE™, the Impossible Machine, the partnership thesis, the final fig, and optical archive credits.
 
 ## Presenting Locally
 

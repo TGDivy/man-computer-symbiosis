@@ -203,6 +203,18 @@
         this.playTone({ frequency: 261, duration: 0.5, gain: 0.014, delay: 0.05, type: "sine" });
       }
       if (sceneIndex === 23) this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
+      if (sceneIndex === 24) {
+        this.playTone({ frequency: 196, duration: 0.08, gain: 0.028, type: "square" });
+        this.playTone({ frequency: 294, duration: 0.09, gain: 0.02, delay: 0.05, type: "square" });
+      }
+      if (sceneIndex === 25 && this.bedGain) {
+        const now = this.context.currentTime;
+        this.bedGain.gain.setTargetAtTime(0.0005, now, 0.08);
+      }
+      if (sceneIndex === 26) {
+        this.playTone({ frequency: 146, duration: 0.18, gain: 0.022, type: "triangle" });
+        this.playNoiseBurst({ duration: 0.04, gain: 0.035, delay: 0.12 });
+      }
     }
 
     cueBuild(sceneIndex, buildIndex) {
@@ -281,6 +293,26 @@
       if (sceneIndex === 23) {
         this.playNoiseBurst({ duration: 0.055, gain: 0.052 });
         this.playTone({ frequency: 102 + buildIndex * 24, duration: 0.045, gain: 0.022, type: "square" });
+      }
+      if (sceneIndex === 24) {
+        if (buildIndex === 1) this.playNoiseBurst({ duration: 0.14, gain: 0.085 });
+        if (buildIndex === 2) {
+          this.playTone({ frequency: 174, duration: 0.32, gain: 0.022, type: "sine" });
+          this.playTone({ frequency: 233, duration: 0.4, gain: 0.018, delay: 0.05, type: "sine" });
+        }
+        if (buildIndex === 3) this.playTone({ frequency: 131, duration: 0.18, gain: 0.025, type: "triangle" });
+      }
+      if (sceneIndex === 25 && buildIndex === 1) {
+        this.playNoiseBurst({ duration: 0.035, gain: 0.018 });
+      }
+      if (sceneIndex === 26) {
+        if (buildIndex < 4) {
+          this.playNoiseBurst({ duration: 0.045, gain: 0.038 });
+          this.playTone({ frequency: 154 + buildIndex * 42, duration: 0.11, gain: 0.022, type: "triangle" });
+        } else if (this.bedGain) {
+          const now = this.context.currentTime;
+          this.bedGain.gain.setTargetAtTime(0.0001, now, 0.12);
+        }
       }
     }
 

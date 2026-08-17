@@ -39,6 +39,9 @@ These lines are presentation arguments, not quotations from Licklider. They are 
 - **Scene 21:** The six forecast frames are original graphic reconstructions used to reject prophecy as the presentation thesis; they are not historical product drawings.
 - **Scene 22:** The hand, circuit, rejected-model labels, and partnership card are original educational-film diagrams grounded in Licklider’s distinctions in §1.
 - **Scene 23:** The three relationship cards are a local presentation interaction. They do not record, count, store, or transmit audience votes.
+- **Scene 24:** Both pipeline models and the “clerical distance” annotation are presentation interpretation grounded in Licklider’s formulative aims, not quotations or historical diagrams.
+- **Scene 25:** The final image reuses the documented cut-fig and fig-wasp photographs from the opening; no synthetic biological image is introduced.
+- **Scene 26:** The credit and archive-control cards are original graphic devices that continue the fictional laboratory-film frame.
 
 ## Archival Asset Log
 

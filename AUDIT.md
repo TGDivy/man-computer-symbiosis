@@ -1,6 +1,6 @@
-# Redesign Audit — Opening through Partnership Checkpoint
+# Final Redesign Audit — Man–Computer Symbiosis
 
-This is a workprint audit, not a final compliance claim. It records what is live after the fifth redesign checkpoint and makes unfinished scenes explicit.
+This audit records the completed 27-scene found-film presentation against the committed storyboard and its technical definition of done.
 
 ## Checkpoint Scope
 
@@ -26,8 +26,11 @@ This is a workprint audit, not a final compliance claim. It records what is live
 | Scene 21 rejects prediction as the thesis | Six rapid forecast frames are physically interrupted by the anti-prophecy stamp | Complete |
 | Scene 22 returns to the biological composition | Fig and wasp become human and machine before extension and leftover-human models are rejected | Complete |
 | Scene 23 stages the final audience experiment | Selectable physical cards reveal the partnership question without counting or transmitting votes | Complete |
+| Scene 24 states the earned thesis | The neat answer pipeline is physically crossed out and replaced by the better-question chain | Complete |
+| Scene 25 asks rather than concludes | The opening fig returns without text and the wasp enters before the verbal 85% question | Complete |
+| Scene 26 preserves the film fiction | Optical credit cards end on a persistent archive-return card with no question slide | Complete |
 | All planned scenes have stable rehearsal addresses | `scene-00` through `scene-26` and URL hashes | Complete |
-| Unbuilt material is honestly represented | Scenes 24–26 use a consistent visible `WORKPRINT` treatment | Complete |
+| All planned scenes are implemented | No workprint or placeholder scenes remain | Complete |
 
 ## Scene Assembly Status
 
@@ -38,14 +41,14 @@ This is a workprint audit, not a final compliance claim. It records what is live
 | 14–17 | SYMBIOTE™ and audience experiment #2 | Finished checkpoint |
 | 18–20 | Reel change, future desk, thinking center | Finished checkpoint |
 | 21–23 | Anti-prophecy turn, partnership return, audience experiment #3 | Finished checkpoint |
-| 24–26 | Thesis correction, final fig, credits | Workprint cards |
+| 24–26 | Thesis correction, final fig, credits | Finished checkpoint |
 
 ## Scholarship
 
 | Requirement | Evidence | Status |
 |---|---|---|
 | Full paper read before design | Primary-paper record and section-specific notes | Complete |
-| Quote, paraphrase, interpretation, fiction separated | `SOURCES.md`, `speaker-notes.md`, and embedded scene notes | Complete for finished scenes |
+| Quote, paraphrase, interpretation, fiction separated | `SOURCES.md`, `speaker-notes.md`, and embedded scene notes | Complete for all scenes |
 | Opening claim follows the paper | Scenes 01–03 closely track the paper’s opening biological analogy | Complete |
 | Interpretive manifesto not passed as quotation | Scene 13 embedded notes and `speaker-notes.md` identify it as presentation interpretation | Complete |
 | Reconstructed imagery identified | Leader, laboratory label, SYMBIOTE™, graph data, and future diagrams are labelled reconstruction/fiction | Complete |
@@ -54,10 +57,10 @@ This is a workprint audit, not a final compliance claim. It records what is live
 
 | Requirement | Evidence | Status |
 |---|---|---|
-| Found educational film, not retro UI | Full-frame scenes, optical title, physical dossiers, product catalog film, drafting surface, photographed diagrams, specimen diptych, stamped cards, and gate weave | Complete for Scenes 00–23 |
+| Found educational film, not retro UI | Full-frame scenes, optical title, physical dossiers, product catalog film, drafting surface, photographed diagrams, specimen diptych, grease pencil, optical credits, and gate weave | Complete for all 27 scenes |
 | Explanation remains primarily verbal | Fig, title, and question frames contain no explanatory paragraphs | Complete |
 | Small physical motion vocabulary | Hard cut, splice, optical title, leader, card placement, paper feed | Complete |
-| Sound is narrative and optional | Projector leader, title chord, machine cues, clerical sequence, product chime, reel burn, montage acceleration, card placement, `M` mute, silent fallback | Opening through Scene 23 pass complete |
+| Sound is narrative and optional | Projector leader, title chord, machine cues, clerical sequence, product chime, reel burn, montage acceleration, card placement, final silence, mechanical reprise, `M` mute | Complete scene-specific pass |
 | No modern AI imagery | No modern interface, chatbot, logo, or AI claim appears | Complete |
 | Target viewports remain legible | Manual review at 1600×900 and 1366×768 | Complete |
 
@@ -67,19 +70,16 @@ This is a workprint audit, not a final compliance claim. It records what is live
 |---|---|---|
 | 27 scenes and 27 embedded note records | Playwright count checks | Pass |
 | All local images load | Playwright natural-width check | Pass |
-| Progressive builds and reverse navigation | Specimen, batch-process, graph, manifesto, card-exchange, and alternative-plot tests | Pass |
-| Local audience interactions | Estimate dial and questionnaire response cards | Pass |
+| Progressive builds and reverse navigation | Specimen, batch process, graph, manifesto, partnership, thesis correction, and credit-card tests | Pass |
+| Local audience interactions | Estimate dial, questionnaire response cards, and no-tally relationship cards | Pass |
 | Notes, references, sound, hashes | Playwright interaction checks | Pass |
 | Runtime errors and viewport bounds | All-scene loop in both Chromium projects | Pass |
-| Local automated result | `npm test`: 36 tests across two viewports | Pass after final rerun |
+| Local automated result | `npm test`: 42 tests across two viewports | Pass |
 | GitHub Pages pipeline | Verify → deploy → deployed-site Playwright | Configured |
 | Public URL | <https://www.divyb.xyz/man-computer-symbiosis/> | Active |
 | BBGitHub mirror and Pages | Native Pages sourced from mirrored `main` | Active |
 
-## Remaining Definition of Done
+## Operational Rehearsal
 
-- Replace the remaining 3 workprint cards with storyboarded scenes.
 - Rehearse the 85% and graph sequence at its intended 4–5 minute dramatic duration.
-- Complete the thesis correction, fig return, and credits.
-- Finish the scene-specific soundtrack and final audio balance.
-- Expand this workprint audit into the final 27-scene requirement audit.
+- Sound-check the conservative projector mix in the actual room and preserve the option to present muted.
