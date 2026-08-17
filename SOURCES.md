@@ -33,8 +33,9 @@ These lines are presentation arguments, not quotations from Licklider. They are 
 - **Scenes 10–12:** The six datasets and finished speech-intelligibility plot are invented to stage the operation Licklider describes. They are not presented as his historical data.
 - **Scene 14:** SYMBIOTE™ is an implemented fictional 1960s research product whose capabilities paraphrase §4. Its manufacturer, model, approval stamp, and product claims are invented.
 - **Scene 16:** The three alternative plots and highlighted unrequested relation are invented to stage the exploratory plotting behavior described in §4.
+- **Scene 18:** The changeover card and burning-frame effect are original transition devices, not historical film footage.
 - **Scene 19:** The shared desk surface is an interactive reconstruction inspired by §5.5.1, not a historical interface.
-- **Scene 20:** The thinking-center network is an original educational-film diagram based on §5.6, not historical network footage.
+- **Scene 20:** The thinking-center network is an original educational-film diagram based on §5.6, not historical network footage; its center names and routes are invented.
 
 ## Archival Asset Log
 

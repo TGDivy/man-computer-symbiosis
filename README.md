@@ -10,7 +10,7 @@ A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 pa
 - BBGitHub Pages: <https://bbgithub.dev.bloomberg.com/pages/dbramhecha/man-computer-symbiosis/>
 - BBGitHub mirror: <https://bbgithub.dev.bloomberg.com/dbramhecha/man-computer-symbiosis>
 
-The project is being published in reel-sized checkpoints. Scenes 00–17 contain the rebuilt opening, graph, and SYMBIOTE™ reels; Scenes 18–26 are intentionally marked as workprint assembly cards until their corresponding checkpoint lands.
+The project is being published in reel-sized checkpoints. Scenes 00–20 contain the rebuilt opening, graph, SYMBIOTE™, reel-change, shared-desk, and thinking-center sequences; Scenes 21–26 are intentionally marked as workprint assembly cards until the final checkpoint lands.
 
 ## Presenting Locally
 

@@ -109,7 +109,7 @@
 
     setScene(sceneIndex) {
       if (!this.context || !this.bedGain) return;
-      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001, 0.013, 0.009, 0.018, 0.006];
+      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001, 0.013, 0.009, 0.018, 0.006, 0.021, 0.008, 0.011];
       const target = levels[sceneIndex] ?? 0.007;
       const now = this.context.currentTime;
       this.bedGain.gain.cancelScheduledValues(now);
@@ -194,6 +194,9 @@
         this.playTone({ frequency: 440, duration: 0.5, gain: 0.018, delay: 0.16, type: "sine" });
       }
       if (sceneIndex === 17) this.playNoiseBurst({ duration: 0.04, gain: 0.04 });
+      if (sceneIndex === 18) this.playTone({ frequency: 58, duration: 0.42, gain: 0.04, type: "sawtooth" });
+      if (sceneIndex === 19) this.playNoiseBurst({ duration: 0.035, gain: 0.035 });
+      if (sceneIndex === 20) this.playTone({ frequency: 146, duration: 0.22, gain: 0.026, type: "triangle" });
     }
 
     cueBuild(sceneIndex, buildIndex) {
@@ -236,6 +239,21 @@
         this.playTone({ frequency: 92 + buildIndex * 21, duration: 0.09, gain: 0.032, delay: 0.02, type: "square" });
       }
       if (sceneIndex === 17) this.playNoiseBurst({ duration: 0.035, gain: 0.04 });
+      if (sceneIndex === 18) {
+        if (buildIndex === 1) this.playNoiseBurst({ duration: 0.72, gain: 0.13 });
+        if (buildIndex === 2) {
+          this.playTone({ frequency: 72, duration: 0.3, gain: 0.045, type: "square" });
+          this.playNoiseBurst({ duration: 0.08, gain: 0.055, delay: 0.04 });
+        }
+      }
+      if (sceneIndex === 19) {
+        this.playNoiseBurst({ duration: 0.035, gain: 0.04 });
+        this.playTone({ frequency: 120 + buildIndex * 28, duration: 0.045, gain: 0.025, type: "square" });
+      }
+      if (sceneIndex === 20) {
+        this.playTone({ frequency: 126 + buildIndex * 42, duration: 0.08, gain: 0.03, type: "triangle" });
+        if (buildIndex >= 3) this.playNoiseBurst({ duration: 0.04, gain: 0.03 });
+      }
     }
 
     async toggle() {

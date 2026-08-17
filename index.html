@@ -605,19 +605,117 @@
         </aside>
       </section>
 
-      <section id="scene-18" class="scene scene--workprint" data-title="Reel change" data-reel="REEL CHANGE" data-transition="workprint" aria-label="Scene 18 workprint">
-        <div class="scene-stage workprint-stage workprint-stage--burn"><span class="workprint-edge">WORKPRINT · 18</span><p class="workprint-kicker">REEL CHANGE</p><h2>REEL II<br />THE IMPOSSIBLE MACHINE</h2><small>BURN TEST PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 18 — Reel change</h2><p><strong>Purpose:</strong> Give the room a physical reset before the future-machine reel.</p><p><strong>Status:</strong> Workprint awaiting accessible projector-burn sequence.</p><p><strong>Source:</strong> Original transition device.</p></aside>
+      <section id="scene-18" class="scene scene--reel-change" data-title="Reel change" data-reel="REEL CHANGE" data-transition="burn-splice" aria-label="Scene 18: Reel change to The Impossible Machine">
+        <div class="scene-stage reel-change-stage">
+          <div class="changeover-frame"><span>CHANGE OVER</span><strong>REEL 01 · END</strong><i aria-hidden="true"></i></div>
+          <div class="film-burn build" data-build="1" aria-hidden="true"><span></span></div>
+          <div class="new-reel-title build" data-build="2">
+            <p>REEL II</p>
+            <h2>THE IMPOSSIBLE<br />MACHINE</h2>
+            <small>A FILM CONCERNING EQUIPMENT THAT DID NOT YET EXIST</small>
+            <i class="reel-change-circle" aria-hidden="true"></i>
+          </div>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 18 — Reel change</h2>
+          <p><strong>Purpose:</strong> Give the room a physical reset before increasing the speculative scale.</p>
+          <p><strong>Delivery:</strong> Advance once and let the frame buckle and burn. Do not speak over it. Advance again only after the room reaches black; let the fresh title card catch.</p>
+          <p><strong>Accessibility:</strong> Reduced-motion mode replaces the expansion with an immediate scorched frame while preserving the two presenter-controlled beats.</p>
+          <p><strong>Source:</strong> Original transition device, not historical footage.</p>
+        </aside>
       </section>
 
-      <section id="scene-19" class="scene scene--workprint" data-title="The desk of the future" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 19 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 19</span><p class="workprint-kicker">THE DESK OF THE FUTURE</p><h2>DRAW HERE.<br />THE MACHINE WILL FOLLOW.</h2><small>SHARED SURFACE RIG PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 19 — The desk of the future</h2><p><strong>Purpose:</strong> Reconstruct Licklider’s shared drawing surface literally, without modern app icons.</p><p><strong>Status:</strong> Workprint awaiting hand and plotter interaction.</p><p><strong>Source:</strong> Licklider, §5.5.1.</p></aside>
+      <section id="scene-19" class="scene scene--future-desk" data-title="The desk of the future" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="drafting-splice" aria-label="Scene 19: A human and machine share one drawing surface">
+        <div class="scene-stage future-desk-stage">
+          <header class="future-desk-heading"><span>THE DESK OF THE FUTURE</span><small>SHARED WORK SURFACE · CONCEPT DRAWING 19–B</small></header>
+          <div class="shared-surface">
+            <span class="surface-registration surface-registration--one" aria-hidden="true"></span><span class="surface-registration surface-registration--two" aria-hidden="true"></span>
+            <svg class="desk-drawing" viewBox="0 0 1100 620" role="img" aria-label="A rough human graph is traced, interpreted, and redrawn precisely by a machine">
+              <g class="rough-sketch build" data-build="1">
+                <path class="rough-axis" d="M154 470 C150 371 158 252 162 165 M151 469 C344 466 519 473 685 466" />
+                <path class="rough-curve" d="M179 424 C232 399 267 429 315 386 S401 291 447 317 S523 371 577 264 S631 194 667 186" />
+                <path class="rough-box" d="M730 157 L925 163 L917 312 L724 302 Z" />
+                <text x="196" y="528">maybe pressure?</text>
+                <text x="752" y="346">same relation?</text>
+              </g>
+              <g class="recognition-overlay build" data-build="2">
+                <path d="M140 145H690V490H140Z M706 139H944V328H706Z" />
+                <path d="M155 470L685 466 M162 165L154 470" />
+                <text x="145" y="126">GRAPH / ROUGH</text><text x="713" y="121">ENCLOSURE / ROUGH</text>
+              </g>
+              <g class="precise-sketch build" data-build="3">
+                <path class="precise-axis" d="M165 460V170M165 460H680" />
+                <path class="precise-grid" d="M165 388H680M165 316H680M165 244H680M294 170V460M423 170V460M552 170V460" />
+                <path class="precise-curve" d="M179 423 C245 420 279 397 321 365 C367 330 394 279 443 294 C496 310 520 352 570 265 C607 200 646 187 670 184" />
+                <rect x="734" y="165" width="186" height="142" rx="2" />
+                <path class="dimension-line" d="M734 335H920M708 165V307" />
+                <text x="805" y="367">186 UNITS</text><text x="693" y="251" transform="rotate(-90 693 251)">142 UNITS</text>
+              </g>
+            </svg>
+            <div class="handwritten-card build" data-build="1">WHAT HAPPENS<br />IF THIS MOVES?</div>
+            <div class="plotter-arm build" data-build="2" aria-hidden="true"><span></span><i></i></div>
+            <div class="machine-reply build" data-build="4"><span>SYMBIOTE™ READBACK</span><strong>IS THIS THE STRUCTURE<br />YOU MEANT?</strong><small>YES / NO / DRAW AGAIN</small></div>
+            <svg class="desk-hand" viewBox="0 0 310 190" aria-hidden="true"><path d="M8 171 C44 130 73 102 106 88 L141 30 C150 15 169 24 164 40 L147 81 L167 29 C173 10 194 16 191 35 L178 82 L195 39 C201 20 220 27 216 44 L204 91 L220 62 C229 46 245 56 239 72 L222 118 C265 111 287 121 302 145 L302 190 L75 190 Z" /></svg>
+            <div class="desk-pencil" aria-hidden="true"></div>
+          </div>
+          <aside class="desk-console" aria-label="Machine side of the shared desk">
+            <span>INTERPRETATION UNIT</span>
+            <div class="desk-crt"><i></i><i></i><i></i></div>
+            <div class="desk-keys" aria-hidden="true"><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b><b></b></div>
+            <small>ROUGH MARKS ACCEPTED</small>
+          </aside>
+          <footer class="future-desk-footer">DRAW · WRITE · ERASE · ASK AGAIN</footer>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 19 — The desk of the future</h2>
+          <p><strong>Purpose:</strong> Reconstruct Licklider’s shared drawing surface literally, without modern application icons.</p>
+          <p><strong>Delivery:</strong> The human rough mark always comes first. Let the machine trace what it thinks it sees, convert it to precise structure, then ask for judgement rather than silently deciding.</p>
+          <p><strong>Point:</strong> In 1960 Licklider imagines handwriting recognition, rough sketches becoming precise structures, and interaction almost as with another engineer on the same surface.</p>
+          <p><strong>Scholarship:</strong> The desk and exchange are original illustrative reconstructions.</p>
+          <p><strong>Source:</strong> Licklider, §5.5.1.</p>
+        </aside>
       </section>
 
-      <section id="scene-20" class="scene scene--workprint" data-title="The thinking center" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 20 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 20</span><p class="workprint-kicker">THE THINKING CENTER</p><h2>LIBRARY → MACHINE → NETWORK</h2><small>EDUCATIONAL DIAGRAM PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 20 — The thinking center</h2><p><strong>Purpose:</strong> Expand library, retrieval, and computation into connected centers.</p><p><strong>Status:</strong> Workprint awaiting diagram animation.</p><p><strong>Source:</strong> Licklider, §5.6.</p></aside>
+      <section id="scene-20" class="scene scene--thinking-center" data-title="The thinking center" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="diagram-splice" aria-label="Scene 20: Library functions become networked thinking centers">
+        <div class="scene-stage thinking-center-stage">
+          <header class="thinking-center-heading"><span>EDUCATIONAL FILM DIAGRAM 20–C</span><h2>THE THINKING CENTER</h2><small>LIBRARY · RETRIEVAL · COMPUTATION</small></header>
+          <div class="thinking-board">
+            <section class="library-stack" aria-label="Library stacks">
+              <h3>LIBRARY</h3>
+              <div class="shelf shelf--one"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="shelf shelf--two"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="shelf shelf--three"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <small>STORE · CATALOGUE · RETRIEVE</small>
+            </section>
+            <div class="retrieval-transfer build" data-build="1"><span>QUESTION</span><b>→</b><span>RECORD</span><b>→</b><span>COMPUTATION</span></div>
+            <section class="machine-center build" data-build="2" aria-label="Machine cabinets replacing library stacks">
+              <h3>THINKING CENTER 01</h3>
+              <div class="machine-bank"><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div><div><i></i><i></i><i></i></div></div>
+              <p>LIBRARY FUNCTIONS<br />+ INFORMATION RETRIEVAL<br />+ COMPUTATION</p>
+              <small>LOCAL CENTER</small>
+            </section>
+            <div class="network-board build" data-build="3">
+              <svg viewBox="0 0 1200 620" role="img" aria-label="Three thinking centers connected by wide-band communication lines">
+                <g class="network-lines"><path d="M240 319 C419 112 665 105 872 261"/><path d="M242 328 C454 525 706 519 934 383"/><path d="M875 270 C971 298 985 337 940 377"/></g>
+                <g class="network-repeat-lines"><path d="M245 334 C426 131 667 125 866 276"/><path d="M252 344 C461 506 709 498 927 371"/></g>
+              </svg>
+              <article class="center-node center-node--cambridge"><span>CENTER 01</span><strong>CAMBRIDGE</strong><small>LIBRARY / COMPUTE</small></article>
+              <article class="center-node center-node--washington"><span>CENTER 02</span><strong>WASHINGTON</strong><small>RETRIEVAL / COMPUTE</small></article>
+              <article class="center-node center-node--pacific"><span>CENTER 03</span><strong>PACIFIC</strong><small>SIMULATION / FILES</small></article>
+              <div class="wide-band-label build" data-build="4">WIDE-BAND<br /><strong>COMMUNICATION LINES</strong></div>
+              <p class="network-title build" data-build="4">A NETWORK OF<br />THINKING CENTERS</p>
+            </div>
+          </div>
+          <small class="thinking-center-disclaimer">ORIGINAL DIAGRAM BASED ON §5.6 · NOT A HISTORICAL NETWORK MAP</small>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 20 — The thinking center</h2>
+          <p><strong>Purpose:</strong> Expand library, retrieval, and computation into connected centers.</p>
+          <p><strong>Delivery:</strong> Begin with literal shelves. Pass one question through retrieval into computation. Replace the shelves with one combined center, then enlarge the idea into several centers joined by wide-band lines.</p>
+          <p><strong>Boundary:</strong> Say only that the network idea is explicit. Do not turn this into an ARPANET prophecy segment.</p>
+          <p><strong>Scholarship:</strong> The cities, cards, and diagram are original illustrative reconstructions, not a historical network map.</p>
+          <p><strong>Source:</strong> Licklider, §5.6.</p>
+        </aside>
       </section>
 
       <section id="scene-21" class="scene scene--workprint" data-title="Not a prophecy slideshow" data-reel="REEL II · THE IMPOSSIBLE MACHINE" data-transition="workprint" aria-label="Scene 21 workprint">

@@ -9,7 +9,7 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
   test("loads the complete 27-scene workprint and its local assets", async ({ page }) => {
     await expect(page.locator(".scene")).toHaveCount(27);
     await expect(page.locator(".speaker-notes")).toHaveCount(27);
-    await expect(page.locator(".scene--workprint")).toHaveCount(9);
+    await expect(page.locator(".scene--workprint")).toHaveCount(6);
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-00");
 
     const incompleteImages = await page.locator("img").evaluateAll((images) =>
@@ -146,6 +146,31 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
     await expect(page.locator("#thinking-responses .thinking-response-card strong")).toHaveText("Reformat the data before I can compare it");
     await expect(page.locator("#thinking-action-status")).toContainText("Filed response");
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-17");
+  });
+
+  test("changes reels before turning a rough sketch into precise structure", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(18, { silent: true }));
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(1, { silent: true }));
+    await expect(page.locator("#scene-18 .film-burn")).toHaveClass(/is-visible/);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(2, { silent: true }));
+    await expect(page.locator("#scene-18 .new-reel-title")).toHaveClass(/is-visible/);
+
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(19, { build: 4, silent: true }));
+    await expect(page.locator("#scene-19 .rough-sketch")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-19 .recognition-overlay")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-19 .precise-sketch")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-19 .machine-reply")).toHaveClass(/is-visible/);
+  });
+
+  test("expands one thinking center into a wide-band network", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(20, { silent: true }));
+    await expect(page.locator("#scene-20 .machine-center")).not.toHaveClass(/is-visible/);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(2, { silent: true }));
+    await expect(page.locator("#scene-20 .machine-center")).toHaveClass(/is-visible/);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(4, { silent: true }));
+    await expect(page.locator("#scene-20 .network-board")).toHaveClass(/is-visible/);
+    await expect(page.locator("#scene-20 .center-node")).toHaveCount(3);
+    await expect(page.locator("#scene-20 .wide-band-label")).toHaveClass(/is-visible/);
   });
 
   test("keeps notes, references, sound, and direct scene navigation available", async ({ page }) => {
