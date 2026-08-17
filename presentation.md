@@ -161,13 +161,13 @@ Sound must never obscure the presenter. Default levels should be conservative, a
 
 ## Scene 0 — The projector starts
 
-**Screen:** Black. A film leader appears: `8…7…6…`. Dust, scratches, splice flashes, and possibly `PROPERTY OF ——— RESEARCH LABORATORY`.
+**Screen:** Black. A generic `PROPERTY OF / RESEARCH FILM ARCHIVE` card appears, followed by `8…7…6…`. Dust and scratches establish the found-film texture without implying a real institution.
 
 **Room:** The presenter says nothing and does not introduce the talk.
 
-**Motion:** The first gesture starts the mechanism, leader, and countdown. Picture intermittently slips out of registration. The final number cuts to black rather than revealing a title.
+**Motion:** The first gesture starts the mechanism, leader, and countdown. One continuous tan film strip remains behind the archive card and numbers, avoiding rapid full-frame flashes or repeated cuts to black. The final number fades once to black rather than revealing a title.
 
-**Sound:** Projector motor catches, leader hiss, countdown pops, and one splice click.
+**Sound:** Projector motor catches, leader hiss, one soft optical pop, and three countdown pops.
 
 **Purpose:** Establish immediately that this is a screening, not a deck.
 
@@ -491,19 +491,17 @@ Scenes 0–6 establish the grammar for the entire film. They must be built and r
 
 The timings below are targets, not autoplay mandates. Presenter-controlled holds always take priority.
 
-## Scene 0 cue sheet — target 20–25 seconds
+## Scene 0 cue sheet — target 10–15 seconds plus presenter hold
 
 | Cue | Approx. time | Picture | Sound | Presenter |
 | --- | ---: | --- | --- | --- |
 | 0A | hold | Pure black. No loading mark or visible control. | Silence. | Press the first advance only when the room is ready. |
 | 0B | 0:00 | Motor catches while frame remains black. | Motor wind-up and soft mechanical flutter. | Say nothing. |
-| 0C | 0:02 | White leader flashes, slips vertically, then settles. | Hiss and splice click. | Say nothing. |
-| 0D | 0:04 | `PROPERTY OF` card, with the institution obscured by tape or grease pencil. | One optical pop. | Say nothing. |
-| 0E | 0:07 | Crooked `8`, change mark, scratches. | Countdown pop. | Say nothing. |
-| 0F | 0:09 | `7`, briefly out of focus. | Countdown pop. | Say nothing. |
-| 0G | 0:11 | `6`, gate weave increases. | Countdown pop and flutter. | Say nothing. |
-| 0H | 0:13 | A few missing/damaged leader frames; do not complete a predictable modern countdown. | Splice chatter. | Say nothing. |
-| 0I | hold | Cut to pure black. | Motor continues quietly. | Advance to the fig after one uncomfortable beat. |
+| 0C | 0:01 | Continuous tan leader stock resolves into `PROPERTY OF / RESEARCH FILM ARCHIVE`. No full-frame flash. | Hiss and one soft optical pop. | Say nothing. |
+| 0D | 0:03 | Crooked `8`, registration marks, scratches. | Countdown pop. | Say nothing. |
+| 0E | 0:05 | `7`, with restrained optical drift. | Countdown pop. | Say nothing. |
+| 0F | 0:07 | `6`, still on the same leader stock. | Countdown pop and flutter. | Say nothing. |
+| 0G | 0:09 | The leader fades once to pure black; do not complete a predictable modern countdown. | Motor continues quietly. | Advance to the fig after one uncomfortable beat. |
 
 ## Scene 1 cue sheet — target 25–35 seconds
 

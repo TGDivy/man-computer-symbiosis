@@ -51,7 +51,7 @@ This audit records the completed 27-scene found-film presentation against the co
 | Quote, paraphrase, interpretation, fiction separated | `SOURCES.md`, `speaker-notes.md`, and embedded scene notes | Complete for all scenes |
 | Opening claim follows the paper | Scenes 01–03 closely track the paper’s opening biological analogy | Complete |
 | Interpretive manifesto not passed as quotation | Scene 13 embedded notes and `speaker-notes.md` identify it as presentation interpretation | Complete |
-| Reconstructed imagery identified | Leader, laboratory label, SYMBIOTE™, graph data, and future diagrams are labelled reconstruction/fiction | Complete |
+| Reconstructed imagery identified | Leader, generic archive label, SYMBIOTE™, graph data, and future diagrams are labelled reconstruction/fiction | Complete |
 
 ## Direction and Design
 

@@ -16,13 +16,13 @@ All 27 scenes are implemented. These notes are the complete delivery record for 
 
 **Purpose:** Establish that this is a screening, not a deck.
 
-**Delivery:** Say nothing. Let the room settle before the first gesture. Allow the damaged leader to run through `8…7…6…`, then hold on the final black frame before advancing.
+**Delivery:** Say nothing. Let the room settle before the first gesture. Allow the archive card and continuous `8…7…6…` leader to run, then hold on the final black frame before advancing.
 
 **Sound:** Procedural projector motor, hiss, splice clicks, and countdown pops begin only after the presenter gesture.
 
 **Transition:** Hard cut from black to the fig.
 
-**Source status:** Original reconstruction. The laboratory and archive identifiers are fictional.
+**Source status:** Original reconstruction. `RESEARCH FILM ARCHIVE` is a generic framing device, not a reference to a real institution.
 
 ## Scene 01 — A fig
 

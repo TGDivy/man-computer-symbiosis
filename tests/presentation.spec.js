@@ -24,12 +24,21 @@ test.describe("Man–Computer Symbiosis found-film presentation", () => {
     await expect(page.locator("body")).not.toHaveClass(/projector-started/);
     await expect(page.locator("#scene-00")).toHaveClass(/is-active/);
     await expect(page.locator(".leader-cue--property")).toHaveCSS("opacity", "0");
+    await expect(page.locator(".leader-cue--property")).toContainText("RESEARCH FILM ARCHIVE");
+    await expect(page.locator(".leader-cue--flash, .leader-cue--damage")).toHaveCount(0);
+    await expect(page.locator("body")).not.toContainText("NORTH-EASTERN RESEARCH LABORATORY");
 
     await page.keyboard.press("Space");
 
     await expect(page.locator("body")).toHaveClass(/projector-started/);
     expect(await page.evaluate(() => window.__symbiosisDeck.state.started)).toBe(true);
     await expect(page.locator("#scene-00")).toHaveClass(/is-active/);
+    expect(
+      await page.locator(".leader-stage").evaluate((stage) =>
+        getComputedStyle(stage, "::before").animationName,
+      ),
+    ).toBe("leaderStock");
+    await expect(page.locator(".leader-cue--eight")).toHaveCSS("animation-timing-function", "ease-in-out");
   });
 
   test("withholds the subject until the title card", async ({ page }) => {

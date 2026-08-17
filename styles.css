@@ -186,19 +186,26 @@ body.projector-started .scene.is-active .scene-stage {
 }
 
 .leader-stage {
+  --leader-stock: #c9c3ad;
+
   background: #000;
+}
+
+.leader-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--leader-stock);
+  opacity: 0;
 }
 
 .leader-cue {
   position: absolute;
+  z-index: 1;
   inset: 0;
   display: grid;
   place-items: center;
   opacity: 0;
-}
-
-.leader-cue--flash {
-  background: #d6d0b9;
 }
 
 .leader-cue--property {
@@ -206,7 +213,7 @@ body.projector-started .scene.is-active .scene-stage {
   color: #11110e;
   background:
     linear-gradient(rgba(255, 255, 255, 0.15), rgba(0, 0, 0, 0.05)),
-    #cec7ac;
+    var(--leader-stock);
   font-family: var(--mono);
   text-align: center;
 }
@@ -238,23 +245,13 @@ body.projector-started .scene.is-active .scene-stage {
   letter-spacing: 0.26em;
 }
 
-.leader-cue--property .redacted-lab {
-  position: relative;
+.leader-cue--property .archive-mark {
   display: block;
   max-width: 60rem;
   font-size: clamp(1.6rem, 4.5vw, 5.4rem);
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.leader-cue--property .redacted-lab::after {
-  content: "";
-  position: absolute;
-  inset: 42% -2% 28%;
-  background: rgba(12, 12, 10, 0.9);
-  transform: rotate(-1.5deg);
-  box-shadow: 0.12rem 0.08rem 0 rgba(255, 255, 255, 0.08);
+  letter-spacing: -0.025em;
 }
 
 .leader-cue--property small {
@@ -266,7 +263,7 @@ body.projector-started .scene.is-active .scene-stage {
 
 .leader-cue--number {
   color: rgba(18, 18, 15, 0.93);
-  background: #c9c3ad;
+  background: var(--leader-stock);
   font: 700 clamp(12rem, 33vw, 35rem)/1 var(--sans);
 }
 
@@ -304,44 +301,24 @@ body.projector-started .scene.is-active .scene-stage {
   transform: rotate(-27deg);
 }
 
-.leader-cue--damage {
-  grid-template-columns: 1fr 1fr;
-  color: #202019;
-  background:
-    linear-gradient(84deg, transparent 46%, rgba(0, 0, 0, 0.65) 47% 50%, transparent 51%),
-    #bdb69e;
-  font: 700 clamp(2rem, 8vw, 8rem)/1 var(--mono);
-}
-
-.leader-cue--damage span:last-child {
-  padding: 1rem;
-  border: 0.3rem solid currentColor;
-  font-size: clamp(1rem, 2.5vw, 2.6rem);
-  transform: rotate(4deg);
-}
-
-body.projector-started #scene-00 .leader-cue--flash {
-  animation: leaderFlash 0.85s steps(2, end) 0.7s both;
+body.projector-started #scene-00 .leader-stage::before {
+  animation: leaderStock 9.2s ease-in-out both;
 }
 
 body.projector-started #scene-00 .leader-cue--property {
-  animation: leaderFrame 1.8s steps(2, end) 2s both;
+  animation: leaderFrame 2.3s ease-in-out 0.85s both;
 }
 
 body.projector-started #scene-00 .leader-cue--eight {
-  animation: leaderFrame 1.45s steps(2, end) 4.4s both;
+  animation: leaderFrame 1.75s ease-in-out 3.15s both;
 }
 
 body.projector-started #scene-00 .leader-cue--seven {
-  animation: leaderFrame 1.35s steps(2, end) 6.25s both;
+  animation: leaderFrame 1.75s ease-in-out 4.9s both;
 }
 
 body.projector-started #scene-00 .leader-cue--six {
-  animation: leaderFrame 1.5s steps(3, end) 8.05s both;
-}
-
-body.projector-started #scene-00 .leader-cue--damage {
-  animation: damageFrame 1.5s steps(4, end) 10s both;
+  animation: leaderFrame 1.9s ease-in-out 6.65s both;
 }
 
 .fig-stage {
@@ -4497,28 +4474,16 @@ body.sound-muted [data-action="sound"] {
   76% { transform: translate3d(0.02%, 0.06%, 0); }
 }
 
-@keyframes leaderFlash {
-  0%, 18% { opacity: 0; }
-  19%, 47% { opacity: 0.94; }
-  48%, 60% { opacity: 0; }
-  61%, 77% { opacity: 0.5; }
-  78%, 100% { opacity: 0; }
+@keyframes leaderStock {
+  0%, 5% { opacity: 0; }
+  10%, 92% { opacity: 1; }
+  100% { opacity: 0; }
 }
 
 @keyframes leaderFrame {
-  0%, 7% { opacity: 0; transform: translateY(-2%) scale(1.03); }
-  8%, 86% { opacity: 1; transform: translateY(0) scale(1); }
-  87%, 100% { opacity: 0; transform: translateY(2%) scale(1.01); }
-}
-
-@keyframes damageFrame {
-  0%, 5% { opacity: 0; transform: translateY(-12%); }
-  6%, 22% { opacity: 0.8; transform: translateY(3%); }
-  23%, 37% { opacity: 0; }
-  38%, 57% { opacity: 1; transform: translateY(-1%); }
-  58%, 66% { opacity: 0.25; }
-  67%, 82% { opacity: 0.9; transform: translateY(2%); }
-  83%, 100% { opacity: 0; transform: translateY(14%); }
+  0% { opacity: 0; transform: translateY(-0.4%) scale(1.005); }
+  12%, 88% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(0.4%) scale(1.003); }
 }
 
 @keyframes figPush {
@@ -4665,10 +4630,6 @@ body.sound-muted [data-action="sound"] {
   .clerical-plot.is-visible .plot-series path,
   .study-stamp.is-visible {
     animation: none !important;
-  }
-
-  body.projector-started #scene-00 .leader-cue {
-    animation-duration: 1ms !important;
   }
 
   .build,

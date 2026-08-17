@@ -41,7 +41,7 @@ These lines are presentation arguments, not quotations from Licklider. They are 
 - **Scene 23:** The three relationship cards are a local presentation interaction. They do not record, count, store, or transmit audience votes.
 - **Scene 24:** Both pipeline models and the “clerical distance” annotation are presentation interpretation grounded in Licklider’s formulative aims, not quotations or historical diagrams.
 - **Scene 25:** The final image reuses the documented cut-fig and fig-wasp photographs from the opening; no synthetic biological image is introduced.
-- **Scene 26:** The credit and archive-control cards are original graphic devices that continue the fictional laboratory-film frame.
+- **Scene 26:** The credit and archive-control cards are original graphic devices that continue the generic research-film archive frame.
 
 ## Archival Asset Log
 

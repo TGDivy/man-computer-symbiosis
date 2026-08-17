@@ -154,13 +154,11 @@
 
     playLeaderTrack() {
       this.playNoiseBurst({ duration: 0.22, gain: 0.11, delay: 0.65 });
-      this.playNoiseBurst({ duration: 0.05, gain: 0.16, delay: 1.95 });
-      [4.45, 6.3, 8.1].forEach((delay, index) => {
+      this.playNoiseBurst({ duration: 0.05, gain: 0.1, delay: 0.95 });
+      [3.35, 5.1, 6.85].forEach((delay, index) => {
         this.playTone({ frequency: 860 - index * 35, duration: 0.07, gain: 0.07, delay, type: "square" });
         this.playNoiseBurst({ duration: 0.035, gain: 0.08, delay: delay + 0.02 });
       });
-      this.playNoiseBurst({ duration: 0.28, gain: 0.13, delay: 10.05 });
-      this.playTone({ frequency: 145, duration: 0.22, gain: 0.04, delay: 10.5, type: "sawtooth" });
     }
 
     cueScene(sceneIndex) {
@@ -502,7 +500,7 @@
       presentationState.leaderComplete = true;
       body.classList.add("leader-complete");
       announce("Film leader complete");
-    }, 11_700);
+    }, 9_400);
 
     announce(sound.muted ? "Projector started, sound muted" : "Projector started");
     return true;
