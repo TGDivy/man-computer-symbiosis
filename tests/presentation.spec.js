@@ -2,7 +2,7 @@ const { test, expect } = require("@playwright/test");
 
 test.describe("Man–Computer Symbiosis presentation", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/");
+    await page.goto("./");
     await page.waitForFunction(() => Boolean(window.__symbiosisDeck));
   });
 
