@@ -5,6 +5,7 @@
   "description": "A cinematic interactive presentation based on J. C. R. Licklider's 1960 paper Man-Computer Symbiosis.",
   "scripts": {
     "capture": "node scripts/capture-deck.js",
+    "publish:checkpoint": "bash scripts/publish-checkpoint.sh",
     "test": "playwright test",
     "test:headed": "playwright test --headed",
     "test:update": "playwright test --update-snapshots"

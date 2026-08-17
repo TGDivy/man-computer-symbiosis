@@ -7,6 +7,8 @@ A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 pa
 - GitHub Pages: <https://www.divyb.xyz/man-computer-symbiosis/>
 - Repository: <https://github.com/TGDivy/man-computer-symbiosis>
 - GitHub Pages alias: <https://tgdivy.github.io/man-computer-symbiosis/>
+- BBGitHub Pages: <https://bbgithub.dev.bloomberg.com/pages/dbramhecha/man-computer-symbiosis/>
+- BBGitHub mirror: <https://bbgithub.dev.bloomberg.com/dbramhecha/man-computer-symbiosis>
 
 The project is being published in reel-sized checkpoints. Scenes 00–06 currently contain the rebuilt opening reel; Scenes 07–26 are intentionally marked as workprint assembly cards until their corresponding checkpoint lands.
 
@@ -64,6 +66,14 @@ npm test
 ```
 
 Every push to `main` runs the two-viewport Playwright suite, deploys the static site to GitHub Pages, and then runs the desktop Playwright suite against the deployed URL.
+
+To run Playwright locally and push the same clean `main` checkpoint to both GitHub and BBGitHub, use:
+
+```bash
+npm run publish:checkpoint
+```
+
+BBGitHub does not run GitHub Actions. Its native Pages service rebuilds directly from the mirrored `main` branch after the checkpoint script pushes it.
 
 Generate rehearsal captures and contact sheets with:
 
