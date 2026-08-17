@@ -279,39 +279,197 @@
         </aside>
       </section>
 
-      <section id="scene-07" class="scene scene--workprint" data-title="Field study: one thinking human" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 7 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 07</span><p class="workprint-kicker">FIELD STUDY</p><h2>ONE THINKING HUMAN</h2><div class="workprint-card">SUBJECT: J.C.R.L.<br />ACTIVITY: THINKING<br />YEAR: 1957</div><small>ASSEMBLY BAY · NEXT CHECKPOINT</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 07 — Field study</h2><p><strong>Purpose:</strong> Introduce Licklider’s informal self-observation with deadpan laboratory seriousness.</p><p><strong>Status:</strong> Workprint scene awaiting the thinking-experiment build.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      <section id="scene-07" class="scene scene--field-study" data-title="Field study: one thinking human" data-reel="REEL I · PREPARING TO THINK" data-transition="paper-cut" aria-label="Scene 7: Field study, one thinking human">
+        <div class="scene-stage field-study-stage">
+          <div class="study-board">
+            <p class="study-bureau">HUMAN FACTORS DIVISION · OBSERVATION RECORD 57–B</p>
+            <h2>FIELD STUDY:<br />ONE THINKING HUMAN</h2>
+            <div class="study-lines" aria-hidden="true"></div>
+            <figure class="subject-dossier build" data-build="1">
+              <img src="assets/archive/licklider.jpg" alt="Portrait of J. C. R. Licklider" draggable="false" />
+              <figcaption>SUBJECT · J.C.R.L.</figcaption>
+            </figure>
+            <div class="study-field study-field--activity build" data-build="2"><span>ACTIVITY</span><strong>THINKING</strong></div>
+            <div class="study-field study-field--year build" data-build="2"><span>YEAR</span><strong>1957</strong></div>
+            <div class="study-stamp build" data-build="3">INVESTIGATOR:<br />SAME PERSON</div>
+            <p class="study-footnote">SAMPLING ADEQUACY: <span>NOT IDEAL</span></p>
+          </div>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 07 — FIELD STUDY: ONE THINKING HUMAN</h2>
+          <p><strong>Purpose:</strong> Introduce Licklider’s informal self-observation with deadpan laboratory seriousness.</p>
+          <p><strong>Delivery:</strong> In spring and summer 1957 he tried to track what one “moderately technical person” actually did during work. Reveal that he served as his own subject only after the card has established mock formality.</p>
+          <p><strong>Builds:</strong> Subject dossier; activity/year fields; investigator stamp. Optional line after the last build: “Peer review was unusually convenient.”</p>
+          <p><strong>Scholarship:</strong> He explicitly acknowledges inadequate sampling and hopes his activity spectrum is not typical.</p>
+          <p><strong>Source:</strong> Licklider, §3.1, first two paragraphs.</p>
+        </aside>
       </section>
 
-      <section id="scene-08" class="scene scene--workprint" data-title="Audience experiment one" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 8 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 08</span><p class="workprint-kicker">AUDIENCE EXPERIMENT 01</p><h2>HOW MUCH IS<br />ACTUALLY THINKING?</h2><div class="workprint-dial">0 <span></span> 100%</div><small>INTERACTION ASSEMBLY PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 08 — Audience experiment #1</h2><p><strong>Purpose:</strong> Ask the room to estimate its own thinking time before revealing Licklider’s result.</p><p><strong>Status:</strong> Workprint scene awaiting the physical dial interaction.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      <section id="scene-08" class="scene scene--audience-dial" data-title="Audience experiment one" data-reel="REEL I · PREPARING TO THINK" data-transition="instrument-cut" aria-label="Scene 8: Audience thinking-time estimate">
+        <div class="scene-stage audience-dial-stage">
+          <p class="dial-plate">AUDIENCE TEST · INSTRUMENT 08</p>
+          <div class="thinking-dial" style="--estimate: 50">
+            <div class="dial-arc" aria-hidden="true">
+              <span class="dial-tick dial-tick--0"></span><span class="dial-tick dial-tick--1"></span><span class="dial-tick dial-tick--2"></span><span class="dial-tick dial-tick--3"></span><span class="dial-tick dial-tick--4"></span><span class="dial-tick dial-tick--5"></span><span class="dial-tick dial-tick--6"></span><span class="dial-tick dial-tick--7"></span><span class="dial-tick dial-tick--8"></span><span class="dial-tick dial-tick--9"></span><span class="dial-tick dial-tick--10"></span>
+            </div>
+            <div class="dial-needle" aria-hidden="true"></div>
+            <div id="audience-marks" class="audience-marks" aria-label="Recorded audience estimates"></div>
+            <span class="dial-zero">0%</span>
+            <span class="dial-hundred">100%</span>
+            <span class="dial-caption">PORTION ACTUALLY SPENT THINKING</span>
+          </div>
+          <form id="thinking-form" class="dial-controls">
+            <label for="thinking-estimate">SET NEEDLE</label>
+            <input id="thinking-estimate" type="range" min="0" max="100" value="50" step="1" />
+            <output id="estimate-output" for="thinking-estimate" aria-live="polite">—</output>
+            <button id="lock-estimate" type="button">MARK GUESS</button>
+            <p id="estimate-status" aria-live="polite">Take answers from the room. The control is optional.</p>
+          </form>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 08 — Audience experiment #1</h2>
+          <p><strong>Purpose:</strong> Turn the audience into Licklider’s next experimental group.</p>
+          <p><strong>Prompt:</strong> “Of the time you call thinking at work, how much do you reckon is actually spent thinking?” Take shouted estimates or hands. Do not reveal Licklider’s result yet.</p>
+          <p><strong>Interaction:</strong> Drag or arrow the range and press “Mark Guess” to leave a grease-pencil tick. The scene works fully without touching the control.</p>
+          <p><strong>Timing:</strong> Take three or four estimates, not a statistically respectable sample.</p>
+          <p><strong>Source:</strong> Audience prompt inspired by Licklider’s self-study in §3.1.</p>
+        </aside>
       </section>
 
-      <section id="scene-09" class="scene scene--workprint" data-title="85%" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 9 workprint">
-        <div class="scene-stage workprint-stage workprint-stage--number"><span class="workprint-edge">WORKPRINT · 09</span><h2>85%</h2><small>NUMBER CARD · SHAKE TEST PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 09 — 85%</h2><p><strong>Purpose:</strong> Reveal the proportion of Licklider’s “thinking” time spent preparing to think.</p><p><strong>Status:</strong> Workprint number card awaiting sound and gate-weave pass.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      <section id="scene-09" class="scene scene--eighty-five" data-title="85%" data-reel="REEL I · PREPARING TO THINK" data-transition="number-cut" aria-label="Scene 9: Eighty-five percent">
+        <div class="scene-stage eighty-five-stage">
+          <p>85<span>%</span></p>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 09 — 85%</h2>
+          <p><strong>Purpose:</strong> Reveal the proportion of Licklider’s “thinking” time spent preparing to think.</p>
+          <p><strong>Delivery:</strong> Let the number land. Then name finding information, calculating, plotting, transforming, and preparing the way for a decision or insight.</p>
+          <p><strong>Scholarship:</strong> The figure describes one informal and self-acknowledged inadequate sample. Do not generalise it into a modern workplace statistic.</p>
+          <p><strong>Transition:</strong> “One example involved six experiments and one graph.”</p>
+          <p><strong>Source:</strong> “About 85 per cent of my ‘thinking’ time…” in Licklider, §3.1.</p>
+        </aside>
       </section>
 
-      <section id="scene-10" class="scene scene--workprint" data-title="The graph, part one" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 10 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 10</span><p class="workprint-kicker">THE GRAPH · PART I</p><h2>SIX EXPERIMENTS.<br />SIX DEFINITIONS.</h2><small>DATA PROP FABRICATION IN PROGRESS</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 10 — The graph, part I</h2><p><strong>Purpose:</strong> Make incompatible data physically and cognitively messy.</p><p><strong>Status:</strong> Workprint scene awaiting six source-data props.</p><p><strong>Source:</strong> Speech-intelligibility example in Licklider, §3.1.</p></aside>
+      <section id="scene-10" class="scene scene--raw-data" data-title="The graph, part one" data-reel="REEL I · PREPARING TO THINK" data-transition="desk-cut" aria-label="Scene 10: Six incompatible experimental datasets">
+        <div class="scene-stage raw-data-stage">
+          <div class="graph-paper" aria-hidden="true"></div>
+          <div class="wood-ruler" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div>
+          <article class="data-slip data-slip--a">
+            <header>EXPERIMENT A · PB WORDS</header><strong>S/N = RMS SPEECH ÷ RMS NOISE</strong><p>−12 · −6 · 0 · +6</p><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M8 61H173M10 62V6"/><path class="data-line" d="M11 57 C42 55 62 49 83 37 S124 13 169 9"/></svg>
+          </article>
+          <article class="data-slip data-slip--b">
+            <header>EXPERIMENT B · SYLLABLES</header><strong>20 LOG₁₀ (SIGNAL / MASKER)</strong><p>−18 · −9 · −3 · +3</p><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M8 61H173M10 62V6"/><path class="data-line" d="M11 59 C53 58 68 51 94 34 S132 15 169 11"/></svg>
+          </article>
+          <article class="data-slip data-slip--c">
+            <header>EXPERIMENT C · SENTENCES</header><strong>NOISE / SPEECH · LINEAR</strong><p>4.0 · 2.0 · 1.0 · 0.5</p><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M8 61H173M10 62V6"/><path class="data-line" d="M12 10 C48 13 75 28 102 44 S140 57 169 59"/></svg>
+          </article>
+          <article class="data-slip data-slip--d">
+            <header>EXPERIMENT D · PHONEMES</header><strong>MASKER BELOW SPEECH · dB</strong><p>0 · 4 · 8 · 12</p><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M8 61H173M10 62V6"/><path class="data-line" d="M11 58 C45 56 70 47 91 33 S130 14 169 8"/></svg>
+          </article>
+          <article class="data-slip data-slip--e">
+            <header>EXPERIMENT E · WORD SCORE</header><strong>ARTICULATION INDEX</strong><p>0.1 · 0.3 · 0.6 · 0.9</p><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M8 61H173M10 62V6"/><path class="data-line" d="M11 60 C56 58 68 49 94 30 S137 10 169 8"/></svg>
+          </article>
+          <article class="data-slip data-slip--f">
+            <header>EXPERIMENT F · % HEARD</header><strong>SPEECH PEAK − NOISE AVG.</strong><p>−22 · −14 · −7 · +1</p><svg viewBox="0 0 180 70" aria-hidden="true"><path d="M8 61H173M10 62V6"/><path class="data-line" d="M11 59 C38 58 69 54 93 39 S134 17 169 10"/></svg>
+          </article>
+          <div class="grease-note grease-note--one build" data-build="1">SIX MEASURES</div>
+          <div class="grease-note grease-note--two build" data-build="2">NO TWO DEFINITIONS ALIKE</div>
+          <div class="grease-circle grease-circle--one build" data-build="1" aria-hidden="true"></div>
+          <div class="grease-circle grease-circle--two build" data-build="2" aria-hidden="true"></div>
+          <div class="not-comparable build" data-build="3">COMPARABLE?<strong>NO.</strong></div>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 10 — THE GRAPH, PART I</h2>
+          <p><strong>Purpose:</strong> Make the six incompatible speech-intelligibility datasets physically and cognitively messy.</p>
+          <p><strong>Delivery:</strong> Licklider needed to compare six experimental determinations relating speech intelligibility to speech-to-noise ratio. No two experimenters had used the same definition or measure.</p>
+          <p><strong>Builds:</strong> Circle the six measures, identify the definition mismatch, then stamp the obvious verdict: not comparable.</p>
+          <p><strong>Scholarship:</strong> The paper slips and numerical values are illustrative reconstructions. They stage the incompatibility but are not Licklider’s historical data.</p>
+          <p><strong>Source:</strong> Licklider, §3.1.</p>
+        </aside>
       </section>
 
-      <section id="scene-11" class="scene scene--workprint" data-title="The graph, part two" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 11 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 11</span><p class="workprint-kicker">THE GRAPH · PART II</p><h2>CONVERT → NORMALISE<br />CALCULATE → PLOT</h2><small>CLERICAL TIMER TEST PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 11 — The graph, part II</h2><p><strong>Purpose:</strong> Force the audience to experience 10–15 seconds of real preparatory delay.</p><p><strong>Status:</strong> Workprint scene awaiting deterministic data transformations.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      <section id="scene-11" class="scene scene--clerical" data-title="The graph, part two" data-reel="REEL I · PREPARING TO THINK" data-transition="machine-cut" aria-label="Scene 11: Converting and plotting the six experiments">
+        <div class="scene-stage clerical-stage">
+          <div class="operation-track" aria-label="Clerical process">
+            <span class="operation build" data-build="1">01 · CONVERT</span>
+            <span class="operation build" data-build="2">02 · NORMALISE</span>
+            <span class="operation build" data-build="3">03 · CALCULATE</span>
+            <span class="operation build" data-build="4">04 · PLOT</span>
+          </div>
+          <div class="calculation-ledger">
+            <div class="ledger-head"><span>RUN</span><span>RAW MEASURE</span><span>COMMON dB</span><span>CHECK</span></div>
+            <div class="ledger-row"><span>A</span><span>RMS 0.25</span><strong class="build" data-build="1">−12.04</strong><i class="build" data-build="3">✓</i></div>
+            <div class="ledger-row"><span>B</span><span>LOG −0.60</span><strong class="build" data-build="1">−12.00</strong><i class="build" data-build="3">✓</i></div>
+            <div class="ledger-row"><span>C</span><span>N/S 3.98</span><strong class="build" data-build="2">−12.00</strong><i class="build" data-build="3">✓</i></div>
+            <div class="ledger-row"><span>D</span><span>M−S 12.0</span><strong class="build" data-build="2">−12.00</strong><i class="build" data-build="3">✓</i></div>
+            <div class="ledger-row"><span>E</span><span>AI 0.18</span><strong class="build" data-build="2">−11.86</strong><i class="build" data-build="3">✓</i></div>
+            <div class="ledger-row"><span>F</span><span>PK−AVG −11.7</span><strong class="build" data-build="2">−11.70</strong><i class="build" data-build="3">✓</i></div>
+          </div>
+          <div class="clerical-plot build" data-build="4">
+            <svg viewBox="0 0 520 330" role="img" aria-label="Six normalised data series slowly converging on a common curve">
+              <g class="plot-grid"><path d="M55 25V285M55 285H495M55 235H495M55 185H495M55 135H495M55 85H495M145 25V285M235 25V285M325 25V285M415 25V285" /></g>
+              <g class="plot-series">
+                <path d="M58 271 C135 268 170 253 225 214 S309 98 490 47" />
+                <path d="M58 278 C137 274 176 257 231 209 S322 92 490 42" />
+                <path d="M58 266 C127 265 167 249 221 218 S310 105 490 51" />
+                <path d="M58 274 C132 271 174 255 228 211 S316 96 490 45" />
+                <path d="M58 269 C131 267 170 251 224 216 S312 101 490 48" />
+                <path d="M58 276 C138 272 178 259 234 207 S325 89 490 40" />
+              </g>
+            </svg>
+          </div>
+          <div class="clerical-counter"><span>ELAPSED CLERICAL OPERATIONS</span><strong id="clerical-counter">0000</strong></div>
+          <div class="hours-later build" data-build="5">SEVERAL HOURS LATER</div>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 11 — THE GRAPH, PART II</h2>
+          <p><strong>Purpose:</strong> Make the audience experience clerical delay instead of merely hearing that it occurred.</p>
+          <p><strong>Delivery:</strong> Advance once to start the automatic 12-second sequence. Let `CONVERT → NORMALISE → CALCULATE → PLOT` run without filling the silence. Optional line: “This is the interactive portion.”</p>
+          <p><strong>Interaction:</strong> Further advances can step manually. Reduced-motion mode completes the same deterministic states quickly.</p>
+          <p><strong>Scholarship:</strong> The calculations are illustrative stage mechanics. The several-hour duration and incompatibility are from the paper; these exact values are not.</p>
+          <p><strong>Source:</strong> Licklider, §3.1.</p>
+        </aside>
       </section>
 
-      <section id="scene-12" class="scene scene--workprint" data-title="The graph, part three" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 12 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 12</span><p class="workprint-kicker">THE GRAPH · PART III</p><h2>“…RIGHT.”</h2><small>CLEAN GRAPH AND SILENCE PENDING</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 12 — The graph, part III</h2><p><strong>Purpose:</strong> Deliver the immediate visual insight at the emotional centre of the film.</p><p><strong>Status:</strong> Workprint scene awaiting the final graph.</p><p><strong>Source:</strong> Licklider, §3.1.</p></aside>
+      <section id="scene-12" class="scene scene--clean-graph" data-title="The graph, part three" data-reel="REEL I · PREPARING TO THINK" data-transition="revelation-cut" aria-label="Scene 12: Clean speech-intelligibility graph">
+        <div class="scene-stage clean-graph-stage">
+          <svg class="insight-graph" viewBox="0 0 1200 680" role="img" aria-label="Clean graph showing speech intelligibility rising sharply as speech-to-noise ratio improves">
+            <g class="insight-grid"><path d="M135 60V585M135 585H1125M135 480H1125M135 375H1125M135 270H1125M135 165H1125M333 60V585M531 60V585M729 60V585M927 60V585" /></g>
+            <g class="insight-labels">
+              <text x="125" y="620">−18</text><text x="323" y="620">−12</text><text x="521" y="620">−6</text><text x="723" y="620">0</text><text x="919" y="620">+6</text><text x="1100" y="620">+12</text>
+              <text x="105" y="590">0</text><text x="88" y="485">20</text><text x="88" y="380">40</text><text x="88" y="275">60</text><text x="88" y="170">80</text><text x="74" y="70">100</text>
+              <text class="axis-title" x="630" y="663">SPEECH / NOISE RATIO · dB</text>
+              <text class="axis-title" x="27" y="330" transform="rotate(-90 27 330)">INTELLIGIBILITY · %</text>
+            </g>
+            <g class="insight-series">
+              <path d="M139 570 C300 565 380 546 470 489 C570 424 623 312 706 213 C798 105 905 80 1117 72" />
+              <g class="insight-points"><circle cx="168" cy="566" r="7"/><circle cx="335" cy="548" r="7"/><circle cx="488" cy="475" r="7"/><circle cx="625" cy="310" r="7"/><circle cx="760" cy="156" r="7"/><circle cx="926" cy="86" r="7"/><circle cx="1095" cy="74" r="7"/></g>
+            </g>
+          </svg>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 12 — THE GRAPH, PART III</h2>
+          <p><strong>Purpose:</strong> Deliver the immediate visual insight at the emotional centre of the film.</p>
+          <p><strong>Delivery:</strong> Cut here. The clerical rhythm stops before the picture appears. Look at the graph with the audience. Pause. “…right.” Only then explain that it took seconds to determine what Licklider needed to know once the data were comparable.</p>
+          <p><strong>Screen:</strong> No thesis, quotation, title, or explanatory paragraph. The axes contain only what is needed to read the relationship.</p>
+          <p><strong>Scholarship:</strong> This graph is an illustrative reconstruction, not Licklider’s historical plot.</p>
+          <p><strong>Source:</strong> “When the graphs were finished, the relations were obvious at once…” and the six-experiment account in §3.1.</p>
+        </aside>
       </section>
 
-      <section id="scene-13" class="scene scene--workprint" data-title="A manifesto" data-reel="REEL I · PREPARING TO THINK" data-transition="workprint" aria-label="Scene 13 workprint">
-        <div class="scene-stage workprint-stage"><span class="workprint-edge">WORKPRINT · 13</span><p class="workprint-kicker">OUR INTERPRETATION</p><h2>THE MACHINE DID NOT<br />HAVE THE INSIGHT.</h2><small>SECOND STATEMENT HELD FOR NEXT BUILD</small></div>
-        <aside class="speaker-notes" hidden><h2>Scene 13 — A manifesto</h2><p><strong>Purpose:</strong> Name the presentation’s interpretation after the graph demonstrates it.</p><p><strong>Status:</strong> Workprint typography awaiting two-beat build.</p><p><strong>Source:</strong> Presentation interpretation, not a Licklider quotation.</p></aside>
+      <section id="scene-13" class="scene scene--manifesto" data-title="A manifesto" data-reel="REEL I · PREPARING TO THINK" data-transition="black-cut" aria-label="Scene 13: Interpretive manifesto">
+        <div class="scene-stage manifesto-stage">
+          <p class="manifesto-one">THE MACHINE DID NOT<br />HAVE THE INSIGHT.</p>
+          <p class="manifesto-two build" data-build="1">IT GOT US TO THE PLACE<br />WHERE INSIGHT COULD HAPPEN.</p>
+        </div>
+        <aside class="speaker-notes" hidden>
+          <h2>Scene 13 — A manifesto</h2>
+          <p><strong>Purpose:</strong> Give the audience the interpretation that the graph sequence has earned.</p>
+          <p><strong>Delivery:</strong> Let the first statement stand. Advance after a real beat. Read neither statement like a slogan; the audience has just experienced the evidence.</p>
+          <p><strong>Transition:</strong> The serious statement creates room for the cheerful absurdity of the SYMBIOTE™ product film.</p>
+          <p><strong>Scholarship:</strong> Both statements are the presentation’s interpretation, not quotations from Licklider.</p>
+          <p><strong>Source:</strong> Interpretive synthesis of Licklider’s §3.1 account.</p>
+        </aside>
       </section>
 
       <section id="scene-14" class="scene scene--workprint" data-title="Symbiote enters" data-reel="REEL I · ELECTRONIC COMPANION" data-transition="workprint" aria-label="Scene 14 workprint">

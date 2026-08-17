@@ -2,7 +2,7 @@
 
 These notes follow the redesigned 27-scene sequence from Scene 00 through Scene 26. The same scene-specific notes are embedded in `index.html` and available during playback with `N`.
 
-Scenes 00–06 are the first finished reel. Scenes 07–26 are assembly notes for visible workprint cards and will become full delivery records as each reel is built.
+Scenes 00–13 are the finished opening and graph reels. Scenes 14–26 are assembly notes for visible workprint cards and will become full delivery records as each reel is built.
 
 ## Global delivery
 
@@ -132,7 +132,7 @@ Scenes 00–06 are the first finished reel. Scenes 07–26 are assembly notes fo
 
 **Delivery plan:** Reveal different axes, scales, and definitions one at a time. Explain that hours were required merely to make the experiments comparable.
 
-**Source:** §3.1. The visible datasets will be transparent illustrative reconstructions, not Licklider’s historical sheets.
+**Source:** §3.1. The visible datasets are transparent illustrative reconstructions, not Licklider’s historical sheets.
 
 ## Scene 11 — THE GRAPH, PART II
 

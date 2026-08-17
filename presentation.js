@@ -18,6 +18,9 @@
     leaderTimer: null,
     chromeTimer: null,
     transitionTimer: null,
+    clericalTimers: [],
+    clericalCounterTimer: null,
+    clericalOperations: 0,
     touchStartX: 0,
     touchStartY: 0,
     touchHandledUntil: 0,
@@ -106,7 +109,7 @@
 
     setScene(sceneIndex) {
       if (!this.context || !this.bedGain) return;
-      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002];
+      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001];
       const target = levels[sceneIndex] ?? 0.007;
       const now = this.context.currentTime;
       this.bedGain.gain.cancelScheduledValues(now);
@@ -176,6 +179,15 @@
         const now = this.context.currentTime;
         if (this.bedGain) this.bedGain.gain.setTargetAtTime(0.001, now, 0.04);
       }
+      if (sceneIndex === 7) this.playNoiseBurst({ duration: 0.04, gain: 0.05 });
+      if (sceneIndex === 9) {
+        this.playTone({ frequency: 82, duration: 0.28, gain: 0.07, type: "square" });
+        this.playNoiseBurst({ duration: 0.08, gain: 0.08 });
+      }
+      if (sceneIndex === 12 && this.bedGain) {
+        const now = this.context.currentTime;
+        this.bedGain.gain.setTargetAtTime(0.0001, now, 0.025);
+      }
     }
 
     cueBuild(sceneIndex, buildIndex) {
@@ -188,6 +200,22 @@
         const frequency = buildIndex === 6 ? 118 : 105 + buildIndex * 19;
         this.playTone({ frequency, duration: buildIndex === 6 ? 0.22 : 0.055, gain: 0.045, type: "square" });
         if (buildIndex === 5) this.playNoiseBurst({ duration: 0.25, gain: 0.07 });
+      }
+      if (sceneIndex === 7) {
+        this.playNoiseBurst({ duration: buildIndex === 3 ? 0.09 : 0.035, gain: buildIndex === 3 ? 0.1 : 0.045 });
+      }
+      if (sceneIndex === 11) {
+        const frequencies = [0, 164, 196, 233, 277, 112];
+        this.playTone({
+          frequency: frequencies[buildIndex] || 180,
+          duration: buildIndex === 5 ? 0.18 : 0.045,
+          gain: buildIndex === 5 ? 0.055 : 0.035,
+          type: "square",
+        });
+        this.playNoiseBurst({ duration: 0.025, gain: 0.03, delay: 0.025 });
+      }
+      if (sceneIndex === 13 && buildIndex === 1) {
+        this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
       }
     }
 
@@ -251,12 +279,63 @@
     });
   }
 
-  function setBuild(buildIndex, { silent = false } = {}) {
+  function updateClericalCounter(buildIndex = presentationState.build) {
+    const counter = document.querySelector("#clerical-counter");
+    if (!counter) return;
+    const milestones = [0, 47, 126, 238, 417, 862];
+    const value = milestones[clamp(buildIndex, 0, milestones.length - 1)];
+    presentationState.clericalOperations = value;
+    counter.textContent = String(value).padStart(4, "0");
+  }
+
+  function clearClericalSequence() {
+    presentationState.clericalTimers.forEach((timer) => window.clearTimeout(timer));
+    presentationState.clericalTimers = [];
+    window.clearInterval(presentationState.clericalCounterTimer);
+    presentationState.clericalCounterTimer = null;
+  }
+
+  function startClericalSequence() {
+    clearClericalSequence();
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const stepDuration = reducedMotion ? 90 : 2_650;
+    const finalOperationCount = 862;
+    const startTime = performance.now();
+    const totalDuration = stepDuration * 4;
+    const counter = document.querySelector("#clerical-counter");
+
+    if (counter) {
+      presentationState.clericalCounterTimer = window.setInterval(() => {
+        const progress = clamp((performance.now() - startTime) / totalDuration, 0, 1);
+        presentationState.clericalOperations = Math.round(finalOperationCount * progress);
+        counter.textContent = String(presentationState.clericalOperations).padStart(4, "0");
+        if (progress >= 1) {
+          window.clearInterval(presentationState.clericalCounterTimer);
+          presentationState.clericalCounterTimer = null;
+        }
+      }, reducedMotion ? 20 : 80);
+    }
+
+    for (let buildIndex = 2; buildIndex <= 5; buildIndex += 1) {
+      const timer = window.setTimeout(() => {
+        if (presentationState.index !== 11) return;
+        setBuild(buildIndex, { source: "automatic" });
+      }, stepDuration * (buildIndex - 1));
+      presentationState.clericalTimers.push(timer);
+    }
+  }
+
+  function setBuild(buildIndex, { silent = false, source = "manual" } = {}) {
     const nextBuild = clamp(Number(buildIndex) || 0, 0, getMaxBuild());
     const changed = nextBuild !== presentationState.build;
     presentationState.build = nextBuild;
     updateBuilds();
     if (changed && !silent) sound.cueBuild(presentationState.index, nextBuild);
+    if (presentationState.index === 11) {
+      if (changed && nextBuild === 1 && source !== "automatic" && !silent) startClericalSequence();
+      if (changed && source !== "automatic" && nextBuild !== 1) clearClericalSequence();
+      if (silent || source !== "automatic") updateClericalCounter(nextBuild);
+    }
     return nextBuild;
   }
 
@@ -281,6 +360,8 @@
   function goToSlide(index, { build = 0, silent = false, updateHash = true } = {}) {
     const nextIndex = clamp(Number(index) || 0, 0, scenes.length - 1);
     const previousIndex = presentationState.index;
+
+    if (previousIndex === 11 && nextIndex !== 11) clearClericalSequence();
 
     if (!presentationState.started && nextIndex > 0) startProjector({ silent: true });
 
@@ -529,11 +610,43 @@
     else previous();
   }
 
+  function initializeThinkingDial() {
+    const estimateInput = document.querySelector("#thinking-estimate");
+    const estimateOutput = document.querySelector("#estimate-output");
+    const estimateStatus = document.querySelector("#estimate-status");
+    const dial = document.querySelector(".thinking-dial");
+    const marks = document.querySelector("#audience-marks");
+    const lockButton = document.querySelector("#lock-estimate");
+    if (!estimateInput || !estimateOutput || !estimateStatus || !dial || !marks || !lockButton) return;
+
+    const updateEstimate = () => {
+      const value = Number(estimateInput.value);
+      dial.style.setProperty("--estimate", String(value));
+      estimateOutput.textContent = `${value}%`;
+    };
+
+    estimateInput.addEventListener("input", updateEstimate);
+    lockButton.addEventListener("click", () => {
+      updateEstimate();
+      const value = Number(estimateInput.value);
+      const mark = document.createElement("span");
+      mark.className = "audience-mark";
+      mark.style.setProperty("--mark", String(value));
+      mark.dataset.value = String(value);
+      mark.setAttribute("aria-label", `Audience estimate ${value} percent`);
+      marks.append(mark);
+      while (marks.children.length > 6) marks.firstElementChild?.remove();
+      estimateStatus.textContent = `Marked ${value}%. Take another answer or advance when ready.`;
+      sound.cueBuild(8, marks.children.length);
+    });
+  }
+
   function initialize() {
     const initialIndex = parseHash();
     body.classList.toggle("sound-muted", sound.muted);
     goToSlide(initialIndex, { silent: true, updateHash: Boolean(window.location.hash) });
     if (initialIndex > 0) startProjector({ silent: true });
+    initializeThinkingDial();
 
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("click", handleDocumentClick);
@@ -557,6 +670,8 @@
       startProjector,
       toggleSound,
       closePanels,
+      startClericalSequence,
+      clearClericalSequence,
     };
   }
 

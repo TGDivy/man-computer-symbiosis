@@ -9,7 +9,7 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
   test("loads the complete 27-scene workprint and its local assets", async ({ page }) => {
     await expect(page.locator(".scene")).toHaveCount(27);
     await expect(page.locator(".speaker-notes")).toHaveCount(27);
-    await expect(page.locator(".scene--workprint")).toHaveCount(20);
+    await expect(page.locator(".scene--workprint")).toHaveCount(13);
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-00");
 
     const incompleteImages = await page.locator("img").evaluateAll((images) =>
@@ -74,6 +74,44 @@ test.describe("Man–Computer Symbiosis found-film workprint", () => {
     await page.keyboard.press("ArrowRight");
     await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-06");
     await expect(page.locator("#scene-06")).toContainText("WHAT IS THE QUESTION?");
+  });
+
+  test("records audience estimates without a network dependency", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(8, { silent: true }));
+    await page.locator("#thinking-estimate").fill("65");
+    await expect(page.locator("#estimate-output")).toHaveText("65%");
+    await page.locator("#lock-estimate").click();
+    await expect(page.locator("#estimate-status")).toContainText("Marked 65%");
+    await expect(page.locator("#audience-marks .audience-mark")).toHaveCount(1);
+    await expect(page.locator("#audience-marks .audience-mark")).toHaveAttribute("data-value", "65");
+
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(9, { silent: true }));
+    await expect(page.locator("#scene-09 .eighty-five-stage")).toHaveText("85%");
+  });
+
+  test("turns six incompatible datasets into a timed comparable plot", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(10, { silent: true }));
+    await expect(page.locator("#scene-10 .data-slip")).toHaveCount(6);
+    await page.evaluate(() => window.__symbiosisDeck.setBuild(3, { silent: true }));
+    await expect(page.locator("#scene-10 .not-comparable")).toHaveClass(/is-visible/);
+
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(11, { silent: true }));
+    await page.keyboard.press("Space");
+    await expect(page.locator("#scene-11 [data-build='5']")).toHaveClass(/is-visible/, { timeout: 2_000 });
+    await expect(page.locator("#clerical-counter")).toHaveText("0862", { timeout: 2_000 });
+  });
+
+  test("cuts from the clean graph into the two-beat manifesto", async ({ page }) => {
+    await page.evaluate(() => window.__symbiosisDeck.goToSlide(12, { silent: true }));
+    await expect(page.locator("#scene-12 .insight-series > path")).toBeVisible();
+    await expect(page.locator("#scene-12")).not.toHaveClass(/scene--workprint/);
+
+    await page.keyboard.press("ArrowRight");
+    await expect(page.locator(".scene.is-active")).toHaveAttribute("id", "scene-13");
+    await expect(page.locator("#scene-13 .manifesto-two")).not.toHaveClass(/is-visible/);
+    await page.keyboard.press("ArrowRight");
+    await expect(page.locator("#scene-13 .manifesto-two")).toHaveClass(/is-visible/);
   });
 
   test("keeps notes, references, sound, and direct scene navigation available", async ({ page }) => {
