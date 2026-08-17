@@ -1,0 +1,15 @@
+{
+  "name": "man-computer-symbiosis",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A cinematic interactive presentation based on J. C. R. Licklider's 1960 paper Man-Computer Symbiosis.",
+  "scripts": {
+    "capture": "node scripts/capture-deck.js",
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:update": "playwright test --update-snapshots"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}

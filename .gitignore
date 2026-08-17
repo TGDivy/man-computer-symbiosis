@@ -1,0 +1,10 @@
+node_modules/
+playwright-report/
+test-results/
+artifacts/
+.DS_Store
+research/licklider-1960.html
+research/licklider-1960.txt
+research/asset-metadata/
+research/asset-summary.tsv
+research/asset-selection.tsv
