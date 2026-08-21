@@ -11,7 +11,7 @@ These are the full rehearsal notes for the implemented 32-scene deck, Scene 00 t
 - The prerequisite reel is causal: availability during thought → reachable memory → goals rather than fixed routes → a shared surface → natural input/output → the question of what relation those capabilities enable.
 - Scenes 18 and 27 are discussions, not surveys. No response is persisted, exported, transmitted, or presented as consensus.
 - “Golden age of human creativity” is our interpretation. Licklider's exact §1.2 phrase is “the most creative and exciting in the history of mankind.” Keep that distinction audible.
-- Start with sound on if the room permits it. The score is procedural and responds to scenes and builds: the organic motif yields to clerical pressure, the product-film rhythm, accumulating prerequisite voices, interlocking relationship motifs, and a warm coda. Silence and subtraction are part of the pacing—especially the Scene 03 question, the Scene 19 reel break, and the Scene 29 quotation.
+- Start with sound on if the room permits it. The score is procedural and responds to scenes and builds: the organic motif yields to clerical pressure, the product-film rhythm, accumulating prerequisite voices, interlocking relationship motifs, and a warm coda. Silence and subtraction are part of the pacing—especially the Scene 03 question, Scene 13's release, the Scene 19 reel break, and the Scene 29 quotation. Recognition and playback duck the score while speech is active.
 - Full running time is roughly 24–28 minutes before discussion. For a shorter cut, preserve Scenes 01–07, 10–16, 19–20, 22–30, and the credits.
 
 ## Scene 00 — The projector starts
@@ -46,7 +46,7 @@ Hold long enough for the green tree and fruit to register. There is deliberately
 
 **Build 1.** Keep the habitat photograph visible while the scientific specimen plate slides in. Let it feel like an older technical film interrupting a nature image.
 
-**Build 2.** Reveal the rule and *Blastophaga psenes* label. Say that this is one pollinating fig-wasp species, not the species in the habitat photograph. The latter is *Pleistodontes*.
+**Build 2.** Reveal the rule and *Blastophaga psenes* label. The base frame already identifies the habitat photograph as *Pleistodontes*; say that the reference plate shows a separately sourced pollinating fig-wasp species, not the same insect.
 
 **Accuracy.** Do not repeat an on-screen categorical “only” claim. Licklider's opening uses one taxonomic example and period wording; fig–wasp biology contains many species-specific relations. Do not use the parasitoid *Apocrypta* as the mutualist.
 
@@ -66,7 +66,7 @@ Hold long enough for the green tree and fruit to register. There is deliberately
 
 **Build 3.** The photographs and definition disappear completely. Read the black-screen question once: “What would symbiosis between a human and a computer require?” This wording makes both members of the new pair explicit; it avoids the accidental implication in “what if one of them is a computer?” that a fig or wasp remains on the other side.
 
-**Sound and transition.** The organic motif and projector texture should withdraw quickly enough that the black frame feels physically empty. Hold the question in silence, then advance to the title. Do not speak over the title's first beat.
+**Sound and transition.** At Build 3 the organic motif, projector texture, and motor all withdraw. Hold the physically empty black question in complete silence, then advance to the title. Do not speak over the title's first beat.
 
 **Source.** Licklider, §1.1. The definition there is quoted from *Webster's New International Dictionary* (1958); the on-screen sentence is explicitly a close excerpt rather than a complete quotation.
 
@@ -126,11 +126,11 @@ If the distinction feels abstract, return briefly to the battle example: a week-
 
 **Purpose.** Make the time-and-motion study concrete and appropriately modest.
 
-**Build 1.** Treat the dossier seriously: “The subject was one moderately technical person.”
+**Base frame.** Treat the dossier seriously: “The subject was one moderately technical person.” It is present as soon as the scene begins; there is no empty first advance.
 
-**Build 2.** “During the spring and summer of 1957.”
+**Build 1.** “During the spring and summer of 1957.”
 
-**Build 3.** “The investigator and subject were the same person: Licklider himself. What actually filled the hours he regarded as work?”
+**Build 2.** “The investigator and subject were the same person: Licklider himself. What actually filled the hours he regarded as work?”
 
 Use his caveat: “Although I was aware of the inadequacy of the sampling, I served as my own subject.” This is not a population study.
 
@@ -184,7 +184,7 @@ Let it feel both alarming and slightly funny. Immediately qualify it: this was L
 
 **Purpose.** Make clerical delay felt in the room.
 
-Advance once and let the automatic sequence run: convert → normalize → calculate → plot. Resist the urge to fill all the silence. An optional dry line is: “This is the interactive portion.”
+Advance once and let the automatic sequence run: convert → normalize → calculate → plot. Resist the urge to fill all the silence. An optional dry line is: “This is the interactive portion.” With reduced motion enabled, the sequence does not run automatically; advance Builds 1–5 manually and preserve the same sense of duration through delivery.
 
 The counter and exact arithmetic are stage mechanics. The paper supplies the substantive facts: six incompatible definitions, several hours of calculation, and a comparison that became immediate only afterward.
 
@@ -212,9 +212,9 @@ Follow with the paper's contrast: several hours to make the data comparable; a f
 
 **Purpose.** State the interpretation earned by the graph sequence.
 
-Let the first line stand: “The machine did not have the insight.” Beat. Reveal the second: “It got us to the place where insight could happen.”
+Let the first line stand: “The machine would not have the insight.” Beat. Reveal the second: “It could help us reach a view where human insight could happen.”
 
-Read neither as product copy. The precise claim is that routinizable preparation shortened the clerical distance to a representation on which human judgment could act.
+Read neither as product copy. The on-screen label marks this as a provisional extrapolation: routinizable preparation could shorten the clerical distance to a representation on which human judgment could act. It is not a claim that a computer produced Licklider's historical graph.
 
 **Quote status.** Both lines are presentation interpretation, not quotations from Licklider.
 
@@ -229,6 +229,8 @@ Read neither as product copy. The precise claim is that routinizable preparation
 Play this completely straight. Reveal the brand, then the console portrait, then the features as if this were a 1962 institutional sales reel. Do not explain the joke.
 
 **Suggested words.** “Introducing SYMBIOTE: the electronic research companion for problems not yet fully formulated.”
+
+When the capability rail appears, say “returns variants,” not “discovers answers.” That language sets up Scenes 16–17 and keeps judgment with the person.
 
 **Accuracy.** SYMBIOTE, its manufacturer, model number, and claims are fictional. The SAGE console photograph is authentic equipment used illustratively.
 
@@ -260,7 +262,7 @@ Licklider's §4 list is richer: people also supply motivation, models, approxima
 
 **Purpose.** Demonstrate exploratory support when the human does not yet know which representation will matter.
 
-Print the three plot sheets separately. Let the first two feel merely competent. On the third, reveal the unexpected relation and hold it.
+Print the three plot sheets separately. Let the first two feel merely competent. On the third, reveal the marked possible relation and hold it long enough for “human review required” to register.
 
 **Paper language.** Licklider says the equipment may plot graphs, “cutting the cake” as specified, “or in several alternative ways if the human operator is not sure what he wants.”
 
@@ -302,7 +304,7 @@ Use his opening to §5: “There are in fact several hurdles that stand between 
 
 **Purpose.** Answer the real-time aim from Scene 07 and the batch delay from Scene 05.
 
-**Build 1.** Connect several users. In 1960 a large computer was too fast and too expensive for real-time cooperation with one person; it had to divide its time.
+**Build 1.** Connect several users around one machine. In 1960 a large computer was too fast and too expensive for real-time cooperation with one person; it had to divide its time. The photograph is a dated 1970 illustration, not a 1960 prototype from the paper.
 
 **Build 2.** “Not next week. Not tomorrow. At the moment of thought.” Explain time sharing in that human sense: availability while the question is alive.
 
@@ -336,13 +338,15 @@ Use his opening to §5: “There are in fact several hurdles that stand between 
 
 **Purpose.** Make the language problem the next causal obstacle.
 
-**Build 1.** “Instructions to a person normally express a goal and a criterion for knowing when it has been reached.”
+**Base frame.** “Instructions to a person normally express a goal and a criterion for knowing when it has been reached.” This side is visible immediately, so the scene never opens empty.
 
-**Builds 2–3.** Contrast that with a conventional program specifying individual steps and their sequence.
+**Builds 1–2.** Introduce the division, then contrast the goal with a conventional program specifying individual steps and their sequence.
 
-**Build 4.** Connect back to §2: when an unforeseen alternative appears, a predetermined process halts until the program is extended.
+**Build 3.** Connect back to §2: when an unforeseen alternative appears, a predetermined process halts until the program is extended.
 
 Quote the compact line exactly: “Instructions directed to computers specify courses; instructions directed to human beings specify goals.”
+
+Preserve Licklider's two proposed routes through the language problem: problem-solving, hill-climbing, and self-organizing programs; or real-time concatenation of named preprogrammed segments and closed subroutines. He calls the first route promising, but at the time only a “demonstration in principle.” Do not imply that he considered goal-level programming solved.
 
 **Transition.** “If the person begins with a rough goal rather than a complete route, the interface has to accept something rough—and help make it precise.”
 
@@ -360,7 +364,7 @@ Quote the compact line exactly: “Instructions directed to computers specify co
 
 **Build 4 — brief fold-in.** Scale the principle from one person to a team. Licklider's wall display provides common, current information while individual stations preserve role-specific detail and control. Common situation does not mean identical responsibilities.
 
-The IBM 2250 and control-room photographs are later illustrations, not Licklider prototypes.
+The IBM 2250 image is from 1969 and the NORAD control-room image from 1964. Both dates appear on screen. They are later illustrations, not Licklider prototypes or evidence that his proposed interface had already been realized.
 
 **Transition.** “Drawing was one natural channel. Licklider also asked whether we might simply speak.”
 
@@ -372,9 +376,11 @@ The IBM 2250 and control-room photographs are later illustrations, not Licklider
 
 **Delivery.** Licklider asks both whether speech interaction is desirable and whether it is feasible. He is cautious: production was easier than recognition, and the required vocabulary, diverse speakers, and accents were serious constraints.
 
-Invite one short phrase. Press Record only when ready for the browser permission prompt; inspect the transcript; then play it back. If recognition is unavailable or permission fails, use the visible text field. Playback can still work independently.
+Preflight this scene in the exact managed browser, account, network, and room setup. Recognition may be implemented by a browser- or vendor-operated service, so do not promise local-only processing. Coordinate with the CART or live-caption operator before rehearsal so the demo's transcript and synthetic playback are not mistaken for the room's accessibility captions.
 
-Be explicit that this is a current browser demonstration of the interaction category, not a reconstruction of a 1960 recognizer.
+Invite one short phrase. Press Record only when ready for the browser permission prompt; inspect the transcript; then play it back. The score ducks while recognition or playback is active. If recognition is unavailable, permission fails, or the prompt takes more than a moment, choose **Use text instead** immediately. Playback can still work independently.
+
+Be explicit that this is a current browser demonstration of the interaction category, not a reconstruction of a 1960 recognizer. The page itself does not store the audio or transcript, but the browser or its service provider may process audio outside the page.
 
 **Transition.** “Time sharing, memory, organization, language, displays, speech—Licklider calls all of these prerequisites.”
 
@@ -414,7 +420,7 @@ Do not imply “partner” is automatically the correct design or moral label in
 
 **Purpose.** Test the paper's categories against relationships people actually want, without manufacturing a vote.
 
-Ask: “Which relationship do you actually want with a computer: tool, servant, or partner?” Use hands, movement, or spoken answers if possible. The cards are available as theatrical objects, not a data collection system.
+Name the framing before the prompt: tool, servant, and partner are contemporary discussion vocabulary, not Licklider's three labels. Then ask: “Which relationship do you actually want with a computer: tool, servant, or partner?” Use hands, movement, or spoken answers if possible. The cards are available as theatrical objects, not a data collection system.
 
 Select any card to reveal the real question: “What would have to be true for you to call it a partner?” Let two or three answers breathe. Listen for agency, complementary capability, trust, contestability, shared context, and the ability to alter the next question—but do not supply those answers before the room does.
 
@@ -438,7 +444,7 @@ Nothing is counted, stored, copied, downloaded, or treated as consensus.
 
 This is the personal testimony to emphasize: live building and rapid testing let you test hypotheses about which direction might work for the audience. Just as importantly, the exchange helped you ask better questions about what you were building. The loop is therefore more than direction followed by execution; each return can alter the direction itself.
 
-**Build 4 — quotation.** Read slowly: “The contributions of human operators and equipment will blend together so completely in many operations that it will be difficult to separate them neatly in analysis.” In §4, Licklider immediately gives an example in which both person and computer retrieve relevant precedents and the computer suggests a course agreeing with human intuitive judgment. He then says other operations will remain more separable. Preserve both sides: Scene 16's division is analytically useful, while this scene shows why a real collaboration around a shared artifact can become entangled.
+**Build 4 — quotation.** The workbench disappears completely so the sentence owns the frame. Read the complete line slowly: “It seems likely that the contributions of human operators and equipment will blend together so completely in many operations that it will be difficult to separate them neatly in analysis.” In §4, Licklider immediately gives an example in which both person and computer retrieve relevant precedents and the computer suggests a course agreeing with human intuitive judgment. He then says other operations will remain more separable. Preserve both sides: Scene 16's division is analytically useful, while this scene offers situated testimony about how collaboration around a shared artifact can become entangled.
 
 **Transition.** “That entangled period—not machine replacement—is the interim Licklider was excited about.”
 
@@ -456,7 +462,7 @@ Explain the left and right endpoints carefully. He distinguishes earlier mechani
 
 This is where “golden age of human creativity and thought” belongs if you use it. Mark it clearly as your interpretation, not Licklider's literal wording.
 
-**Build 2.** Read the exact sentence: “The 15 may be 10 or 500, but those years should be intellectually the most creative and exciting in the history of mankind.” Let Licklider's sentence be the last spoken line.
+**Build 2.** The pulse, mechanisms, and build cue fall away. Read the exact sentence: “The 15 may be 10 or 500, but those years should be intellectually the most creative and exciting in the history of mankind.” Let Licklider's sentence be the last spoken line.
 
 Hold the silence, then advance. Scene 30 is a visual coda, not a second conclusion.
 

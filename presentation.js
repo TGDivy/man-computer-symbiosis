@@ -6,6 +6,9 @@
   const notesContent = document.querySelector("#notes-content");
   const referencePanel = document.querySelector("#reference-panel");
   const helpPanel = document.querySelector("#help-panel");
+  const projectorChrome = document.querySelector("#projector-chrome");
+  const soundControl = document.querySelector("#sound-control");
+  const deviceGate = document.querySelector(".device-gate");
   const sceneIndicator = document.querySelector("#scene-indicator");
   const projectorStatus = document.querySelector("#projector-status");
   const panels = [notesPanel, referencePanel, helpPanel].filter(Boolean);
@@ -17,12 +20,13 @@
     leaderComplete: false,
     leaderTimer: null,
     chromeTimer: null,
-    transitionTimer: null,
     clericalTimers: [],
     clericalCounterTimer: null,
     touchStartX: 0,
     touchStartY: 0,
     touchHandledUntil: 0,
+    panelReturnFocus: null,
+    deviceGated: false,
   };
 
   class ProjectorSound {
@@ -32,6 +36,7 @@
       this.bedGain = null;
       this.noiseSource = null;
       this.motorOscillator = null;
+      this.motorGain = null;
       this.chapterBuses = new Map();
       this.chapterSources = [];
       this.scoreDry = null;
@@ -39,6 +44,7 @@
       this.rhythm = null;
       this.currentSceneIndex = 0;
       this.currentBuildIndex = 0;
+      this.ducked = false;
       this.muted = this.readMutedState();
     }
 
@@ -65,17 +71,19 @@
 
       this.context = new AudioContextClass();
       this.master = this.context.createGain();
-      this.master.gain.value = this.muted ? 0.0001 : 0.72;
+      this.master.gain.value = this.muted ? 0.0001 : this.ducked ? 0.18 : 0.72;
       this.master.connect(this.context.destination);
       return true;
     }
 
     async arm({ leader = false } = {}) {
-      if (!this.createContext()) return;
+      if (!this.createContext()) return false;
       if (this.context.state === "suspended") await this.context.resume();
       this.startProjectorBed();
       this.setNarrativeState(this.currentSceneIndex, this.currentBuildIndex, { immediate: true });
       if (leader) this.playLeaderTrack();
+      this.updateMasterGain();
+      return true;
     }
 
     startProjectorBed() {
@@ -110,6 +118,7 @@
       motorOscillator.start();
       this.noiseSource = noiseSource;
       this.motorOscillator = motorOscillator;
+      this.motorGain = motorGain;
       this.bedGain = bedGain;
       this.startChapterBeds();
     }
@@ -214,6 +223,7 @@
         prerequisiteLayers: 5,
         pulse: { level: 0, rate: 0.7, frequency: 55, filter: 150 },
         projector: 0.008,
+        motor: 0.008,
         fade: 0.45,
       };
       const boundedBuild = Math.max(0, Number(build) || 0);
@@ -223,7 +233,8 @@
       if (index === 2) levels.organic = 0.52;
       if (index === 3) {
         levels.organic = boundedBuild >= 3 ? 0 : 0.66;
-        profile.projector = boundedBuild >= 3 ? 0.00035 : 0.006;
+        profile.projector = boundedBuild >= 3 ? 0 : 0.006;
+        profile.motor = boundedBuild >= 3 ? 0 : 0.008;
         profile.fade = boundedBuild >= 3 ? 0.055 : 0.5;
       }
       if (index === 4) {
@@ -264,9 +275,9 @@
         profile.pulse = { level: Math.min(0.86, 0.4 + boundedBuild * 0.075), rate: 1.08 + boundedBuild * 0.1, frequency: 55 + boundedBuild * 1.5, filter: 170 + boundedBuild * 10 };
       }
       if (index === 13) {
-        levels.clerical = 0.72;
-        levels.coda = 0.12;
-        profile.pulse = { level: 0.2, rate: 0.7, frequency: 55, filter: 145 };
+        profile.projector = 0;
+        profile.motor = 0;
+        profile.fade = 0.055;
       }
       if (index === 14) {
         levels.clerical = 0.1;
@@ -292,7 +303,8 @@
         profile.fade = 0.2;
       }
       if (index === 19) {
-        profile.projector = 0.00055;
+        profile.projector = 0;
+        profile.motor = 0;
         profile.fade = 0.055;
       }
       if (index >= 20 && index <= 25) {
@@ -333,11 +345,19 @@
         }
       }
       if (index === 29) {
-        levels.coda = 0.34 + Math.min(boundedBuild, 2) * 0.16;
-        levels.relation = 0.08;
-        profile.pulse = boundedBuild >= 2 ? { level: 0, rate: 0.5, frequency: 55, filter: 130 } : { level: 0.08, rate: 0.48, frequency: 55, filter: 130 };
-        profile.projector = 0.0008;
-        profile.fade = 0.75;
+        if (boundedBuild >= 2) {
+          levels.coda = 0.06;
+          profile.projector = 0;
+          profile.motor = 0;
+          profile.fade = 0.16;
+        } else {
+          levels.coda = 0.32 + boundedBuild * 0.14;
+          levels.relation = 0.07;
+          profile.pulse = { level: 0.07, rate: 0.48, frequency: 55, filter: 130 };
+          profile.projector = 0.0008;
+          profile.motor = 0.0015;
+          profile.fade = 0.75;
+        }
       }
       if (index === 30) {
         levels.organic = 0.22 + Math.min(boundedBuild, 2) * 0.1;
@@ -366,22 +386,26 @@
       const now = this.context.currentTime;
       const fade = immediate ? 0.01 : profile.fade;
       this.bedGain.gain.cancelScheduledValues(now);
-      this.bedGain.gain.setTargetAtTime(Math.max(0.0001, profile.projector), now, Math.max(0.01, fade * 0.35));
+      this.bedGain.gain.setTargetAtTime(profile.projector, now, Math.max(0.01, fade * 0.35));
+      if (this.motorGain) {
+        this.motorGain.gain.cancelScheduledValues(now);
+        this.motorGain.gain.setTargetAtTime(profile.motor, now, Math.max(0.01, fade * 0.35));
+      }
       this.chapterBuses.forEach(({ bus, level, voices }, name) => {
         const intensity = profile.levels[name] || 0;
         bus.gain.cancelScheduledValues(now);
-        bus.gain.setTargetAtTime(Math.max(0.0001, level * intensity), now, Math.max(0.01, fade));
+        bus.gain.setTargetAtTime(level * intensity, now, Math.max(0.01, fade));
         if (name === "prerequisites") {
           voices.forEach((voice, voiceIndex) => {
             voice.gain.gain.cancelScheduledValues(now);
-            const target = voiceIndex < profile.prerequisiteLayers ? voice.weight : 0.0001;
+            const target = voiceIndex < profile.prerequisiteLayers ? voice.weight : 0;
             voice.gain.gain.setTargetAtTime(target, now, Math.max(0.01, fade * 0.8));
           });
         }
       });
       if (this.rhythm) {
         this.rhythm.bus.gain.cancelScheduledValues(now);
-        this.rhythm.bus.gain.setTargetAtTime(Math.max(0.0001, 0.018 * profile.pulse.level), now, Math.max(0.01, fade * 0.65));
+        this.rhythm.bus.gain.setTargetAtTime(0.018 * profile.pulse.level, now, Math.max(0.01, fade * 0.65));
         this.rhythm.lfo.frequency.cancelScheduledValues(now);
         this.rhythm.lfo.frequency.setTargetAtTime(profile.pulse.rate, now, Math.max(0.01, fade));
         this.rhythm.carrier.frequency.cancelScheduledValues(now);
@@ -407,10 +431,25 @@
         sceneIndex: this.currentSceneIndex,
         buildIndex: this.currentBuildIndex,
         projector: profile.projector,
+        motor: profile.motor,
         levels: { ...profile.levels },
         prerequisiteLayers: profile.prerequisiteLayers,
         pulse: { ...profile.pulse },
+        ducked: this.ducked,
       };
+    }
+
+    updateMasterGain() {
+      if (!this.context || !this.master) return;
+      const now = this.context.currentTime;
+      const target = this.muted ? 0.0001 : this.ducked ? 0.18 : 0.72;
+      this.master.gain.cancelScheduledValues(now);
+      this.master.gain.setTargetAtTime(target, now, 0.04);
+    }
+
+    setDucked(ducked) {
+      this.ducked = Boolean(ducked);
+      this.updateMasterGain();
     }
 
     playTone({ frequency = 620, duration = 0.08, gain = 0.055, delay = 0, type = "sine" } = {}) {
@@ -482,7 +521,6 @@
       }
       if (scene === "scene-05") this.playTone({ frequency: 84, duration: 0.16, gain: 0.035, type: "square" });
       if (scene === "scene-06" && this.bedGain) this.bedGain.gain.setTargetAtTime(0.001, this.context.currentTime, 0.04);
-      if (scene === "scene-19") this.playTone({ frequency: 72, duration: 0.3, gain: 0.04, type: "square" });
       if (scene === "scene-20" || scene === "scene-21") this.playTone({ frequency: 146, duration: 0.2, gain: 0.026, type: "triangle" });
       if (scene === "scene-26") {
         [164, 137, 196].forEach((frequency, index) => this.playTone({ frequency, duration: 0.18, gain: 0.022, delay: index * 0.08, type: "triangle" }));
@@ -500,6 +538,12 @@
 
     cueBuild(scene, buildIndex) {
       if (!this.context) return;
+      if (scene === "scene-05") {
+        // Preserve the existing batch-machine build texture while removing
+        // the former catch-all cue from scenes that do not need one.
+        this.playNoiseBurst({ duration: 0.03, gain: 0.025 });
+        return;
+      }
       if (scene === "scene-12") {
         this.playTone({ frequency: 150 + buildIndex * 26, duration: buildIndex === 5 ? 0.18 : 0.045, gain: 0.035, type: "square" });
         this.playNoiseBurst({ duration: 0.025, gain: 0.03, delay: 0.025 });
@@ -550,7 +594,7 @@
         return;
       }
       if (scene === "scene-29") {
-        this.playTone({ frequency: buildIndex === 1 ? 164.81 : 261.63, duration: 0.55, gain: 0.018, type: "sine" });
+        if (buildIndex === 1) this.playTone({ frequency: 164.81, duration: 0.55, gain: 0.018, type: "sine" });
         return;
       }
       if (scene === "scene-30") {
@@ -561,7 +605,6 @@
         }
         return;
       }
-      this.playNoiseBurst({ duration: 0.03, gain: 0.025 });
     }
 
     async toggle() {
@@ -570,9 +613,7 @@
       if (!this.createContext()) return this.muted;
       if (this.context.state === "suspended") await this.context.resume();
       this.startProjectorBed();
-      const now = this.context.currentTime;
-      this.master.gain.cancelScheduledValues(now);
-      this.master.gain.setTargetAtTime(this.muted ? 0.0001 : 0.72, now, 0.04);
+      this.updateMasterGain();
       return this.muted;
     }
   }
@@ -630,6 +671,12 @@
       element.classList.toggle("is-visible", isVisible);
       element.setAttribute("aria-hidden", String(!isVisible));
     });
+    if (activeScene.id === "scene-03") {
+      const questionVisible = presentationState.build >= 3;
+      activeScene.querySelectorAll(".organism-frame, .typed-definition").forEach((element) => {
+        element.setAttribute("aria-hidden", String(questionVisible));
+      });
+    }
   }
 
   function updateClericalCounter(buildIndex = presentationState.build) {
@@ -648,8 +695,8 @@
 
   function startClericalSequence() {
     clearClericalSequence();
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const stepDuration = reducedMotion ? 90 : 2650;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const stepDuration = 2650;
     const counter = document.querySelector("#clerical-counter");
     const startTime = performance.now();
     const totalDuration = stepDuration * 4;
@@ -661,7 +708,7 @@
           window.clearInterval(presentationState.clericalCounterTimer);
           presentationState.clericalCounterTimer = null;
         }
-      }, reducedMotion ? 20 : 80);
+      }, 80);
     }
     for (let buildIndex = 2; buildIndex <= 5; buildIndex += 1) {
       const timer = window.setTimeout(() => {
@@ -680,9 +727,13 @@
     if (changed) sound.setBuild(presentationState.index, nextBuild);
     if (changed && !silent) sound.cueBuild(currentSceneId(), nextBuild);
     if (currentSceneId() === "scene-12") {
-      if (changed && nextBuild === 1 && source !== "automatic" && !silent) startClericalSequence();
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (changed && nextBuild === 1 && source !== "automatic" && !silent && !reducedMotion) startClericalSequence();
       if (changed && source !== "automatic" && nextBuild !== 1) clearClericalSequence();
       if (silent || source !== "automatic") updateClericalCounter(nextBuild);
+    }
+    if (changed && !silent) {
+      announce("Build " + nextBuild + " of " + getMaxBuild() + ": " + scenes[presentationState.index].dataset.title);
     }
     return nextBuild;
   }
@@ -691,18 +742,6 @@
     if (notesPanel.getAttribute("aria-hidden") !== "false") return;
     const source = scenes[presentationState.index].querySelector(".speaker-notes");
     notesContent.innerHTML = source ? source.innerHTML : "<p>No notes for this scene.</p>";
-  }
-
-  function setTransition(name) {
-    Array.from(body.classList)
-      .filter((className) => className.startsWith("transition--"))
-      .forEach((className) => body.classList.remove(className));
-    if (!name) return;
-    body.classList.add("transition--" + name);
-    window.clearTimeout(presentationState.transitionTimer);
-    presentationState.transitionTimer = window.setTimeout(() => {
-      body.classList.remove("transition--" + name);
-    }, 520);
   }
 
   function goToSlide(index, { build = 0, silent = false, updateHash = true } = {}) {
@@ -715,6 +754,7 @@
       const isActive = sceneIndex === nextIndex;
       scene.classList.toggle("is-active", isActive);
       scene.setAttribute("aria-hidden", String(!isActive));
+      scene.inert = !isActive;
     });
 
     presentationState.index = nextIndex;
@@ -727,7 +767,6 @@
       if (window.location.hash !== nextHash) history.replaceState(null, "", nextHash);
     }
     if (nextIndex !== previousIndex) {
-      setTransition(scenes[nextIndex].dataset.transition);
       sound.setScene(nextIndex, presentationState.build);
       if (!silent) sound.cueScene(currentSceneId(nextIndex));
     }
@@ -749,7 +788,7 @@
     presentationState.started = true;
     body.classList.add("projector-started");
     body.classList.toggle("sound-muted", sound.muted);
-    if (!silent) sound.arm({ leader: presentationState.index === 0 });
+    if (!silent) void sound.arm({ leader: presentationState.index === 0 }).then(updateSoundControl);
     if (presentationState.index === 0) scheduleLeaderCompletion();
     announce(sound.muted ? "Projector started, sound muted" : "Projector started");
     return true;
@@ -766,7 +805,7 @@
     void body.offsetWidth;
     body.classList.add("projector-started");
     body.classList.toggle("sound-muted", sound.muted);
-    if (!sound.muted) sound.arm({ leader: true });
+    if (!sound.muted) void sound.arm({ leader: true }).then(updateSoundControl);
     scheduleLeaderCompletion();
     announce("Opening leader replayed");
   }
@@ -797,32 +836,51 @@
     }
   }
 
-  function closePanels() {
+  function updatePanelControl(panel, expanded) {
+    document.querySelectorAll("[aria-controls='" + panel.id + "']").forEach((control) => {
+      control.setAttribute("aria-expanded", String(expanded));
+    });
+  }
+
+  function closePanels({ restoreFocus = false } = {}) {
     let closed = false;
+    const returnFocus = presentationState.panelReturnFocus;
     panels.forEach((panel) => {
       if (panel.getAttribute("aria-hidden") === "false") closed = true;
       panel.setAttribute("aria-hidden", "true");
+      panel.inert = true;
+      updatePanelControl(panel, false);
     });
     body.classList.remove("panel-open");
+    presentationState.panelReturnFocus = null;
+    if (restoreFocus && returnFocus instanceof HTMLElement && returnFocus.isConnected && !presentationState.deviceGated) {
+      returnFocus.focus({ preventScroll: true });
+    }
     return closed;
   }
 
-  function openPanel(panel) {
+  function openPanel(panel, trigger = null) {
     const wasOpen = panel.getAttribute("aria-hidden") === "false";
+    if (wasOpen) {
+      closePanels({ restoreFocus: true });
+      return;
+    }
     closePanels();
-    if (wasOpen) return;
     if (panel === notesPanel) {
       const source = scenes[presentationState.index].querySelector(".speaker-notes");
       notesContent.innerHTML = source ? source.innerHTML : "<p>No notes for this scene.</p>";
     }
+    presentationState.panelReturnFocus = trigger instanceof HTMLElement ? trigger : null;
     panel.setAttribute("aria-hidden", "false");
+    panel.inert = false;
+    updatePanelControl(panel, true);
     body.classList.add("panel-open");
     panel.querySelector("button")?.focus({ preventScroll: true });
   }
 
-  function togglePanel(panel) {
-    if (panel.getAttribute("aria-hidden") === "false") closePanels();
-    else openPanel(panel);
+  function togglePanel(panel, trigger = null) {
+    if (panel.getAttribute("aria-hidden") === "false") closePanels({ restoreFocus: true });
+    else openPanel(panel, trigger);
   }
 
   async function toggleFullscreen() {
@@ -834,10 +892,37 @@
     }
   }
 
+  function updateSoundControl() {
+    if (!soundControl) return;
+    const active = Boolean(sound.context && !sound.muted);
+    soundControl.setAttribute("aria-pressed", String(active));
+    if (sound.muted) {
+      soundControl.textContent = "SOUND OFF";
+      soundControl.setAttribute("aria-label", "Turn sound on");
+    } else if (!sound.context) {
+      soundControl.textContent = "SOUND";
+      soundControl.setAttribute("aria-label", "Start sound");
+    } else {
+      soundControl.textContent = "SOUND ON";
+      soundControl.setAttribute("aria-label", "Mute sound");
+    }
+  }
+
   async function toggleSound() {
-    const muted = await sound.toggle();
+    let muted = sound.muted;
+    if (!sound.context && !sound.muted) {
+      const armed = await sound.arm();
+      if (!armed) {
+        announce("Sound is unavailable in this browser");
+        updateSoundControl();
+        return;
+      }
+    } else {
+      muted = await sound.toggle();
+    }
     body.classList.toggle("sound-muted", muted);
     sound.setScene(presentationState.index, presentationState.build);
+    updateSoundControl();
     announce(muted ? "Sound muted" : "Sound on");
   }
 
@@ -855,20 +940,21 @@
   }
 
   function handleKeydown(event) {
+    if (presentationState.deviceGated) return;
     if (event.key === "Escape") {
-      if (closePanels()) event.preventDefault();
+      if (closePanels({ restoreFocus: true })) event.preventDefault();
       return;
     }
     if (event.target.closest("input, textarea, select, [contenteditable='true']")) return;
     const key = event.key.toLowerCase();
     if (key === "n") {
       event.preventDefault();
-      togglePanel(notesPanel);
+      togglePanel(notesPanel, document.querySelector("[data-action='notes']"));
       return;
     }
     if (key === "r") {
       event.preventDefault();
-      togglePanel(referencePanel);
+      togglePanel(referencePanel, document.querySelector("[data-action='references']"));
       return;
     }
     if (key === "m") {
@@ -883,7 +969,7 @@
     }
     if (key === "?" || (event.shiftKey && key === "/")) {
       event.preventDefault();
-      togglePanel(helpPanel);
+      togglePanel(helpPanel, document.querySelector("[data-action='overview']"));
       return;
     }
     if (event.target.closest("button, a")) return;
@@ -908,15 +994,15 @@
     }
   }
 
-  function handleAction(action) {
+  function handleAction(action, trigger = null) {
     const actions = {
       previous,
       next,
       sound: toggleSound,
-      notes: () => togglePanel(notesPanel),
-      references: () => togglePanel(referencePanel),
+      notes: () => togglePanel(notesPanel, trigger),
+      references: () => togglePanel(referencePanel, trigger),
       fullscreen: toggleFullscreen,
-      overview: () => togglePanel(helpPanel),
+      overview: () => togglePanel(helpPanel, trigger),
       "replay-leader": replayLeader,
     };
     actions[action]?.();
@@ -926,12 +1012,12 @@
     const actionButton = event.target.closest("[data-action]");
     if (actionButton) {
       event.preventDefault();
-      handleAction(actionButton.dataset.action);
+      handleAction(actionButton.dataset.action, actionButton);
       return;
     }
     if (event.target.closest("[data-close-panel]")) {
       event.preventDefault();
-      closePanels();
+      closePanels({ restoreFocus: true });
       return;
     }
     if (!event.target.closest("#film") || isInteractiveTarget(event.target)) return;
@@ -940,12 +1026,14 @@
   }
 
   function handleTouchStart(event) {
+    if (presentationState.deviceGated) return;
     const touch = event.changedTouches[0];
     presentationState.touchStartX = touch.clientX;
     presentationState.touchStartY = touch.clientY;
   }
 
   function handleTouchEnd(event) {
+    if (presentationState.deviceGated) return;
     const touch = event.changedTouches[0];
     const horizontalDistance = touch.clientX - presentationState.touchStartX;
     const verticalDistance = touch.clientY - presentationState.touchStartY;
@@ -1032,6 +1120,7 @@
     const status = document.querySelector("#speech-status");
     const fallback = document.querySelector("#speech-fallback");
     const fallbackInput = document.querySelector("#speech-fallback-input");
+    const useTextButton = document.querySelector("#speech-use-text");
     if (!recordButton || !playbackButton || !transcript || !status) return;
 
     const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -1042,10 +1131,21 @@
       transcriptValue = value.trim() || "Your words can appear here.";
       transcript.textContent = transcriptValue;
     };
+    const showFallback = ({ message = "", focus = false } = {}) => {
+      fallback.hidden = false;
+      useTextButton?.setAttribute("aria-expanded", "true");
+      if (message) status.textContent = message;
+      if (focus) fallbackInput?.focus({ preventScroll: true });
+    };
+
+    useTextButton?.addEventListener("click", () => {
+      showFallback({ message: "Text fallback ready. Nothing entered here is persisted.", focus: true });
+    });
 
     if (!SpeechRecognitionClass) {
-      fallback.hidden = false;
+      showFallback();
       recordButton.disabled = true;
+      useTextButton.hidden = true;
       status.textContent = "Speech recognition is unavailable in this browser. Use the text field; playback may still be available.";
       fallbackInput?.addEventListener("input", () => setTranscript(fallbackInput.value));
     } else {
@@ -1056,6 +1156,7 @@
       recognition.maxAlternatives = 1;
       recognition.onstart = () => {
         listening = true;
+        sound.setDucked(true);
         recordButton.classList.add("is-listening");
         recordButton.setAttribute("aria-pressed", "true");
         status.textContent = "Listening. Speak naturally, then pause.";
@@ -1066,13 +1167,14 @@
         setTranscript(value);
       };
       recognition.onerror = (event) => {
-        fallback.hidden = false;
-        status.textContent = event.error === "not-allowed"
+        sound.setDucked(false);
+        showFallback({ message: event.error === "not-allowed"
           ? "Microphone permission was not granted. Use the text field below."
-          : "Speech recognition stopped: " + event.error + ". Use the text field below.";
+          : "Speech recognition stopped: " + event.error + ". Use the text field below." });
       };
       recognition.onend = () => {
         listening = false;
+        sound.setDucked(false);
         recordButton.classList.remove("is-listening");
         recordButton.setAttribute("aria-pressed", "false");
         if (!status.textContent.includes("stopped") && !status.textContent.includes("permission")) {
@@ -1084,6 +1186,7 @@
           if (listening) recognition.stop();
           else recognition.start();
         } catch {
+          sound.setDucked(false);
           status.textContent = "Recognition is already starting. Pause briefly, then try again.";
         }
       });
@@ -1103,16 +1206,37 @@
       window.speechSynthesis.cancel();
       const utterance = new SpeechSynthesisUtterance(value);
       utterance.onstart = () => {
+        sound.setDucked(true);
         status.textContent = "Playing back the transcript.";
       };
       utterance.onend = () => {
+        sound.setDucked(false);
         status.textContent = "Playback complete.";
       };
       utterance.onerror = () => {
+        sound.setDucked(false);
         status.textContent = "Speech playback could not complete in this browser.";
       };
-      window.speechSynthesis.speak(utterance);
+      sound.setDucked(true);
+      try {
+        window.speechSynthesis.speak(utterance);
+      } catch {
+        sound.setDucked(false);
+        status.textContent = "Speech playback could not start in this browser.";
+      }
     });
+  }
+
+  function updateDeviceGate() {
+    if (!deviceGate || !projectorChrome) return;
+    const gated = window.matchMedia("(max-width: 899px), (max-height: 539px), (orientation: portrait)").matches;
+    presentationState.deviceGated = gated;
+    deviceGate.setAttribute("aria-hidden", String(!gated));
+    film.inert = gated;
+    film.setAttribute("aria-hidden", String(gated));
+    projectorChrome.inert = gated;
+    projectorChrome.setAttribute("aria-hidden", String(gated));
+    if (gated) closePanels();
   }
 
   function initialize() {
@@ -1120,6 +1244,9 @@
     body.classList.toggle("opening-wonder", opening === "wonder");
     body.classList.toggle("opening-mystery", opening === "mystery");
     body.classList.toggle("sound-muted", sound.muted);
+    panels.forEach((panel) => { panel.inert = true; });
+    updateSoundControl();
+    updateDeviceGate();
     const initialIndex = parseHash();
     goToSlide(initialIndex, { silent: true, updateHash: Boolean(window.location.hash) });
     if (initialIndex > 0) startProjector({ silent: true });
@@ -1137,6 +1264,7 @@
       const nextIndex = parseHash();
       if (nextIndex !== presentationState.index) goToSlide(nextIndex, { silent: true, updateHash: false });
     });
+    window.addEventListener("resize", updateDeviceGate, { passive: true });
 
     window.__symbiosisDeck = {
       slides: scenes,

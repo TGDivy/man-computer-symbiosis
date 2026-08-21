@@ -20,7 +20,7 @@ J. C. R. Licklider, “Man-Computer Symbiosis,” *IRE Transactions on Human Fac
 | 15–17, 28 | Division of human and machine work, alternative plots, and contributions that become difficult to separate neatly | §4 |
 | 20 | Time sharing and the thinking center: library functions, retrieval, and computation | §5.1 |
 | 21 | Published memory, the “matrix multiplication” retrieval example, nearby stored names, and designation by naming or pointing | §5.2–§5.3 |
-| 22 | Goals and criteria versus predetermined courses | §5.4 |
+| 22 | Goals and criteria versus predetermined courses, plus the two proposed approaches to computer language | §5.4 |
 | 23–24 | Desk-surface input, team displays, and speech production/recognition | §5.5 |
 | 25 | Prerequisites for effective symbiosis | Paper summary and §5 |
 | 26–27 | Mechanical extension, humanly extended machines, and symbiotic partnership | §1.2 |
@@ -34,29 +34,31 @@ J. C. R. Licklider, “Man-Computer Symbiosis,” *IRE Transactions on Human Fac
 | 06 | “The question is not, ‘What is the answer?’ The question is, ‘What is the question?’” | Licklider quotes Poincare in §2; used in spoken delivery. |
 | 10 | “85% of my thinking time” | Licklider's informal self-observation in §3.1; not presented as a modern universal statistic. |
 | 13 | The relation was obvious once the graphs were finished | Spoken paraphrase of §3.1. |
-| 14 | “The machine did not have the insight. It got us to the place where insight could happen.” | Presentation interpretation. |
+| 14 | “The machine would not have the insight. It could help us reach a view where human insight could happen.” | Provisional presentation interpretation, visibly labeled as such; not a claim about how Licklider's historical graph was produced. |
 | 16 | People set goals, hypotheses, criteria, and evaluations; computers do routinizable preparation | Structured paraphrase of §4. Evidence, anomaly, alternative, and better next question are presentation synthesis grounded in §§2–4. |
 | 17 | Equipment may cut data “in several alternative ways if the human operator is not sure what he wants” | Exact excerpt from §4. |
 | 19 | “Several hurdles” stand between the nonsymbiotic present and anticipated symbiotic future | Exact framing from the opening of §5. |
 | 20 | The thinking center combines library functions, information storage/retrieval, and symbiotic functions | Close paraphrase of §5.1. |
 | 21 | “Books are among the most beautifully engineered, and human-engineered, components in existence” | Exact quotation from §5.2, retained in the spoken notes rather than crowded onto the slide. |
 | 21 | Entering “matrix multiplication” might retrieve “the entire program for performing a matrix multiplication,” and storage should resonate with people's tendency to designate things “by naming or pointing” | Direct example and close excerpt from §5.3. The nearby-name trail condenses Licklider's subsequent “Egan, J. P.” / “Egan, James” example. |
-| 22 | “Instructions directed to computers specify courses; instructions directed to human beings specify goals” | Exact quotation from §5.4. |
+| 22 | “Instructions directed to computers specify courses; instructions directed to human beings specify goals” | Exact quotation from §5.4. The notes also retain Licklider's two proposed approaches: goal-seeking/hill-climbing/self-organizing programs, which he then considered only a “demonstration in principle,” and real-time concatenation of named preprogrammed segments and closed subroutines. |
 | 23 | Human and computer should draw and write on “the same display surface” | Exact phrase and close visual paraphrase of §5.5.1; the team-display fold-in comes from §5.5.2. |
 | 25 | Time sharing, memory, organization, languages, and I/O are prerequisites | Directly follows the paper summary and §5. The removed equipment/partnership slogan was presentation interpretation. |
 | 26 | Mechanical extension, humanly extended machine, and symbiotic partnership | Licklider's distinctions in §1.2, condensed for the slide. |
-| 28 | Contributions “will blend together so completely … that it will be difficult to separate them neatly in analysis” | Exact quotation with an ellipsis from the opening of §4. The making-of example is contemporary first-person testimony. |
+| 28 | “It seems likely that the contributions of human operators and equipment will blend together so completely in many operations that it will be difficult to separate them neatly in analysis.” | Complete sentence from the opening of §4. The making-of example is contemporary first-person testimony, not proof that every computer-assisted project is symbiotic. |
 | 29 | “The 15 may be 10 or 500” and those years should be “the most creative and exciting in the history of mankind” | Exact quotation from §1.2. “Golden age of human creativity” is explicitly treated as presentation interpretation, not Licklider's wording. |
 | 30 | “A productive and thriving partnership” | Close quotation of §1.1, presented as the silent visual coda after the exact §1.2 ending in Scene 29. |
 
 ## Illustrative reconstructions
 
-- Scenes 11–13: six measures and the clean speech-intelligibility curve are pedagogical reconstructions, not Licklider's source data.
+- Scenes 11–13: six measures, calculations, and the clean speech-intelligibility curve are pedagogical reconstructions, not Licklider's source data. Each scene is visibly labeled “Illustrative reconstruction.”
 - Scenes 15–17: SYMBIOTE™, its model, product claims, and alternative plots are fictional teaching devices based on §4.
 - Scenes 18 and 27: temporary audience prompts are presentation interactions. They do not persist, transmit, export, or fabricate a group tally.
 - Scene 19: the reel splice is an original transition device.
-- Scene 23: the rough-to-precise graph treatment is an educational reconstruction of the input/output argument; the later IBM 2250 and control-room photographs illustrate the categories.
-- Scene 24: the speech interface is a real browser feature, not historical footage or a claim about a 1960 system.
+- Scene 21: the 2009 card-catalog drawer is a contemporary analogy for an external record; it is not evidence of Licklider's proposed trie-like memory organization.
+- Scene 23: the rough-to-precise graph treatment is an educational reconstruction of the input/output argument; the 1969 IBM 2250 and 1964 NORAD control-room photographs are dated later illustrations of the categories.
+- Scene 24: the speech interface is a contemporary browser feature, not historical footage or a claim about a 1960 system. The page does not persist audio or transcript data, but browser- or vendor-operated recognition may process audio.
+- Scene 27: tool, servant, and partner are contemporary discussion vocabulary, not Licklider's three labels in §1.2.
 - Scene 28: the production record describes this project's real storyboard, art/presentation direction, built variants, automated captures/tests, parallel critique lenses, suggested edits, and human revision choices. The critique lenses are not actual audience testimony or independent authorities, and the case is not offered as universal proof of symbiosis.
 - Scene 29: the 10-to-500 timeline is a visual interpretation of Licklider's deliberately uncertain interval.
 - Scene 30: the three attributed photographs are transported through a fixed film gate as an evocative montage. They are not sequential footage of one fig, one wasp, or one act of pollination.
@@ -85,14 +87,14 @@ All downloaded copies are in **assets/archive/**. The agent-provided CSV researc
 - Licence: Public domain.
 - Used in: Scene 20.
 
-#### **widener-card-catalog.jpg**
+#### **widener-card-catalog.jpg** — retained research asset, not displayed
 
 - Source page: <https://commons.wikimedia.org/wiki/File:Card_catalog_in_Widener_Library_at_Harvard,_Cambridge,_Massachusetts_LCCN2007682031.jpg>
 - Direct asset: <https://upload.wikimedia.org/wikipedia/commons/7/74/Card_catalog_in_Widener_Library_at_Harvard%2C_Cambridge%2C_Massachusetts_LCCN2007682031.jpg>
 - Collection: Library of Congress.
 - Date: circa 1915.
 - Licence: Public domain.
-- Retained as a sourced research/reference asset; not displayed in the current Scene 21 cut.
+- Retained only as a sourced research asset. It is absent from the deck and from the in-presentation reference panel.
 
 #### **card-catalog-drawer.jpg**
 
@@ -127,7 +129,7 @@ All downloaded copies are in **assets/archive/**. The agent-provided CSV researc
 - **keypunch-operators.jpg**: U.S. Census Bureau, <https://commons.wikimedia.org/wiki/File:US_Census_Bureau_keypunch_operators,_Negro_section.jpg>, public domain. Used in Scene 05.
 - **computer-frame.jpg**: U.S. Census Bureau, <https://commons.wikimedia.org/wiki/File:Census_Bureau_techs_check_out_computer_frame.jpg>, public domain. Used in Scene 05.
 - **sage-console.jpg**: Tomwsulcer, <https://commons.wikimedia.org/wiki/File:SAGE_console_and_light_gun_at_CHM.jpg>, CC0. Used as the illustrative SYMBIOTE™ product portrait in Scene 15.
-- **war-room.png**: U.S. Air Force / NORAD booklet, <https://commons.wikimedia.org/wiki/File:1964_Chidlaw_Building_war_room.png>, public domain. Used briefly in Scene 23 as a team-display illustration, not as Licklider's thinking center.
+- **war-room.png**: U.S. Air Force / NORAD booklet, <https://commons.wikimedia.org/wiki/File:1964_Chidlaw_Building_war_room.png>, 1964, public domain. Used briefly in Scene 23 as a team-display illustration, not as Licklider's thinking center.
 
 ## Further reading
 
