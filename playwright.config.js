@@ -32,6 +32,13 @@ module.exports = defineConfig({
         viewport: { width: 1366, height: 768 },
       },
     },
+    {
+      name: "mobile-chromium",
+      use: {
+        ...devices["Pixel 5"],
+        viewport: { width: 390, height: 844 },
+      },
+    },
   ],
   webServer: liveBaseURL
     ? undefined

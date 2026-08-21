@@ -20,7 +20,6 @@
     transitionTimer: null,
     clericalTimers: [],
     clericalCounterTimer: null,
-    clericalOperations: 0,
     touchStartX: 0,
     touchStartY: 0,
     touchHandledUntil: 0,
@@ -48,7 +47,7 @@
       try {
         sessionStorage.setItem("symbiosis-muted", String(this.muted));
       } catch {
-        return;
+        // Session storage is optional for a local presentation.
       }
     }
 
@@ -59,7 +58,7 @@
 
       this.context = new AudioContextClass();
       this.master = this.context.createGain();
-      this.master.gain.value = this.muted ? 0 : 0.72;
+      this.master.gain.value = this.muted ? 0.0001 : 0.72;
       this.master.connect(this.context.destination);
       return true;
     }
@@ -73,11 +72,10 @@
 
     startProjectorBed() {
       if (!this.context || this.noiseSource) return;
-
-      const noiseLength = this.context.sampleRate * 2;
-      const noiseBuffer = this.context.createBuffer(1, noiseLength, this.context.sampleRate);
-      const channel = noiseBuffer.getChannelData(0);
-      for (let index = 0; index < noiseLength; index += 1) {
+      const length = this.context.sampleRate * 2;
+      const buffer = this.context.createBuffer(1, length, this.context.sampleRate);
+      const channel = buffer.getChannelData(0);
+      for (let index = 0; index < length; index += 1) {
         const flutter = Math.sin((index / this.context.sampleRate) * Math.PI * 2 * 11) * 0.08;
         channel[index] = (Math.random() * 2 - 1) * (0.34 + flutter);
       }
@@ -85,12 +83,12 @@
       const noiseSource = this.context.createBufferSource();
       const noiseFilter = this.context.createBiquadFilter();
       const bedGain = this.context.createGain();
-      noiseSource.buffer = noiseBuffer;
+      noiseSource.buffer = buffer;
       noiseSource.loop = true;
       noiseFilter.type = "bandpass";
       noiseFilter.frequency.value = 1250;
       noiseFilter.Q.value = 0.45;
-      bedGain.gain.value = 0.015;
+      bedGain.gain.value = 0.012;
       noiseSource.connect(noiseFilter).connect(bedGain).connect(this.master);
 
       const motorOscillator = this.context.createOscillator();
@@ -107,10 +105,10 @@
       this.bedGain = bedGain;
     }
 
-    setScene(sceneIndex) {
+    setScene(index) {
       if (!this.context || !this.bedGain) return;
-      const levels = [0.022, 0.005, 0.007, 0.006, 0.017, 0.024, 0.002, 0.008, 0.006, 0.014, 0.009, 0.02, 0.0002, 0.001, 0.013, 0.009, 0.018, 0.006, 0.021, 0.008, 0.011, 0.016, 0.005, 0.004, 0.004, 0.001, 0.009];
-      const target = levels[sceneIndex] ?? 0.007;
+      const subdued = new Set([6, 13, 14, 30, 31, 32, 33]);
+      const target = subdued.has(index) ? 0.001 : index === 5 ? 0.024 : 0.008;
       const now = this.context.currentTime;
       this.bedGain.gain.cancelScheduledValues(now);
       this.bedGain.gain.setTargetAtTime(target, now, 0.18);
@@ -137,8 +135,7 @@
       const buffer = this.context.createBuffer(1, sampleCount, this.context.sampleRate);
       const data = buffer.getChannelData(0);
       for (let index = 0; index < sampleCount; index += 1) {
-        const envelope = 1 - index / sampleCount;
-        data[index] = (Math.random() * 2 - 1) * envelope;
+        data[index] = (Math.random() * 2 - 1) * (1 - index / sampleCount);
       }
 
       const source = this.context.createBufferSource();
@@ -161,157 +158,42 @@
       });
     }
 
-    cueScene(sceneIndex) {
+    cueScene(scene) {
       if (!this.context) return;
-      if (sceneIndex === 1) this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
-      if (sceneIndex === 2) this.playNoiseBurst({ duration: 0.055, gain: 0.07 });
-      if (sceneIndex === 4) {
+      if (scene === "scene-01" || scene === "scene-02") this.playNoiseBurst({ duration: 0.045, gain: 0.04 });
+      if (scene === "scene-04" || scene === "scene-15") {
         this.playTone({ frequency: 196, duration: 0.55, gain: 0.025, type: "sine" });
         this.playTone({ frequency: 294, duration: 0.65, gain: 0.02, delay: 0.06, type: "sine" });
         this.playTone({ frequency: 392, duration: 0.75, gain: 0.016, delay: 0.12, type: "sine" });
       }
-      if (sceneIndex === 5) {
-        this.playTone({ frequency: 84, duration: 0.16, gain: 0.035, type: "square" });
-      }
-      if (sceneIndex === 6) {
-        const now = this.context.currentTime;
-        if (this.bedGain) this.bedGain.gain.setTargetAtTime(0.001, now, 0.04);
-      }
-      if (sceneIndex === 7) this.playNoiseBurst({ duration: 0.04, gain: 0.05 });
-      if (sceneIndex === 9) {
-        this.playTone({ frequency: 82, duration: 0.28, gain: 0.07, type: "square" });
-        this.playNoiseBurst({ duration: 0.08, gain: 0.08 });
-      }
-      if (sceneIndex === 12 && this.bedGain) {
-        const now = this.context.currentTime;
-        this.bedGain.gain.setTargetAtTime(0.0001, now, 0.025);
-      }
-      if (sceneIndex === 14) {
-        this.playTone({ frequency: 220, duration: 0.34, gain: 0.028, type: "sine" });
-        this.playTone({ frequency: 330, duration: 0.42, gain: 0.022, delay: 0.08, type: "sine" });
-        this.playTone({ frequency: 440, duration: 0.5, gain: 0.018, delay: 0.16, type: "sine" });
-      }
-      if (sceneIndex === 17) this.playNoiseBurst({ duration: 0.04, gain: 0.04 });
-      if (sceneIndex === 18) this.playTone({ frequency: 58, duration: 0.42, gain: 0.04, type: "sawtooth" });
-      if (sceneIndex === 19) this.playNoiseBurst({ duration: 0.035, gain: 0.035 });
-      if (sceneIndex === 20) this.playTone({ frequency: 146, duration: 0.22, gain: 0.026, type: "triangle" });
-      if (sceneIndex === 21) this.playTone({ frequency: 188, duration: 0.14, gain: 0.028, type: "triangle" });
-      if (sceneIndex === 22) {
-        this.playTone({ frequency: 174, duration: 0.46, gain: 0.018, type: "sine" });
-        this.playTone({ frequency: 261, duration: 0.5, gain: 0.014, delay: 0.05, type: "sine" });
-      }
-      if (sceneIndex === 23) this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
-      if (sceneIndex === 24) {
-        this.playTone({ frequency: 196, duration: 0.08, gain: 0.028, type: "square" });
-        this.playTone({ frequency: 294, duration: 0.09, gain: 0.02, delay: 0.05, type: "square" });
-      }
-      if (sceneIndex === 25 && this.bedGain) {
-        const now = this.context.currentTime;
-        this.bedGain.gain.setTargetAtTime(0.0005, now, 0.08);
-      }
-      if (sceneIndex === 26) {
-        this.playTone({ frequency: 146, duration: 0.18, gain: 0.022, type: "triangle" });
-        this.playNoiseBurst({ duration: 0.04, gain: 0.035, delay: 0.12 });
-      }
+      if (scene === "scene-05") this.playTone({ frequency: 84, duration: 0.16, gain: 0.035, type: "square" });
+      if (scene === "scene-06" && this.bedGain) this.bedGain.gain.setTargetAtTime(0.001, this.context.currentTime, 0.04);
+      if (scene === "scene-19") this.playTone({ frequency: 72, duration: 0.3, gain: 0.04, type: "square" });
+      if (scene === "scene-20" || scene === "scene-21") this.playTone({ frequency: 146, duration: 0.2, gain: 0.026, type: "triangle" });
+      if (scene === "scene-31" && this.bedGain) this.bedGain.gain.setTargetAtTime(0.0005, this.context.currentTime, 0.08);
     }
 
-    cueBuild(sceneIndex, buildIndex) {
+    cueBuild(scene, buildIndex) {
       if (!this.context) return;
-      if (sceneIndex === 2) this.playNoiseBurst({ duration: 0.035, gain: 0.05 });
-      if (sceneIndex === 3 && buildIndex <= 2) {
-        this.playTone({ frequency: 720, duration: 0.035, gain: 0.035, type: "square" });
-      }
-      if (sceneIndex === 5) {
-        const frequency = buildIndex === 6 ? 118 : 105 + buildIndex * 19;
-        this.playTone({ frequency, duration: buildIndex === 6 ? 0.22 : 0.055, gain: 0.045, type: "square" });
-        if (buildIndex === 5) this.playNoiseBurst({ duration: 0.25, gain: 0.07 });
-      }
-      if (sceneIndex === 7) {
-        this.playNoiseBurst({ duration: buildIndex === 3 ? 0.09 : 0.035, gain: buildIndex === 3 ? 0.1 : 0.045 });
-      }
-      if (sceneIndex === 11) {
-        const frequencies = [0, 164, 196, 233, 277, 112];
-        this.playTone({
-          frequency: frequencies[buildIndex] || 180,
-          duration: buildIndex === 5 ? 0.18 : 0.045,
-          gain: buildIndex === 5 ? 0.055 : 0.035,
-          type: "square",
-        });
+      if (scene === "scene-12") {
+        this.playTone({ frequency: 150 + buildIndex * 26, duration: buildIndex === 5 ? 0.18 : 0.045, gain: 0.035, type: "square" });
         this.playNoiseBurst({ duration: 0.025, gain: 0.03, delay: 0.025 });
+        return;
       }
-      if (sceneIndex === 13 && buildIndex === 1) {
+      if (scene === "scene-14" || scene === "scene-30") {
         this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
+        return;
       }
-      if (sceneIndex === 14) {
-        this.playTone({ frequency: 170 + buildIndex * 64, duration: 0.06, gain: 0.035, type: "triangle" });
-        if (buildIndex === 2) this.playNoiseBurst({ duration: 0.07, gain: 0.045 });
+      if (scene === "scene-15" || scene === "scene-16" || scene === "scene-17") {
+        this.playTone({ frequency: 150 + buildIndex * 35, duration: 0.06, gain: 0.03, type: "triangle" });
+        this.playNoiseBurst({ duration: 0.04, gain: 0.035 });
+        return;
       }
-      if (sceneIndex === 15) {
-        this.playNoiseBurst({ duration: 0.045, gain: 0.055 });
-        this.playTone({ frequency: buildIndex % 2 === 0 ? 132 : 176, duration: 0.05, gain: 0.03, type: "square" });
+      if (scene === "scene-19") {
+        this.playNoiseBurst({ duration: buildIndex === 1 ? 0.12 : 0.05, gain: 0.06 });
+        return;
       }
-      if (sceneIndex === 16) {
-        this.playNoiseBurst({ duration: buildIndex === 4 ? 0.11 : 0.08, gain: buildIndex === 4 ? 0.065 : 0.045 });
-        this.playTone({ frequency: 92 + buildIndex * 21, duration: 0.09, gain: 0.032, delay: 0.02, type: "square" });
-      }
-      if (sceneIndex === 17) this.playNoiseBurst({ duration: 0.035, gain: 0.04 });
-      if (sceneIndex === 18) {
-        if (buildIndex === 1) this.playNoiseBurst({ duration: 0.72, gain: 0.13 });
-        if (buildIndex === 2) {
-          this.playTone({ frequency: 72, duration: 0.3, gain: 0.045, type: "square" });
-          this.playNoiseBurst({ duration: 0.08, gain: 0.055, delay: 0.04 });
-        }
-      }
-      if (sceneIndex === 19) {
-        this.playNoiseBurst({ duration: 0.035, gain: 0.04 });
-        this.playTone({ frequency: 120 + buildIndex * 28, duration: 0.045, gain: 0.025, type: "square" });
-      }
-      if (sceneIndex === 20) {
-        this.playTone({ frequency: 126 + buildIndex * 42, duration: 0.08, gain: 0.03, type: "triangle" });
-        if (buildIndex >= 3) this.playNoiseBurst({ duration: 0.04, gain: 0.03 });
-      }
-      if (sceneIndex === 21) {
-        if (buildIndex <= 6) {
-          this.playTone({ frequency: 170 + buildIndex * 58, duration: 0.055, gain: 0.032, type: "square" });
-          this.playNoiseBurst({ duration: 0.025, gain: 0.026, delay: 0.015 });
-        } else {
-          this.playNoiseBurst({ duration: 0.18, gain: 0.11 });
-          this.playTone({ frequency: 66, duration: 0.22, gain: 0.045, type: "square" });
-        }
-      }
-      if (sceneIndex === 22) {
-        if (buildIndex === 1) this.playNoiseBurst({ duration: 0.035, gain: 0.032 });
-        if (buildIndex === 2) this.playTone({ frequency: 116, duration: 0.08, gain: 0.035, type: "square" });
-        if (buildIndex === 3) this.playNoiseBurst({ duration: 0.09, gain: 0.065 });
-        if (buildIndex === 4) {
-          this.playTone({ frequency: 196, duration: 0.38, gain: 0.024, type: "sine" });
-          this.playTone({ frequency: 294, duration: 0.44, gain: 0.018, delay: 0.04, type: "sine" });
-        }
-      }
-      if (sceneIndex === 23) {
-        this.playNoiseBurst({ duration: 0.055, gain: 0.052 });
-        this.playTone({ frequency: 102 + buildIndex * 24, duration: 0.045, gain: 0.022, type: "square" });
-      }
-      if (sceneIndex === 24) {
-        if (buildIndex === 1) this.playNoiseBurst({ duration: 0.14, gain: 0.085 });
-        if (buildIndex === 2) {
-          this.playTone({ frequency: 174, duration: 0.32, gain: 0.022, type: "sine" });
-          this.playTone({ frequency: 233, duration: 0.4, gain: 0.018, delay: 0.05, type: "sine" });
-        }
-        if (buildIndex === 3) this.playTone({ frequency: 131, duration: 0.18, gain: 0.025, type: "triangle" });
-      }
-      if (sceneIndex === 25 && buildIndex === 1) {
-        this.playNoiseBurst({ duration: 0.035, gain: 0.018 });
-      }
-      if (sceneIndex === 26) {
-        if (buildIndex < 4) {
-          this.playNoiseBurst({ duration: 0.045, gain: 0.038 });
-          this.playTone({ frequency: 154 + buildIndex * 42, duration: 0.11, gain: 0.022, type: "triangle" });
-        } else if (this.bedGain) {
-          const now = this.context.currentTime;
-          this.bedGain.gain.setTargetAtTime(0.0001, now, 0.12);
-        }
-      }
+      this.playNoiseBurst({ duration: 0.03, gain: 0.025 });
     }
 
     async toggle() {
@@ -337,17 +219,25 @@
     return Math.min(Math.max(value, minimum), maximum);
   }
 
+  function parseHash() {
+    const match = window.location.hash.match(/^#scene-(\d{2})$/);
+    if (!match) return 0;
+    return clamp(Number(match[1]), 0, scenes.length - 1);
+  }
+
+  function parseOpening() {
+    return new URLSearchParams(window.location.search).get("opening") === "mystery" ? "mystery" : "wonder";
+  }
+
+  function currentSceneId(index = presentationState.index) {
+    return scenes[index]?.id || "";
+  }
+
   function getMaxBuild(scene = scenes[presentationState.index]) {
     return Array.from(scene?.querySelectorAll("[data-build]") || []).reduce(
       (maximum, element) => Math.max(maximum, Number(element.dataset.build) || 0),
       0,
     );
-  }
-
-  function parseHash() {
-    const match = window.location.hash.match(/^#scene-(\d{2})$/);
-    if (!match) return 0;
-    return clamp(Number(match[1]), 0, scenes.length - 1);
   }
 
   function announce(message) {
@@ -358,10 +248,10 @@
   }
 
   function updateIndicator() {
-    sceneIndicator.textContent = `${formatScene(presentationState.index)} / ${formatScene(scenes.length - 1)}`;
+    sceneIndicator.textContent = formatScene(presentationState.index) + " / " + formatScene(scenes.length - 1);
     sceneIndicator.setAttribute(
       "aria-label",
-      `Scene ${presentationState.index} of ${scenes.length - 1}: ${scenes[presentationState.index].dataset.title}`,
+      "Scene " + presentationState.index + " of " + (scenes.length - 1) + ": " + scenes[presentationState.index].dataset.title,
     );
   }
 
@@ -378,9 +268,7 @@
     const counter = document.querySelector("#clerical-counter");
     if (!counter) return;
     const milestones = [0, 47, 126, 238, 417, 862];
-    const value = milestones[clamp(buildIndex, 0, milestones.length - 1)];
-    presentationState.clericalOperations = value;
-    counter.textContent = String(value).padStart(4, "0");
+    counter.textContent = String(milestones[clamp(buildIndex, 0, milestones.length - 1)]).padStart(4, "0");
   }
 
   function clearClericalSequence() {
@@ -393,27 +281,23 @@
   function startClericalSequence() {
     clearClericalSequence();
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const stepDuration = reducedMotion ? 90 : 2_650;
-    const finalOperationCount = 862;
+    const stepDuration = reducedMotion ? 90 : 2650;
+    const counter = document.querySelector("#clerical-counter");
     const startTime = performance.now();
     const totalDuration = stepDuration * 4;
-    const counter = document.querySelector("#clerical-counter");
-
     if (counter) {
       presentationState.clericalCounterTimer = window.setInterval(() => {
         const progress = clamp((performance.now() - startTime) / totalDuration, 0, 1);
-        presentationState.clericalOperations = Math.round(finalOperationCount * progress);
-        counter.textContent = String(presentationState.clericalOperations).padStart(4, "0");
+        counter.textContent = String(Math.round(862 * progress)).padStart(4, "0");
         if (progress >= 1) {
           window.clearInterval(presentationState.clericalCounterTimer);
           presentationState.clericalCounterTimer = null;
         }
       }, reducedMotion ? 20 : 80);
     }
-
     for (let buildIndex = 2; buildIndex <= 5; buildIndex += 1) {
       const timer = window.setTimeout(() => {
-        if (presentationState.index !== 11) return;
+        if (currentSceneId() !== "scene-12") return;
         setBuild(buildIndex, { source: "automatic" });
       }, stepDuration * (buildIndex - 1));
       presentationState.clericalTimers.push(timer);
@@ -425,8 +309,8 @@
     const changed = nextBuild !== presentationState.build;
     presentationState.build = nextBuild;
     updateBuilds();
-    if (changed && !silent) sound.cueBuild(presentationState.index, nextBuild);
-    if (presentationState.index === 11) {
+    if (changed && !silent) sound.cueBuild(currentSceneId(), nextBuild);
+    if (currentSceneId() === "scene-12") {
       if (changed && nextBuild === 1 && source !== "automatic" && !silent) startClericalSequence();
       if (changed && source !== "automatic" && nextBuild !== 1) clearClericalSequence();
       if (silent || source !== "automatic") updateClericalCounter(nextBuild);
@@ -445,19 +329,17 @@
       .filter((className) => className.startsWith("transition--"))
       .forEach((className) => body.classList.remove(className));
     if (!name) return;
-    body.classList.add(`transition--${name}`);
+    body.classList.add("transition--" + name);
     window.clearTimeout(presentationState.transitionTimer);
     presentationState.transitionTimer = window.setTimeout(() => {
-      body.classList.remove(`transition--${name}`);
+      body.classList.remove("transition--" + name);
     }, 520);
   }
 
   function goToSlide(index, { build = 0, silent = false, updateHash = true } = {}) {
     const nextIndex = clamp(Number(index) || 0, 0, scenes.length - 1);
     const previousIndex = presentationState.index;
-
-    if (previousIndex === 11 && nextIndex !== 11) clearClericalSequence();
-
+    if (currentSceneId(previousIndex) === "scene-12" && nextIndex !== previousIndex) clearClericalSequence();
     if (!presentationState.started && nextIndex > 0) startProjector({ silent: true });
 
     scenes.forEach((scene, sceneIndex) => {
@@ -471,20 +353,26 @@
     setBuild(build, { silent: true });
     updateIndicator();
     refreshNotes();
-
     if (updateHash) {
-      const nextHash = `#scene-${formatScene(nextIndex)}`;
+      const nextHash = "#scene-" + formatScene(nextIndex);
       if (window.location.hash !== nextHash) history.replaceState(null, "", nextHash);
     }
-
     if (nextIndex !== previousIndex) {
       setTransition(scenes[nextIndex].dataset.transition);
       sound.setScene(nextIndex);
-      if (!silent) sound.cueScene(nextIndex);
+      if (!silent) sound.cueScene(currentSceneId(nextIndex));
     }
-
-    announce(`Scene ${nextIndex}: ${scenes[nextIndex].dataset.title}`);
+    announce("Scene " + nextIndex + ": " + scenes[nextIndex].dataset.title);
     return nextIndex;
+  }
+
+  function scheduleLeaderCompletion() {
+    window.clearTimeout(presentationState.leaderTimer);
+    presentationState.leaderTimer = window.setTimeout(() => {
+      presentationState.leaderComplete = true;
+      body.classList.add("leader-complete");
+      announce("Film leader complete");
+    }, 9400);
   }
 
   function startProjector({ silent = false } = {}) {
@@ -492,18 +380,26 @@
     presentationState.started = true;
     body.classList.add("projector-started");
     body.classList.toggle("sound-muted", sound.muted);
-
     if (!silent) sound.arm({ leader: presentationState.index === 0 });
-
-    window.clearTimeout(presentationState.leaderTimer);
-    presentationState.leaderTimer = window.setTimeout(() => {
-      presentationState.leaderComplete = true;
-      body.classList.add("leader-complete");
-      announce("Film leader complete");
-    }, 9_400);
-
+    if (presentationState.index === 0) scheduleLeaderCompletion();
     announce(sound.muted ? "Projector started, sound muted" : "Projector started");
     return true;
+  }
+
+  function replayLeader() {
+    closePanels();
+    clearClericalSequence();
+    presentationState.started = true;
+    presentationState.leaderComplete = false;
+    window.clearTimeout(presentationState.leaderTimer);
+    body.classList.remove("leader-complete", "projector-started");
+    goToSlide(0, { silent: true });
+    void body.offsetWidth;
+    body.classList.add("projector-started");
+    body.classList.toggle("sound-muted", sound.muted);
+    if (!sound.muted) sound.arm({ leader: true });
+    scheduleLeaderCompletion();
+    announce("Opening leader replayed");
   }
 
   function next() {
@@ -512,27 +408,20 @@
       startProjector();
       return;
     }
-
-    const maximumBuild = getMaxBuild();
-    if (presentationState.build < maximumBuild) {
+    if (presentationState.build < getMaxBuild()) {
       setBuild(presentationState.build + 1);
       return;
     }
-
-    if (presentationState.index < scenes.length - 1) {
-      goToSlide(presentationState.index + 1);
-    }
+    if (presentationState.index < scenes.length - 1) goToSlide(presentationState.index + 1);
   }
 
   function previous() {
     closePanels();
     if (!presentationState.started) return;
-
     if (presentationState.build > 0) {
       setBuild(presentationState.build - 1);
       return;
     }
-
     if (presentationState.index > 0) {
       const previousIndex = presentationState.index - 1;
       goToSlide(previousIndex, { build: getMaxBuild(scenes[previousIndex]) });
@@ -553,12 +442,10 @@
     const wasOpen = panel.getAttribute("aria-hidden") === "false";
     closePanels();
     if (wasOpen) return;
-
     if (panel === notesPanel) {
       const source = scenes[presentationState.index].querySelector(".speaker-notes");
       notesContent.innerHTML = source ? source.innerHTML : "<p>No notes for this scene.</p>";
     }
-
     panel.setAttribute("aria-hidden", "false");
     body.classList.add("panel-open");
     panel.querySelector("button")?.focus({ preventScroll: true });
@@ -581,9 +468,8 @@
   async function toggleSound() {
     const muted = await sound.toggle();
     body.classList.toggle("sound-muted", muted);
-    announce(muted ? "Sound muted" : "Sound on");
     sound.setScene(presentationState.index);
-    return muted;
+    announce(muted ? "Sound muted" : "Sound on");
   }
 
   function showChrome() {
@@ -592,7 +478,7 @@
     window.clearTimeout(presentationState.chromeTimer);
     presentationState.chromeTimer = window.setTimeout(() => {
       if (!body.classList.contains("panel-open")) body.classList.remove("chrome-visible");
-    }, 2_300);
+    }, 2300);
   }
 
   function isInteractiveTarget(target) {
@@ -604,12 +490,8 @@
       if (closePanels()) event.preventDefault();
       return;
     }
-
     if (event.target.closest("input, textarea, select, [contenteditable='true']")) return;
-
     const key = event.key.toLowerCase();
-    const code = event.code;
-
     if (key === "n") {
       event.preventDefault();
       togglePanel(notesPanel);
@@ -651,7 +533,7 @@
       previous();
       return;
     }
-    if (key === "arrowright" || key === "pagedown" || code === "Space" || key === "enter") {
+    if (key === "arrowright" || key === "pagedown" || event.code === "Space" || key === "enter") {
       event.preventDefault();
       if (!event.repeat) next();
     }
@@ -666,6 +548,7 @@
       references: () => togglePanel(referencePanel),
       fullscreen: toggleFullscreen,
       overview: () => togglePanel(helpPanel),
+      "replay-leader": replayLeader,
     };
     actions[action]?.();
   }
@@ -677,13 +560,11 @@
       handleAction(actionButton.dataset.action);
       return;
     }
-
     if (event.target.closest("[data-close-panel]")) {
       event.preventDefault();
       closePanels();
       return;
     }
-
     if (!event.target.closest("#film") || isInteractiveTarget(event.target)) return;
     if (Date.now() < presentationState.touchHandledUntil) return;
     next();
@@ -705,75 +586,151 @@
     else previous();
   }
 
-  function initializeThinkingDial() {
-    const estimateInput = document.querySelector("#thinking-estimate");
-    const estimateOutput = document.querySelector("#estimate-output");
-    const estimateStatus = document.querySelector("#estimate-status");
-    const dial = document.querySelector(".thinking-dial");
-    const marks = document.querySelector("#audience-marks");
-    const lockButton = document.querySelector("#lock-estimate");
-    if (!estimateInput || !estimateOutput || !estimateStatus || !dial || !marks || !lockButton) return;
+  const responseConfig = {
+    thinking: {
+      key: "symbiosis-thinking-responses-v2",
+      list: "#thinking-responses",
+      status: "#thinking-action-status",
+      label: "thinking response",
+      filename: "man-computer-symbiosis-thinking-responses.csv",
+    },
+    relationship: {
+      key: "symbiosis-relationship-responses-v2",
+      list: "#relationship-responses",
+      status: "#relationship-status",
+      label: "relationship selection",
+      filename: "man-computer-symbiosis-relationship-selections.csv",
+    },
+  };
 
-    const updateEstimate = () => {
-      const value = Number(estimateInput.value);
-      dial.style.setProperty("--estimate", String(value));
-      estimateOutput.textContent = `${value}%`;
-    };
+  function getResponses(kind) {
+    const config = responseConfig[kind];
+    if (!config) return [];
+    try {
+      const stored = JSON.parse(localStorage.getItem(config.key) || "[]");
+      return Array.isArray(stored) ? stored.filter((item) => typeof item?.text === "string") : [];
+    } catch {
+      return [];
+    }
+  }
 
-    estimateInput.addEventListener("input", updateEstimate);
-    lockButton.addEventListener("click", () => {
-      updateEstimate();
-      const value = Number(estimateInput.value);
-      const mark = document.createElement("span");
-      mark.className = "audience-mark";
-      mark.style.setProperty("--mark", String(value));
-      mark.dataset.value = String(value);
-      mark.setAttribute("aria-label", `Audience estimate ${value} percent`);
-      marks.append(mark);
-      while (marks.children.length > 6) marks.firstElementChild?.remove();
-      estimateStatus.textContent = `Marked ${value}%. Take another answer or advance when ready.`;
-      sound.cueBuild(8, marks.children.length);
+  function setResponses(kind, responses) {
+    const config = responseConfig[kind];
+    if (!config) return;
+    try {
+      localStorage.setItem(config.key, JSON.stringify(responses));
+    } catch {
+      // The visible record still works if local storage is unavailable.
+    }
+  }
+
+  function renderResponses(kind) {
+    const config = responseConfig[kind];
+    const list = document.querySelector(config?.list || "");
+    if (!list) return;
+    const responses = getResponses(kind);
+    list.replaceChildren();
+    responses.forEach((response, index) => {
+      const item = document.createElement("li");
+      const number = document.createElement("span");
+      const text = document.createElement("strong");
+      number.textContent = String(index + 1).padStart(2, "0") + " - " + (kind === "relationship" ? "SELECTED" : "FILED");
+      text.textContent = response.text;
+      item.append(number, text);
+      list.append(item);
     });
   }
 
-  function initializeThinkingResponses() {
+  function setResponseStatus(kind, message) {
+    const status = document.querySelector(responseConfig[kind]?.status || "");
+    if (status) status.textContent = message;
+  }
+
+  function addResponse(kind, text) {
+    const cleanText = String(text || "").trim();
+    if (!cleanText) return false;
+    const responses = getResponses(kind);
+    responses.push({ text: cleanText, recordedAt: new Date().toISOString() });
+    setResponses(kind, responses);
+    renderResponses(kind);
+    setResponseStatus(kind, "Recorded " + responseConfig[kind].label + ": " + cleanText);
+    return true;
+  }
+
+  function responseCsv(kind) {
+    const responses = getResponses(kind);
+    const escape = (value) => '"' + String(value).replace(/"/g, '""') + '"';
+    return ["number,response,recorded_at"].concat(
+      responses.map((response, index) => [index + 1, response.text, response.recordedAt].map(escape).join(",")),
+    ).join("\n");
+  }
+
+  async function copyResponses(kind) {
+    const text = responseCsv(kind);
+    try {
+      await navigator.clipboard.writeText(text);
+      setResponseStatus(kind, "Copied local record to clipboard.");
+    } catch {
+      const field = document.createElement("textarea");
+      field.value = text;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.opacity = "0";
+      document.body.append(field);
+      field.select();
+      document.execCommand("copy");
+      field.remove();
+      setResponseStatus(kind, "Copied local record to clipboard.");
+    }
+  }
+
+  function downloadResponses(kind) {
+    const config = responseConfig[kind];
+    const blob = new Blob([responseCsv(kind)], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = config.filename;
+    document.body.append(anchor);
+    anchor.click();
+    anchor.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 0);
+    setResponseStatus(kind, "Prepared CSV download from this browser only.");
+  }
+
+  function initializeResponseForms() {
     const form = document.querySelector("#thinking-action-form");
     const input = document.querySelector("#thinking-action");
-    const responses = document.querySelector("#thinking-responses");
-    const status = document.querySelector("#thinking-action-status");
-    if (!form || !input || !responses || !status) return;
+    if (form && input) {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (!addResponse("thinking", input.value)) {
+          setResponseStatus("thinking", "Write a response before filing it.");
+          input.focus();
+          return;
+        }
+        input.value = "";
+        sound.cueBuild("scene-18", getResponses("thinking").length);
+      });
+    }
 
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const response = input.value.trim();
-      if (!response) {
-        status.textContent = "Write a response before filing the card.";
-        input.focus();
-        return;
-      }
-
-      const responseNumber = responses.children.length + 1;
-      const card = document.createElement("li");
-      const code = document.createElement("span");
-      const text = document.createElement("strong");
-      card.className = "thinking-response-card";
-      code.textContent = `FILED ${String(responseNumber).padStart(2, "0")}`;
-      text.textContent = response;
-      card.append(code, text);
-      responses.prepend(card);
-      while (responses.children.length > 3) responses.lastElementChild?.remove();
-
-      input.value = "";
-      status.textContent = `Filed response: ${response}`;
-      sound.cueBuild(17, responseNumber);
+    document.querySelectorAll("[data-response-action]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const kind = button.dataset.responseKind;
+        if (!responseConfig[kind]) return;
+        if (button.dataset.responseAction === "copy") copyResponses(kind);
+        if (button.dataset.responseAction === "download") downloadResponses(kind);
+        if (button.dataset.responseAction === "print") window.print();
+      });
     });
+
+    renderResponses("thinking");
+    renderResponses("relationship");
   }
 
   function initializeRelationshipPoll() {
     const cards = Array.from(document.querySelectorAll(".relationship-card"));
-    const status = document.querySelector("#relationship-status");
-    if (!cards.length || !status) return;
-
+    if (!cards.length) return;
     cards.forEach((card, cardIndex) => {
       card.addEventListener("click", () => {
         cards.forEach((candidate) => {
@@ -781,23 +738,116 @@
           candidate.classList.toggle("is-selected", selected);
           candidate.setAttribute("aria-pressed", String(selected));
         });
-
         const relation = card.dataset.relation || card.textContent.trim();
-        status.textContent = `Selected ${relation}. Now consider what would have to be true to call a computer a partner.`;
-        if (presentationState.index === 23 && presentationState.build < 1) setBuild(1, { silent: true });
-        sound.cueBuild(23, cardIndex + 1);
+        addResponse("relationship", relation);
+        if (currentSceneId() === "scene-29" && presentationState.build < 1) setBuild(1, { silent: true });
+        sound.cueBuild("scene-29", cardIndex + 1);
       });
     });
   }
 
+  function initializeSpeechInterface() {
+    const recordButton = document.querySelector("#speech-record");
+    const playbackButton = document.querySelector("#speech-playback");
+    const transcript = document.querySelector("#speech-transcript");
+    const status = document.querySelector("#speech-status");
+    const fallback = document.querySelector("#speech-fallback");
+    const fallbackInput = document.querySelector("#speech-fallback-input");
+    if (!recordButton || !playbackButton || !transcript || !status) return;
+
+    const SpeechRecognitionClass = window.SpeechRecognition || window.webkitSpeechRecognition;
+    let recognition = null;
+    let listening = false;
+    let transcriptValue = transcript.textContent.trim();
+    const setTranscript = (value) => {
+      transcriptValue = value.trim() || "Your words can appear here.";
+      transcript.textContent = transcriptValue;
+    };
+
+    if (!SpeechRecognitionClass) {
+      fallback.hidden = false;
+      recordButton.disabled = true;
+      status.textContent = "Speech recognition is unavailable in this browser. Use the text field; playback may still be available.";
+      fallbackInput?.addEventListener("input", () => setTranscript(fallbackInput.value));
+    } else {
+      recognition = new SpeechRecognitionClass();
+      recognition.lang = document.documentElement.lang || "en-US";
+      recognition.continuous = false;
+      recognition.interimResults = true;
+      recognition.maxAlternatives = 1;
+      recognition.onstart = () => {
+        listening = true;
+        recordButton.classList.add("is-listening");
+        recordButton.setAttribute("aria-pressed", "true");
+        status.textContent = "Listening. Speak naturally, then pause.";
+      };
+      recognition.onresult = (event) => {
+        let value = "";
+        for (let index = event.resultIndex; index < event.results.length; index += 1) value += event.results[index][0].transcript;
+        setTranscript(value);
+      };
+      recognition.onerror = (event) => {
+        fallback.hidden = false;
+        status.textContent = event.error === "not-allowed"
+          ? "Microphone permission was not granted. Use the text field below."
+          : "Speech recognition stopped: " + event.error + ". Use the text field below.";
+      };
+      recognition.onend = () => {
+        listening = false;
+        recordButton.classList.remove("is-listening");
+        recordButton.setAttribute("aria-pressed", "false");
+        if (!status.textContent.includes("stopped") && !status.textContent.includes("permission")) {
+          status.textContent = "Transcript ready for review or playback.";
+        }
+      };
+      recordButton.addEventListener("click", () => {
+        try {
+          if (listening) recognition.stop();
+          else recognition.start();
+        } catch {
+          status.textContent = "Recognition is already starting. Pause briefly, then try again.";
+        }
+      });
+      fallbackInput?.addEventListener("input", () => setTranscript(fallbackInput.value));
+    }
+
+    playbackButton.addEventListener("click", () => {
+      if (!("speechSynthesis" in window) || !window.SpeechSynthesisUtterance) {
+        status.textContent = "Speech playback is unavailable in this browser.";
+        return;
+      }
+      const value = transcriptValue === "Your words can appear here." ? "" : transcriptValue;
+      if (!value) {
+        status.textContent = "Record or enter a phrase before playback.";
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(value);
+      utterance.onstart = () => {
+        status.textContent = "Playing back the transcript.";
+      };
+      utterance.onend = () => {
+        status.textContent = "Playback complete.";
+      };
+      utterance.onerror = () => {
+        status.textContent = "Speech playback could not complete in this browser.";
+      };
+      window.speechSynthesis.speak(utterance);
+    });
+  }
+
   function initialize() {
-    const initialIndex = parseHash();
+    const opening = parseOpening();
+    body.classList.toggle("opening-wonder", opening === "wonder");
+    body.classList.toggle("opening-mystery", opening === "mystery");
     body.classList.toggle("sound-muted", sound.muted);
+    const initialIndex = parseHash();
     goToSlide(initialIndex, { silent: true, updateHash: Boolean(window.location.hash) });
     if (initialIndex > 0) startProjector({ silent: true });
-    initializeThinkingDial();
-    initializeThinkingResponses();
+
+    initializeResponseForms();
     initializeRelationshipPoll();
+    initializeSpeechInterface();
 
     document.addEventListener("keydown", handleKeydown);
     document.addEventListener("click", handleDocumentClick);
@@ -812,13 +862,14 @@
     window.__symbiosisDeck = {
       slides: scenes,
       get state() {
-        return { ...presentationState, soundMuted: sound.muted };
+        return { ...presentationState, soundMuted: sound.muted, opening: parseOpening() };
       },
       goToSlide,
       setBuild,
       next,
       previous,
       startProjector,
+      replayLeader,
       toggleSound,
       closePanels,
       startClericalSequence,

@@ -1,259 +1,151 @@
-# Speaker Notes — Found-Film Presentation
+# Speaker Notes
 
-These notes follow the redesigned 27-scene sequence from Scene 00 through Scene 26. The same scene-specific notes are embedded in `index.html` and available during playback with `N`.
-
-All 27 scenes are implemented. These notes are the complete delivery record for the leader, two reels, final image, and archive credits.
+These notes follow the implemented 35-scene deck from Scene 00 through Scene 34. The same concise notes are available during playback with **N**.
 
 ## Global delivery
 
-- Do not introduce the presentation before Scene 01.
-- The first `Space`, `Enter`, click, or `→` starts the projector and local audio without advancing beyond Scene 00.
-- Prefer silence to explaining the visual joke.
-- `M` mutes immediately; the deck remains intelligible without sound.
-- If time is short, preserve the fig/wasp reveal, 85% sequence, clean graph, partnership distinction, and final question.
+- Do not introduce the paper before Scene 04.
+- The first advance starts the projector and leader; use the replay control in Scene 00 whenever the opening needs to run again.
+- Hold the graph sequence long enough to make the clerical delay felt.
+- Audience records in Scenes 18 and 29 are local to the browser. Their Copy, CSV, and Print controls are practical room tools, not a vote or network service.
+- If time is short, retain the fig/wasp relation, the two aims, the 85 percent and graph sequence, the division of work, the interim, and the closing coda.
 
 ## Scene 00 — The projector starts
 
-**Purpose:** Establish that this is a screening, not a deck.
-
-**Delivery:** Say nothing. Let the room settle before the first gesture. Allow the archive card and continuous `8…7…6…` leader to run, then hold on the final black frame before advancing.
-
-**Sound:** Procedural projector motor, hiss, splice clicks, and countdown pops begin only after the presenter gesture.
-
-**Transition:** Hard cut from black to the fig.
-
-**Source status:** Original reconstruction. `RESEARCH FILM ARCHIVE` is a generic framing device, not a reference to a real institution.
+Say nothing. Start the leader only once the room is settled. The rewind control resets the animation and local sound without a page reload.
 
 ## Scene 01 — A fig
 
-**Purpose:** Create productive confusion and begin exactly where Licklider begins: with biological symbiosis.
-
-**Delivery:** Hold. “I want to begin with a computer scientist talking about…” Hold again. “…figs.” Let any laugh or confusion finish before advancing.
-
-**Visual:** No caption, title, date, or paper reference. The slow optical push is the only movement.
-
-**Source:** “Cut Fig 01,” Jedesto, 2021, CC BY-SA 4.0.
+Let the bright fruit read as an ordinary, living thing. The Wonder Cut is intentionally curious and affirmative rather than ominous.
 
 ## Scene 02 — A wasp
 
-**Purpose:** Make the biological relationship concrete before introducing computers.
+Point out that this is a real fig wasp inside a fig. Explain the mutual dependence aloud; avoid making a categorical species claim on the slide.
 
-**Delivery:** Explain how a fig-pollinating wasp and fig depend on one another. Do not say “computer” yet. Use “symbiosis” only near the end.
+## Scene 03 — Symbiosis
 
-**Build 1:** Reveal the isolated scientific specimen.
-
-**Build 2:** Add the physical rule and `BLASTOPHAGA` specimen label.
-
-**Sources:** P. Zborowski/CSIRO habitat photograph, CC BY 3.0; Dr. Stefan Schmidt/SNSB specimen photograph, CC BY-SA 4.0.
-
-## Scene 03 — SYMBIOSIS
-
-**Purpose:** Turn the opening metaphor into the first dramatic reveal.
-
-**Build 1:** `SYMBIOSIS` types onto the frame.
-
-**Build 2:** `TWO DISSIMILAR ORGANISMS.` Emphasise “dissimilar.”
-
-**Build 3:** The two specimen frames become visibly coupled.
-
-**Build 4:** Speak first: “What if one of the organisms is us… and the other is a computer?” Then reveal the computer line.
-
-**Source:** Close paraphrase of the paper’s opening two paragraphs.
+Use the visual coupling to explain why Licklider began with a fig and a wasp. Then make the turn: what if one organism is a person and the other is a computer?
 
 ## Scene 04 — Title card, finally
 
-**Purpose:** Reveal the subject only after the audience has already entered the argument.
+Do not talk over the title. Identify Licklider and the 1960 paper briefly once the author line arrives.
 
-**Delivery:** Do not speak over the main title. On the author build, identify J. C. R. Licklider and the March 1960 paper in one or two sentences. Do not give a biography or agenda.
+## Scene 05 — The computer, 1960
 
-**Build 1:** Author and year.
+Walk through the old batch loop: formulate today, explain to an intermediary, compute later, receive output, then find that another experiment is required. The long paper strip is the argument.
 
-**Build 2:** Brief reel-change mark.
+## Scene 06 — What is the question?
 
-**Sound:** Restrained institutional title chord.
+Use Licklider's Poincare quotation: “The question is not, ‘What is the answer?’ The question is, ‘What is the question?’” Explain that formulated answers are not the only work computers can support.
 
-**Source:** Original bibliographic facts from the paper.
+## Scene 07 — Two aims
 
-## Scene 05 — THE COMPUTER, 1960
+Name both aims clearly. First, bring the machine into problem formulation. Second, bring computation into thinking that must occur before a changing situation has passed; use Licklider's battle-replanning example if useful.
 
-**Purpose:** Establish the mediated batch process that makes Licklider’s desired relationship radical.
+## Scene 08 — 1957
 
-**Build 1:** Formulate the problem today.
+Licklider watched one technical person's working day, his own. Let the self-study be concrete rather than a generic field-study heading.
 
-**Build 2:** Spend tomorrow explaining it to a programmer/operator.
+## Scene 09 — Getting into position to think
 
-**Build 3:** Compute later.
+Read the chain as recognizable preparation: search, obtain, calculate, normalize, plot, transform, and test consequences. The point is that this is the work required before insight becomes possible.
 
-**Build 4:** Receive output.
+## Scene 10 — 85%
 
-**Build 5:** Let the accordion paper feed for several seconds. The excess is the joke and the argument.
+Let the number land only now. It is Licklider's informal finding about his own time, not a universal statistic.
 
-**Build 6:** `ANOTHER EXPERIMENT IS REQUIRED.` Land the frustration and stop the machine sound.
+## Scene 11 — The graph, part one
 
-**Sources:** Process paraphrases §2. Images are public-domain NASA/NACA and U.S. Census records listed in `SOURCES.md`.
+Describe one underlying question about speech intelligibility represented by six incompatible definitions of speech-to-noise ratio. The audience should understand the mismatch before seeing the calculation.
 
-## Scene 06 — WHAT IS THE QUESTION?
+## Scene 12 — The graph, part two
 
-**Purpose:** First philosophical turn.
+Advance once to start the automatic conversion sequence. Let the room feel the clerical work: converting, normalizing, calculating, and plotting.
 
-**Delivery:** Explain the difference between solving a formulated problem and helping a person formulate the problem itself. Name problem formulation as one of Licklider’s two central aims. Keep the frame unchanged throughout.
+## Scene 13 — The graph, part three
 
-**Optional quotation:** Licklider quotes Poincaré: “The question is not, ‘What is the answer?’ The question is, ‘What is the question?’”
+Pause on the common curve. Once the measurements became comparable, the relationship was obvious in seconds; several hours went into preparing the possibility of that insight.
 
-**Transition:** “So he investigated what kept him from reaching good questions.”
+## Scene 14 — A manifesto
 
-## Scene 07 — FIELD STUDY: ONE THINKING HUMAN
+Read the two beats plainly: the machine did not have the insight; it got the person to the place where insight could happen. This is presentation interpretation, not a direct quotation.
 
-**Purpose:** Introduce Licklider’s informal 1957 self-study with deadpan laboratory seriousness.
+## Scene 15 — SYMBIOTE™ enters
 
-**Delivery plan:** Treat `SUBJECT: J.C.R.L. / ACTIVITY: THINKING` as if it were a rigorous government experiment, then admit the subject and investigator were the same person.
+Keep the fictional product-film tone completely straight. It is a playful model of Licklider's proposed companion, not a historical device and not a joke about a contemporary product.
 
-**Source:** §3.1.
+## Scene 16 — The division of work
 
-## Scene 08 — Audience experiment #1
+State the handoff explicitly. People set goals, hypotheses, criteria, and evaluations. The machine retrieves, normalizes, transforms, simulates, plots, and compares. What comes back is evidence, anomalies, and alternative views for the next question.
 
-**Purpose:** Turn the audience into Licklider’s next experimental group.
+## Scene 17 — Show me several cuts
 
-**Prompt:** “Of the time you call thinking at work, how much do you reckon is actually spent thinking?” Take several estimates. Do not reveal his number yet.
+Explain that the person may not know which graph will help. Licklider's machine can produce several plausible transformations or plots for inspection; the visible plots are illustrative reconstructions.
 
-**Fallback:** The physical dial is optional; shouted answers or hands are sufficient.
+## Scene 18 — Audience experiment two
 
-## Scene 09 — 85%
+Ask the room to name one thing it does in order to think. Let participants see responses accumulate. Copy or download the record only when it benefits the discussion.
 
-**Purpose:** Reveal that roughly 85% of Licklider’s “thinking” time was preparatory work.
+## Scene 19 — Reel II
 
-**Delivery plan:** Name retrieving, calculating, plotting, and transforming. Hold the giant number long enough to feel mildly horrifying and funny.
+The splice marks a real shift: the partnership needs capabilities that did not yet exist together. Do not explain the reel mechanic itself.
 
-**Source:** §3.1. The 85% describes Licklider’s informal observation, not a universal modern statistic.
+## Scene 20 — Many people, one fast machine
 
-## Scene 10 — THE GRAPH, PART I
+Explain time sharing and the thinking center as library functions, retrieval, and computation available together. Books are not being abolished. This is the place for a spoken bridge to today's pooled, token-mediated access to fast machines.
 
-**Purpose:** Make the six incompatible speech-intelligibility datasets physically legible as a problem.
+## Scene 21 — Published memory
 
-**Delivery plan:** Reveal different axes, scales, and definitions one at a time. Explain that hours were required merely to make the experiments comparable.
+Emphasize that durable published memory remains important. The system improves the ability to find, deliver, and return books and records.
 
-**Source:** §3.1. The visible datasets are transparent illustrative reconstructions, not Licklider’s historical sheets.
+## Scene 22 — Retrieve by name or pattern
 
-## Scene 11 — THE GRAPH, PART II
+Contrast asking for something already known by name with asking for related patterns that have not yet been identified. Use matrix multiplication as the paper's concrete example.
 
-**Purpose:** Make the audience experience clerical delay.
+## Scene 23 — Goals, not courses
 
-**Delivery plan:** Let `CONVERT → NORMALISE → CALCULATE → PLOT` actually transform the data over 10–15 seconds. Optional line: “This is the interactive portion.” Do not rush the wait.
+Humans can work from goals and criteria; conventional computer procedures need every route foreseen. An unforeseen alternative halts the process until the procedure is extended.
 
-## Scene 12 — THE GRAPH, PART III
+## Scene 24 — A common surface
 
-**Purpose:** Deliver the emotional centre: the insight becomes immediate once the representation exists.
+Frame this as Licklider's input/output argument, not a prediction of a note-taking app. A rough hand-drawn graph becomes readable by the machine, precise, and editable on one shared surface.
 
-**Delivery plan:** Cut to the clean graph. Stop all clerical sound. Look at it with the audience. Pause. “…right.” Only then explain that the conclusion took seconds once comparison became possible.
+## Scene 25 — Shared situation display
 
-**Source:** “When the graphs were finished, the relations were obvious at once…” from §3.1.
+Use the control-room photograph to distinguish common information from identical responsibilities. The display supports a shared situation while roles still monitor, compare, and act differently.
 
-## Scene 13 — A manifesto
+## Scene 26 — Speak and listen
 
-**Purpose:** Give the audience the interpretation to carry forward.
+Invite a participant to press Record and speak a phrase. The browser asks for permission only then, shows a transcript, and can read it back. Use the text input when recognition is unavailable.
 
-**Build plan:** `THE MACHINE DID NOT HAVE THE INSIGHT.` Beat. `IT GOT US TO THE PLACE WHERE INSIGHT COULD HAPPEN.`
+## Scene 27 — Familiar infrastructure
 
-**Source status:** Presentation interpretation, not a quotation.
+Connect the list to Licklider's prerequisites: time sharing, memory, organization, programming language, and input/output equipment. The present familiarity of those prerequisites does not create symbiosis by itself.
 
-## Scene 14 — SYMBIOTE™ enters
+## Scene 28 — The actual strange idea
 
-**Purpose:** Personify the relationship through a completely straight-faced fictional 1960s product film.
+Distinguish mechanical extension from semi-automation that leaves a person with exceptions and failures. Licklider's symbiosis is continuous cooperation between different capabilities.
 
-**Delivery plan:** Reveal the wordmark, then the absurdly serious console portrait, then its capabilities without winking. The joke must remain institutional.
+## Scene 29 — Audience experiment three
 
-**Sound:** Restrained product chime, relay clicks, and projector bed. No futuristic digital effects.
+Ask which relationship describes current work: tool, servant, or partner. The record is for discussion, not a consensus tally.
 
-**Source status:** SYMBIOTE™, its manufacturer, model, and claims are fictional reconstructions inspired by §4. The SAGE console photograph shows authentic historical equipment in a modern museum photograph and is used illustratively.
+## Scene 30 — The too-neat model
 
-## Scene 15 — Human / Symbiote
+Reject the simple question-to-answer pipeline. The useful returns are evidence, anomaly, and alternative, which enable a better next question.
 
-**Purpose:** Explain unlike but complementary capabilities without a bullet slide.
+## Scene 31 — The interim
 
-**Delivery plan:** Humans supply goals, hypotheses, questions, and judgement. Send a question card across. Reveal the machine’s routinizable operations, then return alternatives for human evaluation.
+Quote or paraphrase the hopeful passage: whether the interim lasts 10 or 500 years, it may be the most creative and exciting period in history. Avoid presenting that optimism as inevitability.
 
-**Source:** §§3–4.
+## Scene 32 — The division of work
 
-## Scene 16 — I DON’T KNOW WHAT GRAPH I WANT
+Read the closing division of work exactly and slowly. This is the takeaway to carry back to everyday technical work.
 
-**Purpose:** Show exploration rather than mere automation.
+## Scene 33 — Final fig and wasp
 
-**Delivery plan:** SYMBIOTE™ prints three genuinely different plots. Let the first two feel merely competent. The third reveals a relation nobody explicitly requested.
+Hold on the real wasp image. The optical transition deliberately replaces the previous artificial cutout animation.
 
-**Source status:** All three plots are illustrative reconstructions, not historical data.
+## Scene 34 — End credits
 
-**Source:** Licklider’s suggestion in §4 that the machine try alternatives when the human does not know which display is wanted.
-
-## Scene 17 — Audience experiment #2
-
-**Purpose:** Personalise the clerical-distance argument without turning into generic “AI at work.”
-
-**Prompt:** “Please identify one thing you do in order to think.” Give 20 seconds. Offer examples only if the room is stuck.
-
-**Interaction:** Spoken answers are preferred. The optional field files up to three local response cards and sends nothing over the network.
-
-## Scene 18 — REEL CHANGE
-
-**Purpose:** Give the talk a physical breath before increasing the speculative scale.
-
-**Delivery plan:** Let the film buckle and burn. Pause during black. Begin `REEL II — THE IMPOSSIBLE MACHINE` as a fresh mechanism catches.
-
-## Scene 19 — THE DESK OF THE FUTURE
-
-**Purpose:** Reconstruct Licklider’s imagined shared desk literally rather than translating it into modern icons.
-
-**Delivery plan:** Human rough marks always precede machine precision. Explain shared drawing, handwriting recognition, sketches becoming structures, and interaction almost like another engineer.
-
-**Source:** §5.5.1.
-
-## Scene 20 — THE THINKING CENTER
-
-**Purpose:** Expand library, retrieval, and computation into connected centers.
-
-**Delivery plan:** Let library shelves become machine cabinets, then let one center become several connected by wide-band lines. Brush against later networking history without taking over an ARPANET talk.
-
-**Source:** §5.6.
-
-## Scene 21 — Don’t make it a prophecy slideshow
-
-**Purpose:** Prevent the talk from becoming “look what he predicted.”
-
-**Delivery plan:** Let the familiar-technology montage accelerate almost to cliché, then interrupt it with `THIS IS NOT THE INTERESTING PART.`
-
-**Line:** “Yes, lots of this sounds familiar. But I don’t think predicting gadgets is why this paper survives.”
-
-## Scene 22 — The actual strange idea
-
-**Purpose:** Return to the opening metaphor with earned meaning.
-
-**Delivery plan:** Explain that Licklider distinguishes symbiosis both from simple extension and from automation where people are leftover components. The interest is partnership between different capabilities.
-
-**Source:** §1.
-
-## Scene 23 — Audience experiment #3
-
-**Purpose:** Create the richest discussion checkpoint.
-
-**Prompt:** “Which relationship do you actually want with a computer: tool, servant, or partner?” Then: “What would have to be true for you to call it a partner?”
-
-**Fallback:** Hands, movement, or spoken choices all work. Do not display a fake consensus tally.
-
-## Scene 24 — The uncomfortable frame
-
-**Purpose:** State the thesis only after the film has earned it.
-
-**Delivery plan:** Present `QUESTION → MACHINE → ANSWER` as seductively neat, cross it out physically, then replace it with `QUESTION → MACHINE → THING TO THINK ABOUT → BETTER QUESTION → …`.
-
-**Source status:** Presentation interpretation grounded in Licklider’s formulative aims.
-
-## Scene 25 — Final image
-
-**Purpose:** Let the audience supply the ending.
-
-**Delivery:** Return to the opening fig and hold. Let the wasp slowly enter. Ask: “What would you do with your 85%?” Do not summarise afterward.
-
-## Scene 26 — End credits
-
-**Purpose:** Preserve the found-film fiction while questions begin.
-
-**Delivery plan:** Leave the credits visible: `FIGS / WASPS / J.C.R. LICKLIDER / VARIOUS ELECTRONIC MACHINES / THE AUDIENCE`. End on `PLEASE RETURN THIS FILM TO THE ARCHIVE.` Never display `Q&A`.
+Leave the archive card visible while discussion begins. Do not add a conventional Q&A slide.

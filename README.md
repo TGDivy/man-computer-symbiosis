@@ -1,6 +1,6 @@
 # Man–Computer Symbiosis — Found-Film Presentation
 
-A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 paper “Man-Computer Symbiosis.” The redesign begins as an unidentified educational film about a fig and withholds the paper title until Scene 04.
+A 35-scene live-screening presentation built from J. C. R. Licklider’s 1960 paper “Man-Computer Symbiosis.” The default Wonder Cut begins with a bright fig tree and a real fig wasp before withholding the paper title until Scene 04.
 
 ## Live Presentation
 
@@ -10,7 +10,7 @@ A 27-scene live-screening presentation built from J. C. R. Licklider’s 1960 pa
 - BBGitHub Pages: <https://bbgithub.dev.bloomberg.com/pages/dbramhecha/man-computer-symbiosis/>
 - BBGitHub mirror: <https://bbgithub.dev.bloomberg.com/dbramhecha/man-computer-symbiosis>
 
-All 27 storyboarded scenes are implemented. The finished film moves from the unidentified leader and biological opening through the 85% graph sequence, SYMBIOTE™, the Impossible Machine, the partnership thesis, the final fig, and optical archive credits.
+All 35 storyboarded scenes are implemented. The finished film moves from the replayable leader and biological opening through the 85% graph sequence, SYMBIOTE™, the Impossible Machine, the partnership thesis, the optimistic interim, the final fig/wasp return, and archive credits.
 
 ## Presenting Locally
 
@@ -18,7 +18,7 @@ All 27 storyboarded scenes are implemented. The finished film moves from the uni
 python3 -m http.server 4173
 ```
 
-Open <http://localhost:4173>. The first keypress or click arms the projector and browser audio; the visible frame remains pure black before that gesture.
+Open <http://localhost:4173>. The first keypress or click arms the projector and browser audio; the visible frame remains pure black before that gesture. Add **?opening=mystery** to the URL for the preserved alternate opening.
 
 ### Controls
 
@@ -36,7 +36,7 @@ The control strip stays hidden during playback unless the pointer moves or a con
 
 ## Creative Source of Truth
 
-`presentation.md` contains the complete 27-scene storyboard, non-negotiable narrative rules, sound grammar, opening cue sheet, scholarship rules, and definition of done.
+**presentation.md** contains the current 35-scene storyboard, delivery contract, interaction model, and visual guardrails.
 
 The redesign deliberately keeps modern AI imagery off screen. It is about the paper’s stranger partnership argument, not a prophecy reel.
 
@@ -55,7 +55,7 @@ The redesign deliberately keeps modern AI imagery off screen. It is about the pa
 - Presenter-controlled progressive builds and deterministic rehearsal API
 - Keyboard, touch, fullscreen, speaker notes, references, direct hashes, and reduced motion
 - Relative asset paths suitable for project-site GitHub Pages
-- Playwright coverage at 1600×900 and 1366×768
+- Playwright coverage at desktop, laptop, and 390×844 mobile viewports
 
 ## Verification
 

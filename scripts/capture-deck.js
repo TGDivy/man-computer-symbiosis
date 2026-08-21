@@ -8,6 +8,7 @@ const rootDirectory = path.resolve(__dirname, "..");
 const artifactDirectory = path.join(rootDirectory, "artifacts");
 const sceneDirectory = path.join(artifactDirectory, "scenes");
 const port = 4174;
+const sceneCount = 35;
 const baseUrl = `http://127.0.0.1:${port}`;
 
 async function waitForServer() {
@@ -32,7 +33,7 @@ async function waitForServer() {
 }
 
 async function makeContactSheet(page, variant) {
-  const cards = Array.from({ length: 27 }, (_, index) => {
+  const cards = Array.from({ length: sceneCount }, (_, index) => {
     const sceneNumber = String(index).padStart(2, "0");
     const filename = `scene-${sceneNumber}-${variant}.png`;
     return `<figure><img src="${baseUrl}/artifacts/scenes/${filename}" alt="Scene ${sceneNumber}"><figcaption>SCENE ${sceneNumber} · ${variant.toUpperCase()}</figcaption></figure>`;
@@ -73,14 +74,14 @@ async function capture() {
     await page.goto(baseUrl);
     await page.waitForFunction(() => Boolean(window.__symbiosisDeck));
 
-    for (let index = 0; index < 27; index += 1) {
+    for (let index = 0; index < sceneCount; index += 1) {
       const sceneNumber = String(index).padStart(2, "0");
       await page.evaluate((slideIndex) => window.__symbiosisDeck.goToSlide(slideIndex, { build: 0, silent: true }), index);
-      await page.waitForTimeout(850);
+      await page.waitForTimeout(750);
       await page.screenshot({ path: path.join(sceneDirectory, `scene-${sceneNumber}-initial.png`) });
 
       await page.evaluate((slideIndex) => window.__symbiosisDeck.goToSlide(slideIndex, { build: 99, silent: true }), index);
-      await page.waitForTimeout(index === 26 ? 1_200 : 620);
+      await page.waitForTimeout(index === 33 ? 3_800 : 800);
       await page.screenshot({ path: path.join(sceneDirectory, `scene-${sceneNumber}-final.png`) });
     }
 

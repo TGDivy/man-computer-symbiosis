@@ -1,189 +1,122 @@
 # Source and Asset Register
 
-This register separates primary text, paraphrase, interpretation, illustrative reconstruction, and archival imagery used in the presentation.
+This register separates Licklider's text, presentation interpretation, illustrative reconstructions, and archival imagery used by the current 35-scene deck.
 
-## Primary Paper
+## Primary paper
 
-J. C. R. Licklider, “Man-Computer Symbiosis,” *IRE Transactions on Human Factors in Electronics*, volume HFE-1, pages 4–11, March 1960.
+J. C. R. Licklider, “Man-Computer Symbiosis,” *IRE Transactions on Human Factors in Electronics*, HFE-1, pages 4–11, March 1960.
 
-- Full text hosted by MIT: <https://groups.csail.mit.edu/medg/people/psz/Licklider.html>
-- The presentation was developed against the complete paper, not a summary.
+- Full MIT-hosted transcription: <https://groups.csail.mit.edu/medg/people/psz/Licklider.html>
+- The presentation was developed from the complete paper, not a secondary summary.
 - Section numbers below follow the MIT-hosted transcription.
 
-## Quote Audit
+## Text map
 
-| Scene | Text used | Status | Paper location |
-|---|---|---|---|
-| 06 | “The question is not, ‘What is the answer?’ The question is, ‘What is the question?’” | Original text as quoted by Licklider and attributed by him to Poincaré; currently in speaker notes | §2, second paragraph |
-| 09 | “About 85 per cent of my ‘thinking’ time…” | Source for the implemented 85% reveal; the number is not presented as a modern audience statistic | §3.1, third paragraph |
-| 12 | “When the graphs were finished, the relations were obvious at once…” | Source for the spoken clean-graph explanation; it is not presented as an on-screen quotation | §3.1, third paragraph |
-| 15 | “Instructions directed to computers specify courses; instructions directed to human beings specify goals.” | Source language for the spoken distinction; the implemented capability cards paraphrase rather than quote it | §5.4, second paragraph |
+| Scenes | Presentation use | Paper location |
+|---|---|---|
+| 01–03, 28, 33 | Fig/wasp opening and the distinction between extension, semi-automation, and symbiosis | Opening and §1.2 |
+| 06–07 | Poincare quotation, formulative thinking, and real-time participation | §2 |
+| 08–14 | Licklider's self-study, 85 percent finding, and speech-intelligibility example | §3.1 |
+| 15–17 | Division of human and machine work; alternative plots | §4 |
+| 20 | Time sharing and the thinking center: library functions, retrieval, and computation | §5.1 |
+| 21–22 | Published memory and retrieval by name or pattern | §5.2–§5.3 |
+| 23 | Goals and criteria versus predetermined courses | §5.4 |
+| 24–26 | Input/output equipment, hand recognition, shared displays, and speech | §5.5 |
+| 27 | Prerequisites for effective symbiosis | §5 |
+| 31–32 | The interim and the core division of work | §1.2 and §4 |
 
-## Explicit Interpretations
+## Quote and interpretation audit
 
-These lines are presentation arguments, not quotations from Licklider. They are labelled as interpretation in the deck or notes.
+| Scene | Text or claim | Status |
+|---|---|---|
+| 06 | “The question is not, ‘What is the answer?’ The question is, ‘What is the question?’” | Licklider quotes Poincare in §2; used in spoken delivery. |
+| 10 | “85% of my thinking time” | Licklider's informal self-observation in §3.1; not presented as a modern universal statistic. |
+| 13 | The relation was obvious once the graphs were finished | Spoken paraphrase of §3.1. |
+| 14 | “The machine did not have the insight. It got us to the place where insight could happen.” | Presentation interpretation. |
+| 16 and 32 | People set goals, hypotheses, criteria, and evaluations; computers do routinizable preparation | Structured paraphrase of §4. |
+| 20 | The thinking center is library plus retrieval plus computation, not a replacement for books | Directly grounded in §5.1. |
+| 27 | The equipment does not create the partnership; the way people work together does | Presentation interpretation. |
+| 30 | Evidence, anomaly, and alternative lead to a better next question | Presentation interpretation grounded in §2–§4. |
+| 31 | The 10-or-500-years interim may be the most creative and exciting in history | Close paraphrase of §1.2. |
 
-- “The machine did not have the insight. It got us to the place where insight could happen.”
-- “Computers are most interesting when they reduce the distance between interesting thoughts.”
-- “Symbiosis is not primarily shortening question → answer. It shortens the clerical distance between question → observation → new question.”
-- “What would you do with your 85%?”
+## Illustrative reconstructions
 
-## Illustrative Reconstructions
+- Scenes 11–13: six measures and the clean speech-intelligibility curve are pedagogical reconstructions, not Licklider's source data.
+- Scenes 15–17: SYMBIOTE™, its model, product claims, and alternative plots are fictional teaching devices based on §4.
+- Scenes 18 and 29: local audience records are presentation interactions. They neither transmit nor fabricate a group tally.
+- Scene 19: the reel splice is an original transition device.
+- Scene 24: the rough-to-precise graph treatment is an educational reconstruction of the input/output argument.
+- Scene 26: the speech interface is a real browser feature, not historical footage or a claim about a 1960 system.
+- Scene 30: the question-to-answer correction is presentation interpretation.
 
-- **Scenes 10–12:** The six datasets and finished speech-intelligibility plot are invented to stage the operation Licklider describes. They are not presented as his historical data.
-- **Scene 14:** SYMBIOTE™ is an implemented fictional 1960s research product whose capabilities paraphrase §4. Its manufacturer, model, approval stamp, and product claims are invented.
-- **Scene 16:** The three alternative plots and highlighted unrequested relation are invented to stage the exploratory plotting behavior described in §4.
-- **Scene 18:** The changeover card and burning-frame effect are original transition devices, not historical film footage.
-- **Scene 19:** The shared desk surface is an interactive reconstruction inspired by §5.5.1, not a historical interface.
-- **Scene 20:** The thinking-center network is an original educational-film diagram based on §5.6, not historical network footage; its center names and routes are invented.
-- **Scene 21:** The six forecast frames are original graphic reconstructions used to reject prophecy as the presentation thesis; they are not historical product drawings.
-- **Scene 22:** The hand, circuit, rejected-model labels, and partnership card are original educational-film diagrams grounded in Licklider’s distinctions in §1.
-- **Scene 23:** The three relationship cards are a local presentation interaction. They do not record, count, store, or transmit audience votes.
-- **Scene 24:** Both pipeline models and the “clerical distance” annotation are presentation interpretation grounded in Licklider’s formulative aims, not quotations or historical diagrams.
-- **Scene 25:** The final image reuses the documented cut-fig and fig-wasp photographs from the opening; no synthetic biological image is introduced.
-- **Scene 26:** The credit and archive-control cards are original graphic devices that continue the generic research-film archive frame.
+## Archival asset log
 
-## Archival Asset Log
+All downloaded copies are in **assets/archive/**. The agent-provided CSV research manifests remain in **assets/external-agent-downloads/** as research records and are not presentation content.
 
-All downloaded presentation copies are in `assets/archive/`. Source metadata snapshots used during research are retained locally under `research/asset-metadata/` and excluded from publication.
+### Newly selected assets
 
-### `assets/archive/licklider.jpg`
+#### **fig-ripe-tree.jpg**
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:J._C._R._Licklider.jpg>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/6/66/J._C._R._Licklider.jpg>
-- **Creator / collection:** Unknown photographer; U.S. National Library of Medicine “Once and Future Web” exhibition.
-- **Licence:** Public domain.
-- **Intended use:** Scene 07, subject card for the 1957 self-study.
+- Source page: <https://commons.wikimedia.org/wiki/File:Ripe_fig_fruit_on_tree_(Ficus_Carica)_in_Southern_France.JPG>
+- Direct asset: <https://upload.wikimedia.org/wikipedia/commons/b/be/Ripe_fig_fruit_on_tree_(Ficus_Carica)_in_Southern_France.JPG>
+- Creator: Stefan Thiesen.
+- Date: 2012.
+- Licence: CC BY-SA 3.0, <https://creativecommons.org/licenses/by-sa/3.0/>.
+- Used in: Scenes 01, 31, and 33.
 
-### `assets/archive/ibm-704-operations.jpg`
+#### **time-sharing-terminal.jpg**
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:IBM_704_Computer_Operations_(LRC-1957-B701_P-05391).tiff>
-- **Direct original:** <https://upload.wikimedia.org/wikipedia/commons/d/d5/IBM_704_Computer_Operations_%28LRC-1957-B701_P-05391%29.tiff>
-- **Presentation copy:** Wikimedia-generated JPEG derivative of the original TIFF.
-- **Creator / collection:** NASA Langley Research Center / NACA; photographer credited as Taub; NASA photo ID LRC-1957-B701_P-05391.
-- **Date:** 16 December 1957.
-- **Licence:** Public domain (U.S. government work).
-- **Intended use:** Scene 05, opening machine-room context.
+- Source page: <https://commons.wikimedia.org/wiki/File:Time-Sharing_Computer_Terminal_Installed_-_DPLA_-_eba0901716949f91a5d02c0f4f19492c.jpg>
+- Direct asset: <https://upload.wikimedia.org/wikipedia/commons/8/8a/Time-Sharing_Computer_Terminal_Installed_-_DPLA_-_eba0901716949f91a5d02c0f4f19492c.jpg>
+- Collection: Hennepin County Library / Digital Public Library of America.
+- Date: 1970.
+- Licence: Public domain.
+- Used in: Scene 20.
 
-### `assets/archive/ibm-data-processing.jpg`
+#### **widener-card-catalog.jpg**
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/2/20/IBM_Electronic_Data_Processing_Machine_-_GPN-2000-001881.jpg>
-- **Creator / collection:** NASA, Great Images in NASA collection.
-- **Date:** 21 March 1957.
-- **Licence:** Public domain (U.S. government work).
-- **Intended use:** Archival reserve; retained for alternate cuts of Scene 05.
+- Source page: <https://commons.wikimedia.org/wiki/File:Card_catalog_in_Widener_Library_at_Harvard,_Cambridge,_Massachusetts_LCCN2007682031.jpg>
+- Direct asset: <https://upload.wikimedia.org/wikipedia/commons/7/74/Card_catalog_in_Widener_Library_at_Harvard%2C_Cambridge%2C_Massachusetts_LCCN2007682031.jpg>
+- Collection: Library of Congress.
+- Date: circa 1915.
+- Licence: Public domain.
+- Used in: Scene 21.
 
-### `assets/archive/keypunch-operators.jpg`
+#### **card-catalog-drawer.jpg**
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:US_Census_Bureau_keypunch_operators,_Negro_section.jpg>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/9/90/US_Census_Bureau_keypunch_operators%2C_Negro_section.jpg>
-- **Creator / collection:** U.S. Census Bureau employees.
-- **Date:** 1940.
-- **Licence:** Public domain (U.S. government work).
-- **Intended use:** Scene 05, operator-mediated punched-card context.
+- Source page: <https://commons.wikimedia.org/wiki/File:Copyright_Card_Catalog_Drawer.jpg>
+- Direct asset: <https://upload.wikimedia.org/wikipedia/commons/3/3a/Copyright_Card_Catalog_Drawer.jpg>
+- Creator: Michael Holley.
+- Date: 2009.
+- Licence: Public domain dedication.
+- Used in: Scene 21.
 
-### `assets/archive/computer-frame.jpg`
+#### **hes-ibm-2250.png**
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:Census_Bureau_techs_check_out_computer_frame.jpg>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/d/d4/Census_Bureau_techs_check_out_computer_frame.jpg>
-- **Creator / collection:** U.S. Census Bureau employees.
-- **Date:** 1950s.
-- **Licence:** Public domain (U.S. government work).
-- **Intended use:** Scene 05, early computer-room context.
+- Source page: <https://commons.wikimedia.org/wiki/File:HES_IBM_2250_Console_grlloyd_Mar1969_01.png>
+- Creator: Gregory Lloyd.
+- Date: 1969.
+- Licence: CC BY-SA 4.0, <https://creativecommons.org/licenses/by-sa/4.0/>.
+- Used in: Scene 24.
 
-### `assets/archive/fig-cut.jpg`
+### Existing assets used in the deck
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:Cut_Fig_01.jpg>
-- **Direct original:** <https://upload.wikimedia.org/wikipedia/commons/8/82/Cut_Fig_01.jpg>
-- **Presentation copy:** Wikimedia-generated 1920-pixel JPEG derivative of the original 8008×7381 photograph.
-- **Creator:** Jedesto.
-- **Date:** 8 September 2021.
-- **Licence:** CC BY-SA 4.0, <https://creativecommons.org/licenses/by-sa/4.0>.
-- **Intended use:** Scene 01 full-frame cut fig; Scene 03 paired organism frame; planned return in Scene 25.
-- **Treatment:** Cropped, darkened, and colour-treated in CSS; no biological structures were added or removed.
+#### Fig and wasp material
 
-### `assets/archive/fig-cut-macro.jpg`
+- **fig-wasp-habitat.jpg**: P. Zborowski / CSIRO, “Fig wasp,” <https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_11188_Fig_wasp.jpg>, CC BY 3.0. Used in Scenes 02, 03, and 33. It depicts a *Pleistodontes* fig wasp in a fig.
+- **fig-cut-macro.jpg**: Jedesto, “Cut Fig 02,” <https://commons.wikimedia.org/wiki/File:Cut_Fig_02.jpg>, CC BY-SA 4.0. Used in Scene 03.
+- **fig-cut.jpg**: Jedesto, “Cut Fig 01,” <https://commons.wikimedia.org/wiki/File:Cut_Fig_01.jpg>, CC BY-SA 4.0. Used only in the selectable Mystery Cut.
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:Cut_Fig_02.jpg>
-- **Direct original:** <https://upload.wikimedia.org/wikipedia/commons/d/d7/Cut_Fig_02.jpg>
-- **Presentation copy:** Wikimedia-generated 1920-pixel JPEG derivative of the original 4810×3558 photograph.
-- **Creator:** Jedesto.
-- **Date:** 8 September 2021.
-- **Licence:** CC BY-SA 4.0, <https://creativecommons.org/licenses/by-sa/4.0>.
-- **Intended use:** Scene 03 close specimen-like frame showing structures inside the fig.
-- **Treatment:** Cropped and colour-treated in CSS.
+#### Historical computing material
 
-### `assets/archive/fig-wasp-habitat.jpg`
+- **licklider.jpg**: J. C. R. Licklider portrait, National Library of Medicine collection, <https://commons.wikimedia.org/wiki/File:J._C._R._Licklider.jpg>, public domain. Used in Scene 08.
+- **ibm-704-operations.jpg**: NASA Langley / NACA, <https://commons.wikimedia.org/wiki/File:IBM_704_Computer_Operations_(LRC-1957-B701_P-05391).tiff>, public domain. Used in Scene 05.
+- **keypunch-operators.jpg**: U.S. Census Bureau, <https://commons.wikimedia.org/wiki/File:US_Census_Bureau_keypunch_operators,_Negro_section.jpg>, public domain. Used in Scene 05.
+- **computer-frame.jpg**: U.S. Census Bureau, <https://commons.wikimedia.org/wiki/File:Census_Bureau_techs_check_out_computer_frame.jpg>, public domain. Used in Scene 05.
+- **sage-console.jpg**: Tomwsulcer, <https://commons.wikimedia.org/wiki/File:SAGE_console_and_light_gun_at_CHM.jpg>, CC0. Used as the illustrative SYMBIOTE™ product portrait in Scene 15.
+- **war-room.png**: U.S. Air Force / NORAD booklet, <https://commons.wikimedia.org/wiki/File:1964_Chidlaw_Building_war_room.png>, public domain. Used in Scene 25 as a control-room illustration, not as Licklider's thinking center.
 
-- **Source page:** <https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_11188_Fig_wasp.jpg>
-- **Direct original:** <https://upload.wikimedia.org/wikipedia/commons/b/b6/CSIRO_ScienceImage_11188_Fig_wasp.jpg>
-- **Presentation copy:** Wikimedia-generated 1920-pixel JPEG derivative.
-- **Creator / collection:** P. Zborowski, Commonwealth Scientific and Industrial Research Organisation (CSIRO).
-- **Date:** 6 August 2010.
-- **Licence:** CC BY 3.0, <https://creativecommons.org/licenses/by/3.0>.
-- **Description:** A <em>Pleistodontes</em> species fig wasp in a fig.
-- **Intended use:** Scene 02 habitat background. It establishes the mutualistic relationship but is not labelled as the exact species in Licklider’s text.
-- **Treatment:** Cropped, darkened, desaturated, and colour-treated in CSS.
-
-### `assets/archive/fig-wasp-specimen.jpg`
-
-- **Source page:** <https://commons.wikimedia.org/wiki/File:Blastophaga_psenes_Linnaeus,_1758.jpg>
-- **Direct original:** <https://upload.wikimedia.org/wikipedia/commons/c/c0/Blastophaga_psenes_Linnaeus%2C_1758.jpg>
-- **Presentation copy:** Wikimedia-generated 1920-pixel JPEG derivative of the original 5810×3871 photograph.
-- **Creator / collection:** Dr. Stefan Schmidt, SNSB – Zoologische Staatssammlung München.
-- **Date:** Specimen found in Germany in 2022; source photograph dated 24 July 2022.
-- **Licence:** CC BY-SA 4.0, <https://creativecommons.org/licenses/by-sa/4.0>.
-- **Intended use:** Scenes 02–03 scientific specimen frame; planned return in Scene 22.
-- **Treatment:** Cropped and given a restrained grayscale/sepia treatment in CSS.
-
-### `assets/archive/sage-console.jpg`
-
-- **Source page:** <https://commons.wikimedia.org/wiki/File:SAGE_console_and_light_gun_at_CHM.jpg>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/e/ee/SAGE_console_and_light_gun_at_CHM.jpg>
-- **Creator:** Tomwsulcer.
-- **Date:** 24 December 2015.
-- **Licence:** CC0.
-- **Intended use:** Scene 14 fictional SYMBIOTE™ product portrait. This is a modern photograph of an authentic historical console, not a period photograph or Licklider’s machine.
-- **Treatment:** Tightly cropped and given a restrained grayscale/sepia treatment in CSS; the fictional model label is outside the photograph.
-
-### `assets/archive/fig-botanical.jpg`
-
-- **Source page:** <https://commons.wikimedia.org/wiki/File:Ficus_-_Figuier._(Ficus_carica_or_the_Common_Fig)_(NYPL_b14485031-1109301).tiff>
-- **Direct original:** <https://upload.wikimedia.org/wikipedia/commons/5/58/Ficus_-_Figuier._%28Ficus_carica_or_the_Common_Fig%29_%28NYPL_b14485031-1109301%29.tiff>
-- **Presentation copy:** Wikimedia-generated JPEG derivative of the original TIFF.
-- **Creator / collection:** Scan by the New York Public Library.
-- **Date:** 1801.
-- **Licence:** Public domain.
-- **Intended use:** Archival reserve. Replaced in the opening by photographic fig material.
-
-### `assets/archive/fig-wasp.png`
-
-- **Source page:** <https://commons.wikimedia.org/wiki/File:Blastophaga_psenes2.png>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/8/85/Blastophaga_psenes2.png>
-- **Creator:** Not stated on the source record.
-- **Licence:** Public domain.
-- **Intended use:** Archival reserve. Replaced in the opening by photographic wasp material.
-
-### `assets/archive/war-room.png`
-
-- **Source page:** <https://commons.wikimedia.org/wiki/File:1964_Chidlaw_Building_war_room.png>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/8/87/1964_Chidlaw_Building_war_room.png>
-- **Creator / collection:** Unknown photographer; reproduced from a NORAD booklet.
-- **Date:** Published approximately 1965.
-- **Licence:** Public domain.
-- **Intended use:** Archival reserve for Scene 20. It will not be represented as a thinking-centre photograph.
-
-### `assets/archive/oscilloscope.jpg`
-
-- **Source page:** <https://commons.wikimedia.org/wiki/File:DuMont_Type_303_oscilloscope.jpg>
-- **Direct asset:** <https://upload.wikimedia.org/wikipedia/commons/4/4b/DuMont_Type_303_oscilloscope.jpg>
-- **Creator:** Tomislav Medak.
-- **Date:** 4 August 2009.
-- **Licence:** CC BY 2.0.
-- **Intended use:** Archival reserve for later machine sequences. It will not be described as a 1960 speech-recognition system.
-
-## Further Reading
+## Further reading
 
 - Douglas C. Engelbart, “Augmenting Human Intellect: A Conceptual Framework,” 1962.
 - J. C. R. Licklider and Welden E. Clark, “On-Line Man-Computer Communication,” 1962.
