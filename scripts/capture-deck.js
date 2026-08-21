@@ -8,7 +8,7 @@ const rootDirectory = path.resolve(__dirname, "..");
 const artifactDirectory = path.join(rootDirectory, "artifacts");
 const sceneDirectory = path.join(artifactDirectory, "scenes");
 const port = 4174;
-const sceneCount = 35;
+const sceneCount = 32;
 const baseUrl = `http://127.0.0.1:${port}`;
 
 async function waitForServer() {
@@ -81,7 +81,7 @@ async function capture() {
       await page.screenshot({ path: path.join(sceneDirectory, `scene-${sceneNumber}-initial.png`) });
 
       await page.evaluate((slideIndex) => window.__symbiosisDeck.goToSlide(slideIndex, { build: 99, silent: true }), index);
-      await page.waitForTimeout(index === 33 ? 3_800 : 800);
+      await page.waitForTimeout(index === 30 ? 2_400 : 800);
       await page.screenshot({ path: path.join(sceneDirectory, `scene-${sceneNumber}-final.png`) });
     }
 

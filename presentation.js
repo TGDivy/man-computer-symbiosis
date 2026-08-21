@@ -32,6 +32,13 @@
       this.bedGain = null;
       this.noiseSource = null;
       this.motorOscillator = null;
+      this.chapterBuses = new Map();
+      this.chapterSources = [];
+      this.scoreDry = null;
+      this.scoreReverb = null;
+      this.rhythm = null;
+      this.currentSceneIndex = 0;
+      this.currentBuildIndex = 0;
       this.muted = this.readMutedState();
     }
 
@@ -67,6 +74,7 @@
       if (!this.createContext()) return;
       if (this.context.state === "suspended") await this.context.resume();
       this.startProjectorBed();
+      this.setNarrativeState(this.currentSceneIndex, this.currentBuildIndex, { immediate: true });
       if (leader) this.playLeaderTrack();
     }
 
@@ -103,15 +111,306 @@
       this.noiseSource = noiseSource;
       this.motorOscillator = motorOscillator;
       this.bedGain = bedGain;
+      this.startChapterBeds();
     }
 
-    setScene(index) {
+    startChapterBeds() {
+      if (!this.context || this.chapterBuses.size) return;
+      const dry = this.context.createGain();
+      const convolver = this.context.createConvolver();
+      const wet = this.context.createGain();
+      dry.gain.value = 0.9;
+      wet.gain.value = 0.13;
+      convolver.buffer = this.createReverbImpulse(1.65, 2.7);
+      dry.connect(this.master);
+      convolver.connect(wet).connect(this.master);
+      this.scoreDry = dry;
+      this.scoreReverb = convolver;
+
+      const beds = {
+        organic: { frequencies: [174.61, 261.63], type: "sine", level: 0.01 },
+        clerical: { frequencies: [55, 110, 164.81], type: "triangle", level: 0.012 },
+        product: { frequencies: [98, 146.83, 196], type: "sine", level: 0.01 },
+        prerequisites: { frequencies: [73.42, 110, 164.81, 220, 329.63], type: "triangle", level: 0.012 },
+        relation: { frequencies: [82.41, 123.47, 164.81], type: "sine", level: 0.01 },
+        coda: { frequencies: [130.81, 196, 261.63, 329.63], type: "sine", level: 0.012 },
+      };
+
+      Object.entries(beds).forEach(([name, definition]) => {
+        const bus = this.context.createGain();
+        const send = this.context.createGain();
+        const voices = [];
+        bus.gain.value = 0.0001;
+        send.gain.value = name === "clerical" ? 0.22 : 0.5;
+        bus.connect(dry);
+        bus.connect(send).connect(convolver);
+        definition.frequencies.forEach((frequency, index) => {
+          const oscillator = this.context.createOscillator();
+          const voiceGain = this.context.createGain();
+          const panner = typeof this.context.createStereoPanner === "function" ? this.context.createStereoPanner() : null;
+          oscillator.type = definition.type;
+          oscillator.frequency.value = frequency;
+          oscillator.detune.value = index % 2 ? 3 : -3;
+          voiceGain.gain.value = 1 / definition.frequencies.length;
+          if (panner) {
+            panner.pan.value = definition.frequencies.length === 1 ? 0 : -0.28 + (0.56 * index) / (definition.frequencies.length - 1);
+            oscillator.connect(voiceGain).connect(panner).connect(bus);
+          } else {
+            oscillator.connect(voiceGain).connect(bus);
+          }
+          oscillator.start();
+          voices.push({ gain: voiceGain, weight: 1 / definition.frequencies.length });
+          this.chapterSources.push(oscillator);
+        });
+        this.chapterBuses.set(name, { bus, level: definition.level, voices });
+      });
+
+      this.startNarrativePulse(dry);
+    }
+
+    createReverbImpulse(seconds, decay) {
+      const length = Math.max(1, Math.floor(this.context.sampleRate * seconds));
+      const impulse = this.context.createBuffer(2, length, this.context.sampleRate);
+      for (let channelIndex = 0; channelIndex < impulse.numberOfChannels; channelIndex += 1) {
+        const channel = impulse.getChannelData(channelIndex);
+        for (let index = 0; index < length; index += 1) {
+          const envelope = Math.pow(1 - index / length, decay);
+          channel[index] = (Math.random() * 2 - 1) * envelope;
+        }
+      }
+      return impulse;
+    }
+
+    startNarrativePulse(destination) {
+      if (!this.context || this.rhythm) return;
+      const carrier = this.context.createOscillator();
+      const filter = this.context.createBiquadFilter();
+      const pulseGain = this.context.createGain();
+      const bus = this.context.createGain();
+      const lfo = this.context.createOscillator();
+      const lfoDepth = this.context.createGain();
+      carrier.type = "triangle";
+      carrier.frequency.value = 55;
+      filter.type = "lowpass";
+      filter.frequency.value = 150;
+      filter.Q.value = 0.8;
+      pulseGain.gain.value = 0.5;
+      bus.gain.value = 0.0001;
+      lfo.type = "sine";
+      lfo.frequency.value = 0.72;
+      lfoDepth.gain.value = 0.49;
+      carrier.connect(filter).connect(pulseGain).connect(bus).connect(destination);
+      lfo.connect(lfoDepth).connect(pulseGain.gain);
+      carrier.start();
+      lfo.start();
+      this.chapterSources.push(carrier, lfo);
+      this.rhythm = { carrier, filter, bus, lfo };
+    }
+
+    scoreProfile(index, build) {
+      const levels = { organic: 0, clerical: 0, product: 0, prerequisites: 0, relation: 0, coda: 0 };
+      const profile = {
+        levels,
+        prerequisiteLayers: 5,
+        pulse: { level: 0, rate: 0.7, frequency: 55, filter: 150 },
+        projector: 0.008,
+        fade: 0.45,
+      };
+      const boundedBuild = Math.max(0, Number(build) || 0);
+
+      if (index === 0) profile.projector = 0.012;
+      if (index === 1) levels.organic = 0.34;
+      if (index === 2) levels.organic = 0.52;
+      if (index === 3) {
+        levels.organic = boundedBuild >= 3 ? 0 : 0.66;
+        profile.projector = boundedBuild >= 3 ? 0.00035 : 0.006;
+        profile.fade = boundedBuild >= 3 ? 0.055 : 0.5;
+      }
+      if (index === 4) {
+        levels.organic = 0.08;
+        levels.coda = 0.16;
+        profile.projector = 0.002;
+        profile.fade = 0.14;
+      }
+      if (index === 5) {
+        levels.clerical = 0.34 + Math.min(boundedBuild, 6) * 0.045;
+        profile.pulse = { level: 0.2 + Math.min(boundedBuild, 6) * 0.035, rate: 0.78 + boundedBuild * 0.06, frequency: 55, filter: 130 };
+        profile.projector = 0.021;
+      }
+      if (index === 6) {
+        levels.clerical = 0.04;
+        profile.projector = 0.0008;
+        profile.fade = 0.09;
+      }
+      if (index === 7) levels.relation = 0.18;
+      if (index === 8) {
+        levels.clerical = 0.2;
+        profile.pulse.level = 0.08;
+      }
+      if (index === 9) {
+        levels.clerical = 0.31;
+        profile.pulse = { level: 0.15, rate: 0.82, frequency: 55, filter: 145 };
+      }
+      if (index === 10) {
+        levels.clerical = 0.46;
+        profile.pulse = { level: 0.25, rate: 0.92, frequency: 55, filter: 155 };
+      }
+      if (index === 11) {
+        levels.clerical = 0.58;
+        profile.pulse = { level: 0.36, rate: 1.02, frequency: 55, filter: 165 };
+      }
+      if (index === 12) {
+        levels.clerical = Math.min(1, 0.62 + boundedBuild * 0.065);
+        profile.pulse = { level: Math.min(0.86, 0.4 + boundedBuild * 0.075), rate: 1.08 + boundedBuild * 0.1, frequency: 55 + boundedBuild * 1.5, filter: 170 + boundedBuild * 10 };
+      }
+      if (index === 13) {
+        levels.clerical = 0.72;
+        levels.coda = 0.12;
+        profile.pulse = { level: 0.2, rate: 0.7, frequency: 55, filter: 145 };
+      }
+      if (index === 14) {
+        levels.clerical = 0.1;
+        levels.coda = 0.1;
+        profile.projector = 0.001;
+        profile.fade = 0.12;
+      }
+      if (index === 15) {
+        levels.product = 0.42;
+        profile.pulse = { level: 0.16, rate: 0.88, frequency: 49, filter: 155 };
+      }
+      if (index === 16) {
+        levels.product = Math.min(0.82, 0.46 + boundedBuild * 0.065);
+        profile.pulse = { level: Math.min(0.62, 0.18 + boundedBuild * 0.06), rate: 0.9 + boundedBuild * 0.055, frequency: 49, filter: 165 };
+      }
+      if (index === 17) {
+        levels.product = 0.76;
+        profile.pulse = { level: 0.44, rate: 1.1, frequency: 49, filter: 180 };
+      }
+      if (index === 18) {
+        levels.product = 0.22;
+        profile.projector = 0.003;
+        profile.fade = 0.2;
+      }
+      if (index === 19) {
+        profile.projector = 0.00055;
+        profile.fade = 0.055;
+      }
+      if (index >= 20 && index <= 25) {
+        const prerequisiteStep = index - 19;
+        levels.prerequisites = 0.17 + prerequisiteStep * 0.12;
+        profile.prerequisiteLayers = Math.min(5, prerequisiteStep);
+        profile.pulse = { level: 0.06 + prerequisiteStep * 0.065, rate: 0.58 + prerequisiteStep * 0.09, frequency: 55, filter: 135 + prerequisiteStep * 12 };
+      }
+      if (index === 25 && boundedBuild >= 4) {
+        levels.prerequisites = 0.16;
+        levels.relation = 0.18;
+        profile.pulse.level = 0;
+        profile.projector = 0.001;
+        profile.fade = 0.1;
+      }
+      if (index === 26) {
+        levels.relation = 0.46;
+        levels.organic = 0.08;
+        profile.pulse = { level: 0.14, rate: 0.72, frequency: 55, filter: 150 };
+      }
+      if (index === 27) {
+        levels.relation = 0.16;
+        profile.projector = 0.0015;
+        profile.fade = 0.18;
+      }
+      if (index === 28) {
+        if (boundedBuild >= 4) {
+          levels.relation = 0.72;
+          levels.product = 0.18;
+          levels.organic = 0.12;
+          levels.coda = 0.14;
+          profile.pulse = { level: 0.04, rate: 0.55, frequency: 55, filter: 130 };
+        } else {
+          levels.relation = 0.34 + boundedBuild * 0.13;
+          levels.product = 0.08 + boundedBuild * 0.05;
+          levels.organic = 0.05 + boundedBuild * 0.025;
+          profile.pulse = { level: 0.12 + boundedBuild * 0.09, rate: 0.72 + boundedBuild * 0.1, frequency: 55, filter: 145 + boundedBuild * 12 };
+        }
+      }
+      if (index === 29) {
+        levels.coda = 0.34 + Math.min(boundedBuild, 2) * 0.16;
+        levels.relation = 0.08;
+        profile.pulse = boundedBuild >= 2 ? { level: 0, rate: 0.5, frequency: 55, filter: 130 } : { level: 0.08, rate: 0.48, frequency: 55, filter: 130 };
+        profile.projector = 0.0008;
+        profile.fade = 0.75;
+      }
+      if (index === 30) {
+        levels.organic = 0.22 + Math.min(boundedBuild, 2) * 0.1;
+        levels.coda = 0.3 + Math.min(boundedBuild, 2) * 0.22;
+        levels.relation = 0.07 + Math.min(boundedBuild, 2) * 0.055;
+        levels.product = boundedBuild >= 2 ? 0.1 : 0.04;
+        profile.pulse = boundedBuild === 1 ? { level: 0.06, rate: 0.42, frequency: 49, filter: 125 } : { level: 0, rate: 0.42, frequency: 49, filter: 125 };
+        profile.projector = 0.00075;
+        profile.fade = 0.9;
+      }
+      if (index === 31) {
+        const remaining = Math.max(0, 1 - boundedBuild * 0.24);
+        levels.coda = 0.24 * remaining;
+        levels.organic = 0.08 * remaining;
+        profile.projector = Math.max(0.00015, 0.0008 * remaining);
+        profile.fade = 0.65;
+      }
+      return profile;
+    }
+
+    setNarrativeState(index, build, { immediate = false } = {}) {
+      this.currentSceneIndex = Number(index) || 0;
+      this.currentBuildIndex = Number(build) || 0;
       if (!this.context || !this.bedGain) return;
-      const subdued = new Set([6, 13, 14, 30, 31, 32, 33]);
-      const target = subdued.has(index) ? 0.001 : index === 5 ? 0.024 : 0.008;
+      const profile = this.scoreProfile(this.currentSceneIndex, this.currentBuildIndex);
       const now = this.context.currentTime;
+      const fade = immediate ? 0.01 : profile.fade;
       this.bedGain.gain.cancelScheduledValues(now);
-      this.bedGain.gain.setTargetAtTime(target, now, 0.18);
+      this.bedGain.gain.setTargetAtTime(Math.max(0.0001, profile.projector), now, Math.max(0.01, fade * 0.35));
+      this.chapterBuses.forEach(({ bus, level, voices }, name) => {
+        const intensity = profile.levels[name] || 0;
+        bus.gain.cancelScheduledValues(now);
+        bus.gain.setTargetAtTime(Math.max(0.0001, level * intensity), now, Math.max(0.01, fade));
+        if (name === "prerequisites") {
+          voices.forEach((voice, voiceIndex) => {
+            voice.gain.gain.cancelScheduledValues(now);
+            const target = voiceIndex < profile.prerequisiteLayers ? voice.weight : 0.0001;
+            voice.gain.gain.setTargetAtTime(target, now, Math.max(0.01, fade * 0.8));
+          });
+        }
+      });
+      if (this.rhythm) {
+        this.rhythm.bus.gain.cancelScheduledValues(now);
+        this.rhythm.bus.gain.setTargetAtTime(Math.max(0.0001, 0.018 * profile.pulse.level), now, Math.max(0.01, fade * 0.65));
+        this.rhythm.lfo.frequency.cancelScheduledValues(now);
+        this.rhythm.lfo.frequency.setTargetAtTime(profile.pulse.rate, now, Math.max(0.01, fade));
+        this.rhythm.carrier.frequency.cancelScheduledValues(now);
+        this.rhythm.carrier.frequency.setTargetAtTime(profile.pulse.frequency, now, Math.max(0.01, fade));
+        this.rhythm.filter.frequency.cancelScheduledValues(now);
+        this.rhythm.filter.frequency.setTargetAtTime(profile.pulse.filter, now, Math.max(0.01, fade));
+      }
+    }
+
+    setScene(index, build = 0) {
+      this.setNarrativeState(index, build);
+    }
+
+    setBuild(index, build) {
+      this.setNarrativeState(index, build);
+    }
+
+    getDiagnostics() {
+      const profile = this.scoreProfile(this.currentSceneIndex, this.currentBuildIndex);
+      return {
+        supported: Boolean(window.AudioContext || window.webkitAudioContext),
+        contextState: this.context?.state || "unarmed",
+        sceneIndex: this.currentSceneIndex,
+        buildIndex: this.currentBuildIndex,
+        projector: profile.projector,
+        levels: { ...profile.levels },
+        prerequisiteLayers: profile.prerequisiteLayers,
+        pulse: { ...profile.pulse },
+      };
     }
 
     playTone({ frequency = 620, duration = 0.08, gain = 0.055, delay = 0, type = "sine" } = {}) {
@@ -129,7 +428,7 @@
       oscillator.stop(startTime + duration + 0.03);
     }
 
-    playNoiseBurst({ duration = 0.08, gain = 0.08, delay = 0 } = {}) {
+    playNoiseBurst({ duration = 0.08, gain = 0.08, delay = 0, filterType = "highpass", frequency = 900 } = {}) {
       if (!this.context || !this.master) return;
       const sampleCount = Math.max(1, Math.floor(this.context.sampleRate * duration));
       const buffer = this.context.createBuffer(1, sampleCount, this.context.sampleRate);
@@ -142,11 +441,26 @@
       const filter = this.context.createBiquadFilter();
       const burstGain = this.context.createGain();
       source.buffer = buffer;
-      filter.type = "highpass";
-      filter.frequency.value = 900;
+      filter.type = filterType;
+      filter.frequency.value = frequency;
       burstGain.gain.value = gain;
       source.connect(filter).connect(burstGain).connect(this.master);
       source.start(this.context.currentTime + delay);
+    }
+
+    playFilmTransport() {
+      if (!this.context) return;
+      for (let index = 0; index < 8; index += 1) {
+        this.playNoiseBurst({
+          duration: 0.028,
+          gain: 0.022 + (index % 3) * 0.004,
+          delay: index * 0.105,
+          filterType: "bandpass",
+          frequency: 620 + index * 28,
+        });
+      }
+      this.playTone({ frequency: 68, duration: 0.34, gain: 0.018, type: "triangle" });
+      this.playTone({ frequency: 98, duration: 0.42, gain: 0.012, delay: 0.78, type: "sine" });
     }
 
     playLeaderTrack() {
@@ -170,6 +484,17 @@
       if (scene === "scene-06" && this.bedGain) this.bedGain.gain.setTargetAtTime(0.001, this.context.currentTime, 0.04);
       if (scene === "scene-19") this.playTone({ frequency: 72, duration: 0.3, gain: 0.04, type: "square" });
       if (scene === "scene-20" || scene === "scene-21") this.playTone({ frequency: 146, duration: 0.2, gain: 0.026, type: "triangle" });
+      if (scene === "scene-26") {
+        [164, 137, 196].forEach((frequency, index) => this.playTone({ frequency, duration: 0.18, gain: 0.022, delay: index * 0.08, type: "triangle" }));
+      }
+      if (scene === "scene-29") {
+        this.playTone({ frequency: 130.81, duration: 0.8, gain: 0.018, type: "sine" });
+        this.playTone({ frequency: 196, duration: 0.9, gain: 0.014, delay: 0.08, type: "sine" });
+      }
+      if (scene === "scene-30") {
+        this.playTone({ frequency: 130.81, duration: 1.15, gain: 0.012, type: "sine" });
+        this.playTone({ frequency: 196, duration: 1.3, gain: 0.009, delay: 0.08, type: "sine" });
+      }
       if (scene === "scene-31" && this.bedGain) this.bedGain.gain.setTargetAtTime(0.0005, this.context.currentTime, 0.08);
     }
 
@@ -180,8 +505,30 @@
         this.playNoiseBurst({ duration: 0.025, gain: 0.03, delay: 0.025 });
         return;
       }
-      if (scene === "scene-14" || scene === "scene-30") {
+      if (scene === "scene-02") {
+        this.playNoiseBurst({ duration: buildIndex === 1 ? 0.07 : 0.035, gain: 0.052 });
+        this.playTone({ frequency: buildIndex === 1 ? 310 : 420, duration: 0.055, gain: 0.022, type: "triangle" });
+        return;
+      }
+      if (scene === "scene-03") {
+        if (buildIndex >= 3) return;
+        this.playTone({ frequency: 174 + buildIndex * 28, duration: 0.16, gain: 0.024, type: "sine" });
+        this.playTone({ frequency: 261 + buildIndex * 20, duration: 0.19, gain: 0.018, delay: 0.04, type: "sine" });
+        return;
+      }
+      if (scene === "scene-14") {
         this.playNoiseBurst({ duration: 0.045, gain: 0.045 });
+        return;
+      }
+      if (scene === "scene-28") {
+        this.playNoiseBurst({ duration: 0.055, gain: 0.032, filterType: "bandpass", frequency: 740 });
+        if (buildIndex < 4) {
+          this.playTone({ frequency: 146.83 + buildIndex * 27.5, duration: 0.22, gain: 0.02, type: "triangle" });
+          this.playTone({ frequency: 220 + buildIndex * 27.5, duration: 0.28, gain: 0.014, delay: 0.06, type: "sine" });
+        } else {
+          this.playTone({ frequency: 164.81, duration: 0.8, gain: 0.015, type: "sine" });
+          this.playTone({ frequency: 246.94, duration: 0.9, gain: 0.011, delay: 0.08, type: "sine" });
+        }
         return;
       }
       if (scene === "scene-15" || scene === "scene-16" || scene === "scene-17") {
@@ -191,6 +538,27 @@
       }
       if (scene === "scene-19") {
         this.playNoiseBurst({ duration: buildIndex === 1 ? 0.12 : 0.05, gain: 0.06 });
+        return;
+      }
+      if (scene === "scene-21") {
+        this.playTone({ frequency: 92 + buildIndex * 24, duration: buildIndex === 4 ? 0.4 : 0.09, gain: 0.022, type: "triangle" });
+        this.playNoiseBurst({ duration: 0.045, gain: 0.022, delay: 0.02, filterType: "bandpass", frequency: 680 });
+        return;
+      }
+      if (scene === "scene-22" || scene === "scene-23" || scene === "scene-25" || scene === "scene-26") {
+        this.playTone({ frequency: 120 + buildIndex * 32, duration: 0.08, gain: 0.025, type: "triangle" });
+        return;
+      }
+      if (scene === "scene-29") {
+        this.playTone({ frequency: buildIndex === 1 ? 164.81 : 261.63, duration: 0.55, gain: 0.018, type: "sine" });
+        return;
+      }
+      if (scene === "scene-30") {
+        this.playFilmTransport();
+        if (buildIndex >= 2) {
+          this.playTone({ frequency: 261.63, duration: 1.15, gain: 0.014, delay: 1.25, type: "sine" });
+          this.playTone({ frequency: 329.63, duration: 1.35, gain: 0.01, delay: 1.34, type: "sine" });
+        }
         return;
       }
       this.playNoiseBurst({ duration: 0.03, gain: 0.025 });
@@ -309,6 +677,7 @@
     const changed = nextBuild !== presentationState.build;
     presentationState.build = nextBuild;
     updateBuilds();
+    if (changed) sound.setBuild(presentationState.index, nextBuild);
     if (changed && !silent) sound.cueBuild(currentSceneId(), nextBuild);
     if (currentSceneId() === "scene-12") {
       if (changed && nextBuild === 1 && source !== "automatic" && !silent) startClericalSequence();
@@ -359,7 +728,7 @@
     }
     if (nextIndex !== previousIndex) {
       setTransition(scenes[nextIndex].dataset.transition);
-      sound.setScene(nextIndex);
+      sound.setScene(nextIndex, presentationState.build);
       if (!silent) sound.cueScene(currentSceneId(nextIndex));
     }
     announce("Scene " + nextIndex + ": " + scenes[nextIndex].dataset.title);
@@ -468,7 +837,7 @@
   async function toggleSound() {
     const muted = await sound.toggle();
     body.classList.toggle("sound-muted", muted);
-    sound.setScene(presentationState.index);
+    sound.setScene(presentationState.index, presentationState.build);
     announce(muted ? "Sound muted" : "Sound on");
   }
 
@@ -586,116 +955,36 @@
     else previous();
   }
 
-  const responseConfig = {
-    thinking: {
-      key: "symbiosis-thinking-responses-v2",
-      list: "#thinking-responses",
-      status: "#thinking-action-status",
-      label: "thinking response",
-      filename: "man-computer-symbiosis-thinking-responses.csv",
-    },
-    relationship: {
-      key: "symbiosis-relationship-responses-v2",
-      list: "#relationship-responses",
-      status: "#relationship-status",
-      label: "relationship selection",
-      filename: "man-computer-symbiosis-relationship-selections.csv",
-    },
-  };
+  const thinkingResponses = [];
 
-  function getResponses(kind) {
-    const config = responseConfig[kind];
-    if (!config) return [];
-    try {
-      const stored = JSON.parse(localStorage.getItem(config.key) || "[]");
-      return Array.isArray(stored) ? stored.filter((item) => typeof item?.text === "string") : [];
-    } catch {
-      return [];
-    }
+  function setThinkingStatus(message) {
+    const status = document.querySelector("#thinking-action-status");
+    if (status) status.textContent = message;
   }
 
-  function setResponses(kind, responses) {
-    const config = responseConfig[kind];
-    if (!config) return;
-    try {
-      localStorage.setItem(config.key, JSON.stringify(responses));
-    } catch {
-      // The visible record still works if local storage is unavailable.
-    }
-  }
-
-  function renderResponses(kind) {
-    const config = responseConfig[kind];
-    const list = document.querySelector(config?.list || "");
+  function renderThinkingResponses() {
+    const list = document.querySelector("#thinking-responses");
     if (!list) return;
-    const responses = getResponses(kind);
     list.replaceChildren();
-    responses.forEach((response, index) => {
+    thinkingResponses.forEach((response, index) => {
       const item = document.createElement("li");
       const number = document.createElement("span");
       const text = document.createElement("strong");
-      number.textContent = String(index + 1).padStart(2, "0") + " - " + (kind === "relationship" ? "SELECTED" : "FILED");
-      text.textContent = response.text;
+      number.textContent = String(index + 1).padStart(2, "0") + " - FILED";
+      text.textContent = response;
       item.append(number, text);
       list.append(item);
     });
   }
 
-  function setResponseStatus(kind, message) {
-    const status = document.querySelector(responseConfig[kind]?.status || "");
-    if (status) status.textContent = message;
-  }
-
-  function addResponse(kind, text) {
+  function addThinkingResponse(text) {
     const cleanText = String(text || "").trim();
     if (!cleanText) return false;
-    const responses = getResponses(kind);
-    responses.push({ text: cleanText, recordedAt: new Date().toISOString() });
-    setResponses(kind, responses);
-    renderResponses(kind);
-    setResponseStatus(kind, "Recorded " + responseConfig[kind].label + ": " + cleanText);
+    if (thinkingResponses.length >= 3) thinkingResponses.shift();
+    thinkingResponses.push(cleanText);
+    renderThinkingResponses();
+    setThinkingStatus("Filed response: " + cleanText);
     return true;
-  }
-
-  function responseCsv(kind) {
-    const responses = getResponses(kind);
-    const escape = (value) => '"' + String(value).replace(/"/g, '""') + '"';
-    return ["number,response,recorded_at"].concat(
-      responses.map((response, index) => [index + 1, response.text, response.recordedAt].map(escape).join(",")),
-    ).join("\n");
-  }
-
-  async function copyResponses(kind) {
-    const text = responseCsv(kind);
-    try {
-      await navigator.clipboard.writeText(text);
-      setResponseStatus(kind, "Copied local record to clipboard.");
-    } catch {
-      const field = document.createElement("textarea");
-      field.value = text;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.append(field);
-      field.select();
-      document.execCommand("copy");
-      field.remove();
-      setResponseStatus(kind, "Copied local record to clipboard.");
-    }
-  }
-
-  function downloadResponses(kind) {
-    const config = responseConfig[kind];
-    const blob = new Blob([responseCsv(kind)], { type: "text/csv;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const anchor = document.createElement("a");
-    anchor.href = url;
-    anchor.download = config.filename;
-    document.body.append(anchor);
-    anchor.click();
-    anchor.remove();
-    window.setTimeout(() => URL.revokeObjectURL(url), 0);
-    setResponseStatus(kind, "Prepared CSV download from this browser only.");
   }
 
   function initializeResponseForms() {
@@ -704,28 +993,17 @@
     if (form && input) {
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        if (!addResponse("thinking", input.value)) {
-          setResponseStatus("thinking", "Write a response before filing it.");
+        if (!addThinkingResponse(input.value)) {
+          setThinkingStatus("Write a response before filing it.");
           input.focus();
           return;
         }
         input.value = "";
-        sound.cueBuild("scene-18", getResponses("thinking").length);
+        sound.cueBuild("scene-18", thinkingResponses.length);
       });
     }
 
-    document.querySelectorAll("[data-response-action]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const kind = button.dataset.responseKind;
-        if (!responseConfig[kind]) return;
-        if (button.dataset.responseAction === "copy") copyResponses(kind);
-        if (button.dataset.responseAction === "download") downloadResponses(kind);
-        if (button.dataset.responseAction === "print") window.print();
-      });
-    });
-
-    renderResponses("thinking");
-    renderResponses("relationship");
+    renderThinkingResponses();
   }
 
   function initializeRelationshipPoll() {
@@ -739,9 +1017,10 @@
           candidate.setAttribute("aria-pressed", String(selected));
         });
         const relation = card.dataset.relation || card.textContent.trim();
-        addResponse("relationship", relation);
-        if (currentSceneId() === "scene-29" && presentationState.build < 1) setBuild(1, { silent: true });
-        sound.cueBuild("scene-29", cardIndex + 1);
+        const status = document.querySelector("#relationship-status");
+        if (status) status.textContent = "Selected relationship: " + relation + ". The selection is not recorded.";
+        if (currentSceneId() === "scene-27" && presentationState.build < 1) setBuild(1, { silent: true });
+        sound.cueBuild("scene-27", cardIndex + 1);
       });
     });
   }
@@ -862,7 +1141,7 @@
     window.__symbiosisDeck = {
       slides: scenes,
       get state() {
-        return { ...presentationState, soundMuted: sound.muted, opening: parseOpening() };
+        return { ...presentationState, soundMuted: sound.muted, sound: sound.getDiagnostics(), opening: parseOpening() };
       },
       goToSlide,
       setBuild,

@@ -33,7 +33,8 @@ module.exports = defineConfig({
       },
     },
     {
-      name: "mobile-chromium",
+      name: "small-screen-gate",
+      grep: /wide-screen gate/,
       use: {
         ...devices["Pixel 5"],
         viewport: { width: 390, height: 844 },
